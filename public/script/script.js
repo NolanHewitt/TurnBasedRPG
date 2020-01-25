@@ -69,8 +69,8 @@ let stuffValueParse3;
 // Check to see if user has enough money in local storage if this is a transaction
 // stuff1 = JSON.parse(localStorage.getItem("inventory1"));
 // stuffValue1 = JSON.parse(localStorage.getItem("inventoryValue1"));
-// stuff1.push("item2");
-// stuffValue1.push("itemValue2");
+// stuff1.push(item);
+// stuffValue1.push(itemValue);
 // localStorage.setItem("inventory1", JSON.stringify(stuff1));
 // localStorage.setItem("inventoryValue1", JSON.stringify(stuffValue1));
 // stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
