@@ -1,0 +1,34 @@
+#titleContainer{
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  margin-top: 5%;
+}
+
+#startContainer{
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  margin-top: 40%;
+}
+
+#optionsContainer{
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  margin-top: 45%;
+}
+
+#filesContainer{
+  width: 100%;
+  text-align: center;
+  display: none;
+  position: fixed;
+  z-index: 2;
+  background-color: white;
+  height: 100%;
+}
+
+#filesInnerContainer {
+  margin-top: 25%;
+}
