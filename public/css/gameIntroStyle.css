@@ -1,0 +1,16 @@
+body {
+  background-color: black;
+}
+
+#text {
+  color: white;
+}
+
+#textBlack {
+  color: white;
+}
+
+#confirmIntro {
+  color: white;
+  display: none;
+}
