@@ -1,5 +1,7 @@
 //File number
 let fileNumber = localStorage.getItem("fileNumber");
+//lock for controls, mainly used in battle;
+let controlsLocked = false;
 //Determine if intro has already been completed
 let intro1 = localStorage.getItem("intro1");
 let intro2 = localStorage.getItem("intro2");
@@ -628,7 +630,7 @@ function restoreSP(){
 };
 
   function prepareBattle(){
-    //rng used to determine the level of enemy the player will fight
+    //rng used to determine the level of enemy the player will fight, they will only fight monsters up to 5 levels higher than themselves
     if (fileNumber === "1"){
       rng = Math.floor(Math.random() * 5) + parseInt(lvl1);
       console.log(rng);  
@@ -642,27 +644,88 @@ function restoreSP(){
       console.log(rng);  
     };
     localStorage.setItem("currentEnemy", rng);
-    // window.location = "battle";
+    window.location = "battle";
   };
 
   //Battle script
 
-  function Enemy(name, lvl, hp, atk, def, mp) {
+  function Enemy(name, lvl, hp, atk, def, mp, lore) {
     this.enemyName = name
     this.enemyLvl = lvl;
     this.enemyHp = hp;
     this.enemyAtk = atk;
     this.enemyDef = def;
     this.enemyMp = mp;
+    this.enemyLore = lore;
   };
 
-  const enemy1 = new Enemy("John", 1, 10, 1, 0, 5);
-  const enemy2 = new Enemy("Bob", 2, 12, 2, 0, 5);
-  const enemy3 = new Enemy("George", 3, 12, 1, 0, 10);
-  const enemy4 = new Enemy("Nolan", 4, 15, 1, 1, 5);
-  const enemy5 = new Enemy("Dan", 5, 15, 2, 1, 0);
+  //All enemies go here, must have enough enemies to be 5 lvls higher than what the player can reach
+  const enemy1 = new Enemy("John", 1, 10, 1, 0, 5, "John lore goes here");
+  const enemy2 = new Enemy("Bob", 2, 12, 2, 0, 5, "Bob lore goes here");
+  const enemy3 = new Enemy("George", 3, 12, 1, 0, 10, "George lore goes here");
+  const enemy4 = new Enemy("Nolan", 4, 15, 1, 1, 5, "Nolan lore goes here");
+  const enemy5 = new Enemy("Dan", 5, 15, 2, 1, 0, "Dan lore goes here");
 
   let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
 
   //How to select random enemy
   console.log(allEnemies[parseInt(rng)]);
+
+  let opponentName = allEnemies[parseInt(rng)].enemyName;
+  let opponentLvl = allEnemies[parseInt(rng)].enemyLvl;
+  let opponentHp = allEnemies[parseInt(rng)].enemyHp;
+  let opponentAtk = allEnemies[parseInt(rng)].enemyAtk;
+  let opponentDef = allEnemies[parseInt(rng)].enemyDef;
+  let opponentMp = allEnemies[parseInt(rng)].enemyMp;
+  let opponentLore = allEnemies[parseInt(rng)].enemyLore;
+  console.log(opponentName);
+  console.log(opponentLvl);
+  console.log(opponentHp);
+  console.log(opponentAtk);
+  console.log(opponentDef);
+  console.log(opponentMp);
+  console.log(opponentLore);
+
+  //function for when you attempt a standard attack
+  function attack(){
+   if (controlsLocked === false){
+    //First lock the controls until everything is done
+    controlsLocked = true;
+    //determine chance to hit the enemy based on your dexterity
+    let hitChance = (.15 * parseInt(dexterity1)) + 80;
+    console.log(hitChance);
+    //generate a random number to see if you hit the enemy
+    let hitAttempt = Math.random() * 100;
+    console.log(hitAttempt);
+    //logic to determine if yoy hit the enemy
+    if (hitChance > hitAttempt){
+      //deal damage to the enemy based on your attack and the enemies defense if you hit
+      opponentHp = opponentHp - (parseInt(attack1) - opponentDef);
+      console.log(opponentHp);
+
+      //Insert function here to check if the enemy has been defeated
+      if (opponentHp > 0){
+        console.log("enemy is still alive");
+        //Insert enemy attack function here
+        setTimeout(function(){
+          console.log("enemy attack timer test");
+          //Unlock controls after the enemy has completed their attack turn
+          controlsLocked = false;
+          console.log("controls unlocked");
+        }, 3000);
+      }
+      else if (opponentHp <= 0){
+        console.log("enemy is dead");
+        //insert end battle function here
+      };
+    }
+    else {
+      console.log("miss");
+      controlsLocked = false;
+      console.log("controls unlocked");
+    };
+   }
+   else {
+     console.log("Controls are locked because the battle is over.");
+   };
+  };
