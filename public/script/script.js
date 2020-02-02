@@ -16,6 +16,14 @@ let exp3 = localStorage.getItem("lvlThree");
 let money1 = localStorage.getItem("money1");
 let money2 = localStorage.getItem("money2");
 let money3 = localStorage.getItem("money3");
+//Record number of enemies defeated in battles
+let enemiesDefeated1 = localStorage.getItem("enemiesDefeated1");
+let enemiesDefeated2 = localStorage.getItem("enemiesDefeated2");
+let enemiesDefeated3 = localStorage.getItem("enemiesDefeated3");
+//Record what initial player type is
+let playerType1 = localStorage.getItem("playerType1");
+let playerType2 = localStorage.getItem("playerType2");
+let playerType3 = localStorage.getItem("playerType3");
 //Weapon for each file
 let weapon1 = localStorage.getItem("weapon1");
 let weapon2 = localStorage.getItem("weapon2");
@@ -131,6 +139,10 @@ let magic3 = localStorage.getItem("magic3");
 let dexterity1 = localStorage.getItem("dexterity1");
 let dexterity2 = localStorage.getItem("dexterity2");
 let dexterity3 = localStorage.getItem("dexterity3");
+//Holder for current enemy when the player gets into battle
+let currentEnemy = localStorage.getItem("currentEnemy");
+//rng value used fpr determining enemy that you will fight in a random battle
+let rng = localStorage.getItem("currentEnemy");
 
 console.log("Currently playing file number " + fileNumber + ".");
 
@@ -214,15 +226,18 @@ console.log("Currently playing file number " + fileNumber + ".");
 function startBalanced(){
   fileNumber = localStorage.getItem("fileNumber");
   console.log(fileNumber);
+  document.getElementById("sure").innerHTML = "Balanced. Are you sure?";
   if (fileNumber === "1"){
   localStorage.setItem("lvlOne", "1");
   localStorage.setItem("expOne", "0");
-  localStorage.setItem("maxHP1", "110");
-  localStorage.setItem("HP1", "110");
-  localStorage.setItem("maxMP1", "110");
-  localStorage.setItem("MP1", "110");
-  localStorage.setItem("maxSP1", "110");
-  localStorage.setItem("SP1", "110");
+  localStorage.setItem("playerType1", "Balanced");
+  localStorage.setItem("enemiesDefeated1","0");
+  localStorage.setItem("maxHP1", "12");
+  localStorage.setItem("HP1", "12");
+  localStorage.setItem("maxMP1", "12");
+  localStorage.setItem("MP1", "12");
+  localStorage.setItem("maxSP1", "12");
+  localStorage.setItem("SP1", "12");
   localStorage.setItem("attack1", "2");
   localStorage.setItem("defense1", "2");
   localStorage.setItem("magic1", "2");
@@ -241,12 +256,14 @@ function startBalanced(){
   else if (fileNumber === "2"){
     localStorage.setItem("lvlTwo", "1");
     localStorage.setItem("expTwo", "0");
-    localStorage.setItem("maxHP2", "110");
-    localStorage.setItem("HP2", "110");
-    localStorage.setItem("maxMP2", "110");
-    localStorage.setItem("MP2", "110");
-    localStorage.setItem("maxSP2", "110");
-    localStorage.setItem("SP2", "110");
+    localStorage.setItem("playerType2", "Balanced");
+    localStorage.setItem("enemiesDefeated2","0");
+    localStorage.setItem("maxHP2", "12");
+    localStorage.setItem("HP2", "12");
+    localStorage.setItem("maxMP2", "12");
+    localStorage.setItem("MP2", "12");
+    localStorage.setItem("maxSP2", "12");
+    localStorage.setItem("SP2", "12");
     localStorage.setItem("attack2", "2");
     localStorage.setItem("defense2", "2");
     localStorage.setItem("magic2", "2");
@@ -265,12 +282,14 @@ function startBalanced(){
   else if (fileNumber === "3"){
     localStorage.setItem("lvlThree", "1");
     localStorage.setItem("expThree", "0");
-    localStorage.setItem("maxHP3", "110");
-    localStorage.setItem("HP3", "110");
-    localStorage.setItem("maxMP3", "110");
-    localStorage.setItem("MP3", "110");
-    localStorage.setItem("maxSP3", "110");
-    localStorage.setItem("SP3", "110");
+    localStorage.setItem("playerType3", "Balanced");
+    localStorage.setItem("enemiesDefeated3","0");
+    localStorage.setItem("maxHP3", "12");
+    localStorage.setItem("HP3", "12");
+    localStorage.setItem("maxMP3", "12");
+    localStorage.setItem("MP3", "12");
+    localStorage.setItem("maxSP3", "12");
+    localStorage.setItem("SP3", "12");
     localStorage.setItem("attack3", "2");
     localStorage.setItem("defense3", "2");
     localStorage.setItem("magic3", "2");
@@ -292,15 +311,18 @@ function startBalanced(){
 function startAttack(){
   fileNumber = localStorage.getItem("fileNumber");
   console.log(fileNumber);
+  document.getElementById("sure").innerHTML = "Attack. Are you sure?";
   if (fileNumber === "1"){
   localStorage.setItem("lvlOne", "1");
   localStorage.setItem("expOne", "0");
-  localStorage.setItem("maxHP1", "120");
-  localStorage.setItem("HP1", "120");
-  localStorage.setItem("maxMP1", "90");
-  localStorage.setItem("MP1", "90");
-  localStorage.setItem("maxSP1", "110");
-  localStorage.setItem("SP1", "110");
+  localStorage.setItem("playerType1", "Attack");
+  localStorage.setItem("enemiesDefeated1","0");
+  localStorage.setItem("maxHP1", "12");
+  localStorage.setItem("HP1", "12");
+  localStorage.setItem("maxMP1", "8");
+  localStorage.setItem("MP1", "8");
+  localStorage.setItem("maxSP1", "16");
+  localStorage.setItem("SP1", "16");
   localStorage.setItem("attack1", "3");
   localStorage.setItem("defense1", "2");
   localStorage.setItem("magic1", "1");
@@ -319,12 +341,14 @@ function startAttack(){
   else if (fileNumber === "2"){
     localStorage.setItem("lvlTwo", "1");
     localStorage.setItem("expTwo", "0");
-    localStorage.setItem("maxHP2", "120");
-    localStorage.setItem("HP2", "120");
-    localStorage.setItem("maxMP2", "90");
-    localStorage.setItem("MP2", "90");
-    localStorage.setItem("maxSP2", "110");
-    localStorage.setItem("SP2", "110");
+    localStorage.setItem("playerType2", "Attack");
+    localStorage.setItem("enemiesDefeated2","0");
+    localStorage.setItem("maxHP2", "12");
+    localStorage.setItem("HP2", "12");
+    localStorage.setItem("maxMP2", "8");
+    localStorage.setItem("MP2", "8");
+    localStorage.setItem("maxSP2", "16");
+    localStorage.setItem("SP2", "16");
     localStorage.setItem("attack2", "3");
     localStorage.setItem("defense2", "2");
     localStorage.setItem("magic2", "1");
@@ -343,12 +367,14 @@ function startAttack(){
   else if (fileNumber === "3"){
     localStorage.setItem("lvlThree", "1");
     localStorage.setItem("expThree", "0");
-    localStorage.setItem("maxHP3", "120");
-    localStorage.setItem("HP3", "120");
-    localStorage.setItem("maxMP3", "90");
-    localStorage.setItem("MP3", "90");
-    localStorage.setItem("maxSP3", "110");
-    localStorage.setItem("SP3", "110");
+    localStorage.setItem("playerType3", "Attack");
+    localStorage.setItem("enemiesDefeated3","0");
+    localStorage.setItem("maxHP3", "12");
+    localStorage.setItem("HP3", "12");
+    localStorage.setItem("maxMP3", "8");
+    localStorage.setItem("MP3", "8");
+    localStorage.setItem("maxSP3", "16");
+    localStorage.setItem("SP3", "16");
     localStorage.setItem("attack3", "3");
     localStorage.setItem("defense3", "2");
     localStorage.setItem("magic3", "1");
@@ -370,15 +396,18 @@ function startAttack(){
 function startDefense(){
   fileNumber = localStorage.getItem("fileNumber");
   console.log(fileNumber);
+  document.getElementById("sure").innerHTML = "Defense. Are you sure?";
   if (fileNumber === "1"){
   localStorage.setItem("lvlOne", "1");
   localStorage.setItem("expOne", "0");
-  localStorage.setItem("maxHP1", "135");
-  localStorage.setItem("HP1", "135");
-  localStorage.setItem("maxMP1", "100");
-  localStorage.setItem("MP1", "100");
-  localStorage.setItem("maxSP1", "100");
-  localStorage.setItem("SP1", "100");
+  localStorage.setItem("playerType1", "Defense");
+  localStorage.setItem("enemiesDefeated1","0");
+  localStorage.setItem("maxHP1", "16");
+  localStorage.setItem("HP1", "16");
+  localStorage.setItem("maxMP1", "10");
+  localStorage.setItem("MP1", "10");
+  localStorage.setItem("maxSP1", "10");
+  localStorage.setItem("SP1", "10");
   localStorage.setItem("attack1", "1");
   localStorage.setItem("defense1", "4");
   localStorage.setItem("magic1", "1");
@@ -397,12 +426,14 @@ function startDefense(){
   else if (fileNumber === "2"){
     localStorage.setItem("lvlTwo", "1");
     localStorage.setItem("expTwo", "0");
-    localStorage.setItem("maxHP2", "135");
-    localStorage.setItem("HP2", "135");
-    localStorage.setItem("maxMP2", "100");
-    localStorage.setItem("MP2", "100");
-    localStorage.setItem("maxSP2", "100");
-    localStorage.setItem("SP2", "100");
+    localStorage.setItem("playerType2", "Defense");
+    localStorage.setItem("enemiesDefeated2","0");
+    localStorage.setItem("maxHP2", "16");
+    localStorage.setItem("HP2", "16");
+    localStorage.setItem("maxMP2", "10");
+    localStorage.setItem("MP2", "10");
+    localStorage.setItem("maxSP2", "10");
+    localStorage.setItem("SP2", "10");
     localStorage.setItem("attack2", "1");
     localStorage.setItem("defense2", "4");
     localStorage.setItem("magic2", "1");
@@ -421,12 +452,14 @@ function startDefense(){
   else if (fileNumber === "3"){
     localStorage.setItem("lvlThree", "1");
     localStorage.setItem("expThree", "0");
-    localStorage.setItem("maxHP3", "135");
-    localStorage.setItem("HP3", "135");
-    localStorage.setItem("maxMP3", "100");
-    localStorage.setItem("MP3", "100");
-    localStorage.setItem("maxSP3", "100");
-    localStorage.setItem("SP3", "100");
+    localStorage.setItem("playerType3", "Defense");
+    localStorage.setItem("enemiesDefeated3","0");
+    localStorage.setItem("maxHP3", "16");
+    localStorage.setItem("HP3", "16");
+    localStorage.setItem("maxMP3", "10");
+    localStorage.setItem("MP3", "10");
+    localStorage.setItem("maxSP3", "10");
+    localStorage.setItem("SP3", "10");
     localStorage.setItem("attack3", "1");
     localStorage.setItem("defense3", "4");
     localStorage.setItem("magic3", "1");
@@ -448,15 +481,18 @@ function startDefense(){
 function startMagic(){
   fileNumber = localStorage.getItem("fileNumber");
   console.log(fileNumber);
+  document.getElementById("sure").innerHTML = "Magic. Are you sure?";
   if (fileNumber === "1"){
   localStorage.setItem("lvlOne", "1");
   localStorage.setItem("expOne", "0");
-  localStorage.setItem("maxHP1", "100");
-  localStorage.setItem("HP1", "100");
-  localStorage.setItem("maxMP1", "150");
-  localStorage.setItem("MP1", "150");
-  localStorage.setItem("maxSP1", "80");
-  localStorage.setItem("SP1", "80");
+  localStorage.setItem("playerType1", "Magic");
+  localStorage.setItem("enemiesDefeated1","0");
+  localStorage.setItem("maxHP1", "10");
+  localStorage.setItem("HP1", "10");
+  localStorage.setItem("maxMP1", "20");
+  localStorage.setItem("MP1", "20");
+  localStorage.setItem("maxSP1", "6");
+  localStorage.setItem("SP1", "6");
   localStorage.setItem("attack1", "1");
   localStorage.setItem("defense1", "1");
   localStorage.setItem("magic1", "4");
@@ -475,12 +511,14 @@ function startMagic(){
   else if (fileNumber === "2"){
     localStorage.setItem("lvlTwo", "1");
     localStorage.setItem("expTwo", "0");
-    localStorage.setItem("maxHP2", "100");
-    localStorage.setItem("HP2", "100");
-    localStorage.setItem("maxMP2", "150");
-    localStorage.setItem("MP2", "150");
-    localStorage.setItem("maxSP2", "80");
-    localStorage.setItem("SP2", "80");
+    localStorage.setItem("playerType2", "Magic");
+    localStorage.setItem("enemiesDefeated2","0");
+    localStorage.setItem("maxHP2", "10");
+    localStorage.setItem("HP2", "10");
+    localStorage.setItem("maxMP2", "20");
+    localStorage.setItem("MP2", "20");
+    localStorage.setItem("maxSP2", "6");
+    localStorage.setItem("SP2", "6");
     localStorage.setItem("attack2", "1");
     localStorage.setItem("defense2", "1");
     localStorage.setItem("magic2", "4");
@@ -499,12 +537,14 @@ function startMagic(){
   else if (fileNumber === "3"){
     localStorage.setItem("lvlThree", "1");
     localStorage.setItem("expThree", "0");
-    localStorage.setItem("maxHP3", "100");
-    localStorage.setItem("HP3", "100");
-    localStorage.setItem("maxMP3", "150");
-    localStorage.setItem("MP3", "150");
-    localStorage.setItem("maxSP3", "80");
-    localStorage.setItem("SP3", "80");
+    localStorage.setItem("playerType3", "Magic");
+    localStorage.setItem("enemiesDefeated3","0");
+    localStorage.setItem("maxHP3", "10");
+    localStorage.setItem("HP3", "10");
+    localStorage.setItem("maxMP3", "20");
+    localStorage.setItem("MP3", "20");
+    localStorage.setItem("maxSP3", "6");
+    localStorage.setItem("SP3", "6");
     localStorage.setItem("attack3", "1");
     localStorage.setItem("defense3", "1");
     localStorage.setItem("magic3", "4");
@@ -529,12 +569,100 @@ function unsure(){
 
 function confirm(){
   window.location='game';
+}; 
+
+//Main Game Script
+
+function restoreHP(){
+if (fileNumber === "1"){
+  HP1 = maxHP1;
+  localStorage.setItem("HP1", HP1);
+  console.log("HP1 maxed, HP1 is now " + HP1);
+}
+else if (fileNumber === "2"){
+  HP2 = maxHP2;
+  localStorage.setItem("HP2", HP2);
+  console.log("HP2 maxed, HP2 is now " + HP2);
+}
+else if (fileNumber === "3"){
+  HP3 = maxHP3;
+  localStorage.setItem("HP3", HP3);
+  console.log("HP3 maxed, HP3 is now " + HP3);
+};
 };
 
-const array = [2, 5, 9, 11, 14, 17, 21];
+function restoreMP(){
+  if (fileNumber === "1"){
+    MP1 = maxMP1;
+    localStorage.setItem("MP1", MP1);
+    console.log("MP1 maxed, MP1 is now " + MP1);
+  }
+  else if (fileNumber === "2"){
+    MP2 = maxMP2;
+    localStorage.setItem("MP2", MP2);
+    console.log("MP2 maxed, MP2 is now " + MP2);
+  }
+  else if (fileNumber === "3"){
+    MP3 = maxMP3;
+    localStorage.setItem("MP3", MP3);
+    console.log("MP3 maxed, MP3 is now " + MP3);
+  };
+};
 
-console.log(array);
-  array.splice(1, 1);
+function restoreSP(){
+  if (fileNumber === "1"){
+    SP1 = maxSP1;
+    localStorage.setItem("SP1", SP1);
+    console.log("SP1 maxed, SP1 is now " + SP1);
+  }
+  else if (fileNumber === "2"){
+    SP2 = maxSP2;
+    localStorage.setItem("SP2", SP2);
+    console.log("SP2 maxed, SP2 is now " + SP2);
+  }
+  else if (fileNumber === "3"){
+    SP3 = maxSP3;
+    localStorage.setItem("SP3", SP3);
+    console.log("SP3 maxed, SP3 is now " + SP3);
+  };
+};
 
-// array = [2, 9]
-console.log(array); 
+  function prepareBattle(){
+    //rng used to determine the level of enemy the player will fight
+    if (fileNumber === "1"){
+      rng = Math.floor(Math.random() * 5) + parseInt(lvl1);
+      console.log(rng);  
+    }
+    else if (fileNumber === "2"){
+      rng = Math.floor(Math.random() * 5) + parseInt(lvl2);
+      console.log(rng);  
+    }
+    else if (fileNumber === "3"){
+      rng = Math.floor(Math.random() * 5) + parseInt(lvl3);
+      console.log(rng);  
+    };
+    localStorage.setItem("currentEnemy", rng);
+    // window.location = "battle";
+  };
+
+  //Battle script
+
+  function Enemy(name, lvl, hp, atk, def, mp) {
+    this.enemyName = name
+    this.enemyLvl = lvl;
+    this.enemyHp = hp;
+    this.enemyAtk = atk;
+    this.enemyDef = def;
+    this.enemyMp = mp;
+  };
+
+  const enemy1 = new Enemy("John", 1, 10, 1, 0, 5);
+  const enemy2 = new Enemy("Bob", 2, 12, 2, 0, 5);
+  const enemy3 = new Enemy("George", 3, 12, 1, 0, 10);
+  const enemy4 = new Enemy("Nolan", 4, 15, 1, 1, 5);
+  const enemy5 = new Enemy("Dan", 5, 15, 2, 1, 0);
+
+  let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
+
+  //How to select random enemy
+  console.log(allEnemies[parseInt(rng)]);

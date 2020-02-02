@@ -19,6 +19,10 @@ router.get("/game",function(req,res){
   res.sendFile(path + "game.html");
 });
 
+router.get("/battle",function(req,res){
+  res.sendFile(path + "battle.html");
+});
+
 router.get("/lose",function(req,res){
   res.sendFile(path + "lose.html");
 });
