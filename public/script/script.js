@@ -3,63 +3,63 @@ let fileNumber = localStorage.getItem("fileNumber");
 //lock for controls, mainly used in battle;
 let controlsLocked = false;
 //Determine if intro has already been completed
-let intro1 = localStorage.getItem("intro1");
-let intro2 = localStorage.getItem("intro2");
-let intro3 = localStorage.getItem("intro3");
+let intro1 = parseInt(localStorage.getItem("intro1"));
+let intro2 = parseInt(localStorage.getItem("intro2"));
+let intro3 = parseInt(localStorage.getItem("intro3"));
 //Level for each file
-let lvl1 = localStorage.getItem("lvlOne");
-let lvl2 = localStorage.getItem("lvlTwo");
-let lvl3 = localStorage.getItem("lvlThree");
+let lvl1 = parseInt(localStorage.getItem("lvlOne"));
+let lvl2 = parseInt(localStorage.getItem("lvlTwo"));
+let lvl3 = parseInt(localStorage.getItem("lvlThree"));
 //EXP for each file
-let exp1 = localStorage.getItem("expOne");
-let exp2 = localStorage.getItem("expTwo");
-let exp3 = localStorage.getItem("lvlThree");
+let exp1 = parseInt(localStorage.getItem("expOne"));
+let exp2 = parseInt(localStorage.getItem("expTwo"));
+let exp3 = parseInt(localStorage.getItem("expThree"));
 //use battleXP to store xp value earned from battle before adding it to exp
 let battleXP;
 //Money for each file
-let money1 = localStorage.getItem("money1");
-let money2 = localStorage.getItem("money2");
-let money3 = localStorage.getItem("money3");
+let money1 = parseInt(localStorage.getItem("money1"));
+let money2 = parseInt(localStorage.getItem("money2"));
+let money3 = parseInt(localStorage.getItem("money3"));
 //Record number of enemies defeated in battles
-let enemiesDefeated1 = localStorage.getItem("enemiesDefeated1");
-let enemiesDefeated2 = localStorage.getItem("enemiesDefeated2");
-let enemiesDefeated3 = localStorage.getItem("enemiesDefeated3");
+let enemiesDefeated1 = parseInt(localStorage.getItem("enemiesDefeated1"));
+let enemiesDefeated2 = parseInt(localStorage.getItem("enemiesDefeated2"));
+let enemiesDefeated3 = parseInt(localStorage.getItem("enemiesDefeated3"));
 //Record what initial player type is
-let playerType1 = localStorage.getItem("playerType1");
-let playerType2 = localStorage.getItem("playerType2");
-let playerType3 = localStorage.getItem("playerType3");
+let playerType1 = parseInt(localStorage.getItem("playerType1"));
+let playerType2 = parseInt(localStorage.getItem("playerType2"));
+let playerType3 = parseInt(localStorage.getItem("playerType3"));
 //Weapon for each file
-let weapon1 = localStorage.getItem("weapon1");
-let weapon2 = localStorage.getItem("weapon2");
-let weapon3 = localStorage.getItem("weapon3");
+let weapon1 = parseInt(localStorage.getItem("weapon1"));
+let weapon2 = parseInt(localStorage.getItem("weapon2"));
+let weapon3 = parseInt(localStorage.getItem("weapon3"));
 //Weapon attack for each file
-let weaponAtk1 = localStorage.getItem("weaponAtk1");
-let weaponAtk2 = localStorage.getItem("weaponAtk2");
-let weaponAtk3 = localStorage.getItem("weaponAtk3");
+let weaponAtk1 = parseInt(localStorage.getItem("weaponAtk1"));
+let weaponAtk2 = parseInt(localStorage.getItem("weaponAtk2"));
+let weaponAtk3 = parseInt(localStorage.getItem("weaponAtk3"));
 //Weapon value for each file
-let weaponValue1 = localStorage.getItem("weaponValue1");
-let weaponValue2 = localStorage.getItem("weaponValue2");
-let weaponValue3 = localStorage.getItem("weaponValue3");
+let weaponValue1 = parseInt(localStorage.getItem("weaponValue1"));
+let weaponValue2 = parseInt(localStorage.getItem("weaponValue2"));
+let weaponValue3 = parseInt(localStorage.getItem("weaponValue3"));
 //Armor for each file
-let armor1 = localStorage.getItem("armor1");
-let armor2 = localStorage.getItem("armor2");
-let armor3 = localStorage.getItem("armor3");
+let armor1 = parseInt(localStorage.getItem("armor1"));
+let armor2 = parseInt(localStorage.getItem("armor2"));
+let armor3 = parseInt(localStorage.getItem("armor3"));
 //Armor defense for each file
-let armorDef1 = localStorage.getItem("armorDef1");
-let armorDef2 = localStorage.getItem("armorDef2");
-let armorDef3 = localStorage.getItem("armorDef3");
+let armorDef1 = parseInt(localStorage.getItem("armorDef1"));
+let armorDef2 = parseInt(localStorage.getItem("armorDef2"));
+let armorDef3 = parseInt(localStorage.getItem("armorDef3"));
 //Armor value for each file
-let armorValue1 = localStorage.getItem("armorValue1");
-let armorValue2 = localStorage.getItem("armorValue2");
-let armorValue3 = localStorage.getItem("armorValue3");
+let armorValue1 = parseInt(localStorage.getItem("armorValue1"));
+let armorValue2 = parseInt(localStorage.getItem("armorValue2"));
+let armorValue3 = parseInt(localStorage.getItem("armorValue3"));
 //Inventory for each file
-let inventory1 = localStorage.getItem("inventory1");
-let inventory2 = localStorage.getItem("inventory2");
-let inventory3 = localStorage.getItem("inventory3");
+let inventory1 = parseInt(localStorage.getItem("inventory1"));
+let inventory2 = parseInt(localStorage.getItem("inventory2"));
+let inventory3 = parseInt(localStorage.getItem("inventory3"));
 //Inventory value for each file
-let inventoryValue1 = localStorage.getItem("inventoryValue1");
-let inventoryValue2 = localStorage.getItem("inventoryValue2");
-let inventoryValue3 = localStorage.getItem("inventoryValue3");
+let inventoryValue1 = parseInt(localStorage.getItem("inventoryValue1"));
+let inventoryValue2 = parseInt(localStorage.getItem("inventoryValue2"));
+let inventoryValue3 = parseInt(localStorage.getItem("inventoryValue3"));
 //Arrays for updating inventory
 let stuff1 = [];
 let stuff2 = [];
@@ -104,49 +104,49 @@ let stuffValueParse3;
 // console.log(stuffParse1 + " " + stuffValueParse1);
 
 //Max HP for each file
-let maxHP1 = localStorage.getItem("maxHP1");
-let maxHP2 = localStorage.getItem("maxHP2");
-let maxHP3 = localStorage.getItem("maxHP3");
+let maxHP1 = parseInt(localStorage.getItem("maxHP1"));
+let maxHP2 = parseInt(localStorage.getItem("maxHP2"));
+let maxHP3 = parseInt(localStorage.getItem("maxHP3"));
 //Current HP for each file
-let HP1 = localStorage.getItem("HP1");
-let HP2 = localStorage.getItem("HP2");
-let HP3 = localStorage.getItem("HP3");
+let HP1 = parseInt(localStorage.getItem("HP1"));
+let HP2 = parseInt(localStorage.getItem("HP2"));
+let HP3 = parseInt(localStorage.getItem("HP3"));
 //Max MP for each file
-let maxMP1 = localStorage.getItem("maxMP1");
-let maxMP2 = localStorage.getItem("maxMP2");
-let maxMP3 = localStorage.getItem("maxMP3");
+let maxMP1 = parseInt(localStorage.getItem("maxMP1"));
+let maxMP2 = parseInt(localStorage.getItem("maxMP2"));
+let maxMP3 = parseInt(localStorage.getItem("maxMP3"));
 //Current MP for each file
-let MP1 = localStorage.getItem("MP1");
-let MP2 = localStorage.getItem("MP2");
-let MP3 = localStorage.getItem("MP3");
+let MP1 = parseInt(localStorage.getItem("MP1"));
+let MP2 = parseInt(localStorage.getItem("MP2"));
+let MP3 = parseInt(localStorage.getItem("MP3"));
 //Max SP for each file
-let maxSP1 = localStorage.getItem("maxSP1");
-let maxSP2 = localStorage.getItem("maxSP2");
-let maxSP3 = localStorage.getItem("maxSP3");
+let maxSP1 = parseInt(localStorage.getItem("maxSP1"));
+let maxSP2 = parseInt(localStorage.getItem("maxSP2"));
+let maxSP3 = parseInt(localStorage.getItem("maxSP3"));
 //Current SP for each file
-let SP1 = localStorage.getItem("SP1");
-let SP2 = localStorage.getItem("SP2");
-let SP3 = localStorage.getItem("SP3");
+let SP1 = parseInt(localStorage.getItem("SP1"));
+let SP2 = parseInt(localStorage.getItem("SP2"));
+let SP3 = parseInt(localStorage.getItem("SP3"));
 //Attack stat for each file
-let attack1 = localStorage.getItem("attack1");
-let attack2 = localStorage.getItem("attack2");
-let attack3 = localStorage.getItem("attack3");
+let attack1 = parseInt(localStorage.getItem("attack1"));
+let attack2 = parseInt(localStorage.getItem("attack2"));
+let attack3 = parseInt(localStorage.getItem("attack3"));
 //Defense stat for each file
-let defense1 = localStorage.getItem("defense1");
-let defense2 = localStorage.getItem("defense2");
-let defense3 = localStorage.getItem("defense3");
+let defense1 = parseInt(localStorage.getItem("defense1"));
+let defense2 = parseInt(localStorage.getItem("defense2"));
+let defense3 = parseInt(localStorage.getItem("defense3"));
 //Magic stat for each file
-let magic1 = localStorage.getItem("magic1");
-let magic2 = localStorage.getItem("magic2");
-let magic3 = localStorage.getItem("magic3");
+let magic1 = parseInt(localStorage.getItem("magic1"));
+let magic2 = parseInt(localStorage.getItem("magic2"));
+let magic3 = parseInt(localStorage.getItem("magic3"));
 //Dexterity stat for each file
-let dexterity1 = localStorage.getItem("dexterity1");
-let dexterity2 = localStorage.getItem("dexterity2");
-let dexterity3 = localStorage.getItem("dexterity3");
+let dexterity1 = parseInt(localStorage.getItem("dexterity1"));
+let dexterity2 = parseInt(localStorage.getItem("dexterity2"));
+let dexterity3 = parseInt(localStorage.getItem("dexterity3"));
 //Holder for current enemy when the player gets into battle
-let currentEnemy = localStorage.getItem("currentEnemy");
+let currentEnemy = parseInt(localStorage.getItem("currentEnemy"));
 //rng value used fpr determining enemy that you will fight in a random battle
-let rng = localStorage.getItem("currentEnemy");
+let rng = parseInt(localStorage.getItem("currentEnemy"));
 
 console.log("Currently playing file number " + fileNumber + ".");
 
@@ -672,15 +672,15 @@ function restoreSP(){
   let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
 
   //How to select random enemy
-  console.log(allEnemies[parseInt(rng)-1]);
+  console.log(allEnemies[rng-1]);
 
-  let opponentName = allEnemies[parseInt(rng)-1].enemyName;
-  let opponentLvl = allEnemies[parseInt(rng)-1].enemyLvl;
-  let opponentHp = allEnemies[parseInt(rng)-1].enemyHp;
-  let opponentAtk = allEnemies[parseInt(rng)-1].enemyAtk;
-  let opponentDef = allEnemies[parseInt(rng)-1].enemyDef;
-  let opponentMp = allEnemies[parseInt(rng)-1].enemyMp;
-  let opponentLore = allEnemies[parseInt(rng)-1].enemyLore;
+  let opponentName = allEnemies[rng-1].enemyName;
+  let opponentLvl = allEnemies[rng-1].enemyLvl;
+  let opponentHp = allEnemies[rng-1].enemyHp;
+  let opponentAtk = allEnemies[rng-1].enemyAtk;
+  let opponentDef = allEnemies[rng-1].enemyDef;
+  let opponentMp = allEnemies[rng-1].enemyMp;
+  let opponentLore = allEnemies[rng-1].enemyLore;
   console.log("Enemy name: " + opponentName);
   console.log("Enemy lvl: " + opponentLvl);
   console.log("Enemy HP: " + opponentHp);
@@ -702,7 +702,7 @@ if (fileNumber === "1"){
     //First lock the controls until everything is done
     controlsLocked = true;
     //determine chance to hit the enemy based on your dexterity
-    let hitChance = (.15 * parseInt(dexterity1)) + 80;
+    let hitChance = (.15 * dexterity1) + 80;
     console.log("Chance to hit the enemy is " + hitChance);
     //generate a random number to see if you hit the enemy
     let hitAttempt = Math.random() * 100;
@@ -711,8 +711,8 @@ if (fileNumber === "1"){
     if (hitChance > hitAttempt){
       //deal damage to the enemy based on your attack and the enemies defense if you hit
       //if you have enough attack to deal 1 or more damage
-      if ((parseInt(attack1) + parseInt(weaponAtk1) - opponentDef) >= 1){
-        opponentHp = opponentHp - (parseInt(attack1) + parseInt(weaponAtk1) - opponentDef);
+      if ((attack1 + weaponAtk1 - opponentDef) >= 1){
+        opponentHp = opponentHp - (attack1 + weaponAtk1 - opponentDef);
         console.log("Enemy HP is " + opponentHp);
       }
       //if you do not
@@ -754,7 +754,7 @@ else if (fileNumber === "2"){
     //First lock the controls until everything is done
     controlsLocked = true;
     //determine chance to hit the enemy based on your dexterity
-    let hitChance = (.15 * parseInt(dexterity2)) + 80;
+    let hitChance = (.15 * dexterity2 + 80);
     console.log("Chance to hit the enemy is " + hitChance);
     //generate a random number to see if you hit the enemy
     let hitAttempt = Math.random() * 100;
@@ -763,8 +763,8 @@ else if (fileNumber === "2"){
     if (hitChance > hitAttempt){
       //deal damage to the enemy based on your attack and the enemies defense if you hit
       //if you have enough attack to deal 1 or more damage
-      if ((parseInt(attack2) + parseInt(weaponAtk2) - opponentDef) >= 1){
-        opponentHp = opponentHp - (parseInt(attack2) + parseInt(weaponAtk2) - opponentDef);
+      if ((attack2 + weaponAtk2 - opponentDef) >= 1){
+        opponentHp = opponentHp - (attack2 + weaponAtk2 - opponentDef);
         console.log("Enemy HP is " + opponentHp);
       }
       //if you do not
@@ -807,7 +807,7 @@ else if (fileNumber === "2"){
     //First lock the controls until everything is done
     controlsLocked = true;
     //determine chance to hit the enemy based on your dexterity
-    let hitChance = (.15 * parseInt(dexterity3)) + 80;
+    let hitChance = (.15 * dexterity3) + 80;
     console.log("Chance to hit the enemy is " + hitChance);
     //generate a random number to see if you hit the enemy
     let hitAttempt = Math.random() * 100;
@@ -816,8 +816,8 @@ else if (fileNumber === "2"){
     if (hitChance > hitAttempt){
       //deal damage to the enemy based on your attack and the enemies defense if you hit
       //if you have enough attack to deal 1 or more damage
-      if ((parseInt(attack3) + parseInt(weaponAtk3) - opponentDef) >= 1){
-        opponentHp = opponentHp - (parseInt(attack3) + parseInt(weaponAtk3) - opponentDef);
+      if ((attack3 + weaponAtk3 - opponentDef) >= 1){
+        opponentHp = opponentHp - (attack3 + weaponAtk3 - opponentDef);
         console.log("Enemy HP is " + opponentHp);
       }
       //if you do not
@@ -872,7 +872,7 @@ if (controlsLocked === false){
 };
 }
 else if (fileNumber === "2"){
-//File 2 Blcok
+//File 2 block
 if (controlsLocked === false){
   console.log("blocking...")
   controlsLocked = true;
@@ -902,12 +902,16 @@ function flee(){
   if (fileNumber === "1"){
     console.log("flee from file 1");
   //Flee for file 1
-  let fleeAttemptChance = (.42 * parseInt(dexterity1)) + 33;
+  let fleeAttemptChance = (.42 * dexterity1) + 33;
   console.log(fleeAttemptChance);
   let fleeAttempt = Math.random() * 100;
   console.log(fleeAttempt);
   if (fleeAttempt <= fleeAttemptChance){
     console.log("flee attempt succesful");
+    localStorage.setItem("HP1", HP1);
+    localStorage.setItem("MP1", MP1);
+    localStorage.setItem("SP1", SP1);
+    window.location = "game";
     controlsLocked = false;
   }
   else {
@@ -917,12 +921,16 @@ function flee(){
 }
 else if (fileNumber === "2"){
   //Flee for file 2
-  let fleeAttemptChance = (.42 * parseInt(dexterity1)) + 33;
+  let fleeAttemptChance = (.42 * dexterity1) + 33;
   console.log(fleeAttemptChance);
   let fleeAttempt = Math.random() * 100;
   console.log(fleeAttempt);
   if (fleeAttempt <= fleeAttemptChance){
     console.log("flee attempt succesful");
+    localStorage.setItem("HP2", HP2);
+    localStorage.setItem("MP2", MP2);
+    localStorage.setItem("SP2", SP2);
+    window.location = "game";
     controlsLocked = false;
   }
   else {
@@ -932,12 +940,16 @@ else if (fileNumber === "2"){
 }
 else if (fileNumber === "3"){
   //Flee for file 3
-  let fleeAttemptChance = (.42 * parseInt(dexterity1)) + 33;
+  let fleeAttemptChance = (.42 * dexterity1) + 33;
   console.log(fleeAttemptChance);
   let fleeAttempt = Math.random() * 100;
   console.log(fleeAttempt);
   if (fleeAttempt <= fleeAttemptChance){
     console.log("flee attempt succesful");
+    localStorage.setItem("HP3", HP3);
+    localStorage.setItem("MP3", MP3);
+    localStorage.setItem("SP3", SP3);
+    window.location = "game";
     controlsLocked = false;
   }
   else {
@@ -958,9 +970,9 @@ else{
 function enemyAttackBlocking1(){
 setTimeout(function(){
   //If opponent has enough attack to deal 1 or more damage
-  if ((opponentAtk - parseInt(defense1) - parseInt(armorDef1)/4) >= 1){
-  HP1 = parseInt(HP1) - (opponentAtk - parseInt(defense1) - parseInt(armorDef1)/4);
-  console.log("The enemy did " + (opponentAtk - parseInt(defense1) - parseInt(armorDef1)/4) + " DMG.");
+  if ((opponentAtk - defense1 - armorDef1/4) >= 1){
+  HP1 = HP1 - (opponentAtk - defense1 - armorDef1/4);
+  console.log("The enemy did " + (opponentAtk - defense1 - (armorDef)/4) + " DMG.");
   console.log("Your health is " + HP1);
   }
   //If they dont
@@ -979,9 +991,9 @@ setTimeout(function(){
 function enemyAttackBlocking2(){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
-    if ((opponentAtk - parseInt(defense2) - parseInt(armorDef2)/4) >= 1){
-    HP2 = parseInt(HP2) - (opponentAtk - parseInt(defense2) - parseInt(armorDef2)/4);
-    console.log("The enemy did " + (opponentAtk - parseInt(defense2) - parseInt(armorDef2)/4) + " DMG.");
+    if ((opponentAtk - defense2 - armorDef2/4) >= 1){
+    HP2 = HP2 - (opponentAtk - defense2 - armorDef2/4);
+    console.log("The enemy did " + (opponentAtk - defense2 - armorDef2)/4 + " DMG.");
     console.log("Your health is " + HP2);
     }
     //If they dont
@@ -1000,9 +1012,9 @@ function enemyAttackBlocking2(){
   function enemyAttackBlocking3(){
     setTimeout(function(){
       //If opponent has enough attack to deal 1 or more damage
-      if ((opponentAtk - parseInt(defense3) - parseInt(armorDef3)/4) >= 1){
-      HP3 = parseInt(HP3) - (opponentAtk - parseInt(defense3) - parseInt(armorDef3)/4)
-      console.log("The enemy did " + (opponentAtk - parseInt(defense3) - parseInt(armorDef3)/4) + " DMG.");
+      if ((opponentAtk - defense3 - armorDef3/4) >= 1){
+      HP3 = HP3 - (opponentAtk - defense3 - armorDef3/4)
+      console.log("The enemy did " + (opponentAtk - defense3 - armorDef3/4) + " DMG.");
       console.log("Your health is " + HP3);
       }
       //If they dont
@@ -1026,9 +1038,9 @@ function enemyAttackBlocking2(){
 function enemyAttack1(){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
-    if ((opponentAtk - parseInt(defense1) - parseInt(armorDef1)) >= 1){
-    HP1 = parseInt(HP1) - (opponentAtk - parseInt(defense1) - parseInt(armorDef1));
-    console.log("The enemy did " + (opponentAtk - parseInt(defense1) - parseInt(armorDef1)) + " DMG.");
+    if ((opponentAtk - defense1 - armorDef1) >= 1){
+    HP1 = HP1 - (opponentAtk - defense1 - armorDef1);
+    console.log("The enemy did " + (opponentAtk - defense1 - armorDef1) + " DMG.");
     console.log("Your health is " + HP1);
     }
     //If they dont
@@ -1047,9 +1059,9 @@ function enemyAttack1(){
 function enemyAttack2(){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
-    if ((opponentAtk - parseInt(defense2) - parseInt(armorDef2)) >= 1){
-    HP2 = parseInt(HP2) - (opponentAtk - parseInt(defense2) - parseInt(armorDef2));
-    console.log("The enemy did " + (opponentAtk - parseInt(defense2) - parseInt(armorDef2)) + " DMG.");
+    if ((opponentAtk - defense2 - armorDef2) >= 1){
+    HP2 = HP2 - (opponentAtk - defense2 - armorDef2);
+    console.log("The enemy did " + (opponentAtk - defense2 - armorDef2) + " DMG.");
     console.log("Your health is " + HP2);
     }
     //If they dont
@@ -1068,9 +1080,9 @@ function enemyAttack2(){
 function enemyAttack3(){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
-    if ((opponentAtk - parseInt(defense3) - parseInt(armorDef3)) >= 1){
-    HP3 = parseInt(HP3) - (opponentAtk - parseInt(defense3) - parseInt(armorDef3));
-    console.log("The enemy did " + (opponentAtk - parseInt(defense3) - parseInt(armorDef3)) + " DMG.");
+    if ((opponentAtk - defense3 - armorDef3) >= 1){
+    HP3 = HP3 - (opponentAtk - defense3 - armorDef3);
+    console.log("The enemy did " + (opponentAtk - defense3 - armorDef3) + " DMG.");
     console.log("Your health is " + HP3);
     }
     //If they dont
@@ -1099,14 +1111,36 @@ function endBattleRewards(){
 function returnHome(){
 
   //insert function to save all player stats and rewards here so they persevere to the next page
-  localStorage.setItem("expOne", parseInt(exp1) + battleXP);
-  localStorage.setItem("enemiesDefeated1", parseInt(enemiesDefeated1) + 1);
+  if (fileNumber === "1"){
+  localStorage.setItem("expOne", exp1 + battleXP);
+  localStorage.setItem("enemiesDefeated1", enemiesDefeated1 + 1);
   localStorage.setItem("HP1", HP1);
   localStorage.setItem("MP1", MP1);
   localStorage.setItem("SP1", SP1);
   localStorage.setItem("money1", money1);
   //Return to prebattle area
   window.location = "game";
+  }
+  else if (fileNumber === "2"){
+    localStorage.setItem("expTwo", exp2 + battleXP);
+    localStorage.setItem("enemiesDefeated2", enemiesDefeated2 + 1);
+    localStorage.setItem("HP2", HP2);
+    localStorage.setItem("MP2", MP2);
+    localStorage.setItem("SP2", SP2);
+    localStorage.setItem("money2", money2);
+    //Return to prebattle area
+    window.location = "game";
+  }
+  else if (fileNumber === "3"){
+    localStorage.setItem("expThree", exp3 + battleXP);
+    localStorage.setItem("enemiesDefeated3", enemiesDefeated3 + 1);
+    localStorage.setItem("HP3", HP3);
+    localStorage.setItem("MP3", MP3);
+    localStorage.setItem("SP3", SP3);
+    localStorage.setItem("money3", money3);
+    //Return to prebattle area
+    window.location = "game";
+  };
 };
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1124,6 +1158,222 @@ function hideSpells(){
   document.getElementById("spell3").style.display = "none";
   document.getElementById("spell4").style.display = "none";
 };
+
+//Heal Function
+function heal(){
+  //Function for healing
+  if (fileNumber === "1"){
+  //File 1 heal
+  if (MP1 >= 5){
+  if (controlsLocked === false){
+    console.log("healing for " + (magic1+1) + " HP.");
+    controlsLocked = true;
+    HP1 = HP1 + (magic1+1);
+    MP1 = MP1 - 5;
+    console.log(MP1 + " MP left");
+    enemyAttack1();
+  };
+  }
+  else{console.log("Not enough MP")};
+  }
+  else if (fileNumber === "2"){
+  //File 2 heal
+  if (MP2 >= 5){
+  if (controlsLocked === false){
+    console.log("healing for " + (magic2+1) + " HP.");
+    controlsLocked = true;
+    HP2 = HP2 + (magic2+1);
+    MP2 = MP2 - 5;
+    console.log(MP2 + " MP left");
+    enemyAttack2();
+  };
+  }
+  else{console.log("Not enough MP")};
+  }
+  else if (fileNumber === "3"){
+  //File 3 heal
+  if (MP3 >= 5){
+  if (controlsLocked === false){
+    console.log("healing for " + (magic3+1) + " HP.");
+    controlsLocked = true;
+    HP3 = HP3 + (magic3+1);
+    MP3 = MP3 - 5;
+    console.log(MP3 + " MP left");
+    enemyAttack3();
+  };
+  }
+  else{console.log("Not enough MP")};
+  }
+  else {
+    console.log("Controls are locked");
+  };
+  };
+  //End of heal function
+
+  //---------------------------------------------------------
+
+  //Magic Blast Function
+function magicBlast(){
+  //Function for magic blast
+  if (fileNumber === "1"){
+  //File 1 magic blast
+  if (MP1 >= 10){
+  if (controlsLocked === false){
+    console.log("blasting for " + (((magic1+1) * 3) - opponentDef) + " damage.");
+    controlsLocked = true;
+    opponentHp = opponentHp - (((magic1+1) * 3) - opponentDef);
+    console.log("Enemy has " + opponentHp + " HP left.");
+    MP1 = MP1 - 10;
+    console.log(MP1 + " MP left");
+    enemyAttack1();
+  };
+  }
+  else{console.log("Not enough MP.")};
+  }
+  else if (fileNumber === "2"){
+  //File 2 magic blast
+  if (MP2 >= 10){
+  if (controlsLocked === false){
+    console.log("blasting for " + (((magic1+1) * 3) - opponentDef) + " damage.");
+    controlsLocked = true;
+    opponentHp = opponentHp - (((magic1+1) * 3) - opponentDef);
+    console.log("Enemy has " + opponentHp + " HP left.");
+    MP2 = MP2 - 10;
+    console.log(MP2 + " MP left");
+    enemyAttack2();
+  };
+  }
+  else{console.log("Not enough MP.")};
+  }
+  else if (fileNumber === "3"){
+  //File 3 magic blast
+  if (MP3 >= 10){
+  if (controlsLocked === false){
+    console.log("blasting for " + (((magic1+1) * 3) - opponentDef) + " damage.");
+    controlsLocked = true;
+    opponentHp = opponentHp - (((magic1+1) * 3) - opponentDef);
+    console.log("Enemy has " + opponentHp + " HP left.");
+    MP3 = MP3 - 10;
+    console.log(MP3 + " MP left");
+    enemyAttack3();
+  };
+  }
+  else{console.log("Not enough MP.")};
+  }
+  else {
+    console.log("Controls are locked");
+  };
+  };
+  //End of magic blast function
+
+//------------------------------------------------------------------
+
+  //Magic Cut Function
+  function magicCut(){
+    //Function for magic cut
+    if (fileNumber === "1"){
+    //File 1 magic cut
+    if (MP1 >= 12){
+    if (controlsLocked === false){
+      console.log("blasting for " + ((magic1+1) * 2) + " damage.");
+      controlsLocked = true;
+      opponentHp = opponentHp - ((magic1+1) * 2);
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP1 = MP1 - 10;
+      console.log(MP1 + " MP left");
+      enemyAttack1();
+    };
+    }
+    else{console.log("Not enough MP.")};
+    }
+    else if (fileNumber === "2"){
+    //File 2 magic cut
+    if (MP2 >= 12){
+    if (controlsLocked === false){
+      console.log("blasting for " + ((magic1+1) * 2) + " damage.");
+      controlsLocked = true;
+      opponentHp = opponentHp - ((magic1+1) * 2);
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP2 = MP2 - 10;
+      console.log(MP2 + " MP left");
+      enemyAttack2();
+    };
+    }
+    else{console.log("Not enough MP.")};
+    }
+    else if (fileNumber === "3"){
+    //File 3 magic cut
+    if (MP3 >= 12){
+    if (controlsLocked === false){
+      console.log("blasting for " + ((magic1+1) * 2) + " damage.");
+      controlsLocked = true;
+      opponentHp = opponentHp - ((magic1+1) * 2);
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP3 = MP3 - 10;
+      console.log(MP3 + " MP left");
+      enemyAttack3();
+    };
+    }
+    else{console.log("Not enough MP.")};
+    }
+    else {
+      console.log("Controls are locked");
+    };
+    };
+    //End of cut blast function
+
+//-----------------------------------------------------------------------------------------
+
+//Dexterity Up Function
+function dexterityUp(){
+  //Function for dexterity up
+  if (fileNumber === "1"){
+  //File 1 dexterity up
+  if (MP1 >= 15){
+  if (controlsLocked === false){
+    console.log("dexterity up");
+    controlsLocked = true;
+    dexterity1 = dexterity1 + 20;
+    MP1 = MP1 - 15;
+    console.log(MP1 + " MP left");
+    enemyAttack1();
+  };
+  }
+  else{console.log("Not enough MP.")};
+  }
+  else if (fileNumber === "2"){
+  //File 2 dexterity up
+  if (MP2 >= 15){
+  if (controlsLocked === false){
+    console.log("dexterity up");
+    controlsLocked = true;
+    dexterity2 = dexterity2 + 20;
+    MP2 = MP2 - 15;
+    console.log(MP2 + " MP left");
+    enemyAttack2();
+  };
+  }
+  else{console.log("Not enough MP.")};
+  }
+  else if (fileNumber === "3"){
+  //File 3 block
+  if (MP3 >= 12){
+  if (controlsLocked === false){
+    console.log("dexterity up");
+    controlsLocked = true;
+    dexterity3 = dexterity3 + 20;
+    MP3 = MP3 - 15;
+    console.log(MP3 + " MP left");
+    enemyAttack1();
+  };
+  }
+  else{console.log("Not enough MP.")};
+  }
+  else {
+    console.log("Controls are locked");
+  };
+  };
+  //End of cut blast function
 
 //Once spell effects are thought of and added, put their functions here.
 //End of magic function
