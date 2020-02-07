@@ -14,6 +14,8 @@ let lvl3 = localStorage.getItem("lvlThree");
 let exp1 = localStorage.getItem("expOne");
 let exp2 = localStorage.getItem("expTwo");
 let exp3 = localStorage.getItem("lvlThree");
+//use battleXP to store xp value earned from battle before adding it to exp
+let battleXP;
 //Money for each file
 let money1 = localStorage.getItem("money1");
 let money2 = localStorage.getItem("money2");
@@ -646,6 +648,7 @@ function restoreSP(){
     localStorage.setItem("currentEnemy", rng);
     window.location = "battle";
   };
+  
 
   //Battle script
 
@@ -669,63 +672,458 @@ function restoreSP(){
   let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
 
   //How to select random enemy
-  console.log(allEnemies[parseInt(rng)]);
+  console.log(allEnemies[parseInt(rng)-1]);
 
-  let opponentName = allEnemies[parseInt(rng)].enemyName;
-  let opponentLvl = allEnemies[parseInt(rng)].enemyLvl;
-  let opponentHp = allEnemies[parseInt(rng)].enemyHp;
-  let opponentAtk = allEnemies[parseInt(rng)].enemyAtk;
-  let opponentDef = allEnemies[parseInt(rng)].enemyDef;
-  let opponentMp = allEnemies[parseInt(rng)].enemyMp;
-  let opponentLore = allEnemies[parseInt(rng)].enemyLore;
-  console.log(opponentName);
-  console.log(opponentLvl);
-  console.log(opponentHp);
-  console.log(opponentAtk);
-  console.log(opponentDef);
-  console.log(opponentMp);
+  let opponentName = allEnemies[parseInt(rng)-1].enemyName;
+  let opponentLvl = allEnemies[parseInt(rng)-1].enemyLvl;
+  let opponentHp = allEnemies[parseInt(rng)-1].enemyHp;
+  let opponentAtk = allEnemies[parseInt(rng)-1].enemyAtk;
+  let opponentDef = allEnemies[parseInt(rng)-1].enemyDef;
+  let opponentMp = allEnemies[parseInt(rng)-1].enemyMp;
+  let opponentLore = allEnemies[parseInt(rng)-1].enemyLore;
+  console.log("Enemy name: " + opponentName);
+  console.log("Enemy lvl: " + opponentLvl);
+  console.log("Enemy HP: " + opponentHp);
+  console.log("Enemy atk: " + opponentAtk);
+  console.log("Enemy def: " + opponentDef);
+  console.log("Enemy MP: " + opponentMp);
   console.log(opponentLore);
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   //function for when you attempt a standard attack
   function attack(){
+
+if (fileNumber === "1"){
+  
+    //File 1
    if (controlsLocked === false){
+    console.log("attacking...");
     //First lock the controls until everything is done
     controlsLocked = true;
     //determine chance to hit the enemy based on your dexterity
     let hitChance = (.15 * parseInt(dexterity1)) + 80;
-    console.log(hitChance);
+    console.log("Chance to hit the enemy is " + hitChance);
+    //generate a random number to see if you hit the enemy
+    let hitAttempt = Math.random() * 100;
+    console.log(hitAttempt);
+    //logic to determine if you hit the enemy
+    if (hitChance > hitAttempt){
+      //deal damage to the enemy based on your attack and the enemies defense if you hit
+      //if you have enough attack to deal 1 or more damage
+      if ((parseInt(attack1) + parseInt(weaponAtk1) - opponentDef) >= 1){
+        opponentHp = opponentHp - (parseInt(attack1) + parseInt(weaponAtk1) - opponentDef);
+        console.log("Enemy HP is " + opponentHp);
+      }
+      //if you do not
+      else {
+        opponentHp = opponentHp - 1;
+        console.log("Enemy HP is " + opponentHp);
+      };
+
+      //Insert function here to check if the enemy has been defeated
+      if (opponentHp > 0){
+        console.log("enemy is still alive");
+        //Enemy attack function here
+       enemyAttack1();
+      }
+      else if (opponentHp <= 0){
+        console.log("enemy is dead");
+        endBattleRewards();
+      };
+    }
+    else {
+      console.log("miss");
+
+      //Insert function here to check if the enemy has been defeated
+      if (opponentHp > 0){
+        console.log("enemy is still alive");
+        //Enemy attack function here
+         enemyAttack1();
+      };
+    };
+   }
+   else {
+     console.log("controls are still locked");
+   };
+  }
+else if (fileNumber === "2"){
+   //File 2
+   if (controlsLocked === false){
+    console.log("attacking...");
+    //First lock the controls until everything is done
+    controlsLocked = true;
+    //determine chance to hit the enemy based on your dexterity
+    let hitChance = (.15 * parseInt(dexterity2)) + 80;
+    console.log("Chance to hit the enemy is " + hitChance);
     //generate a random number to see if you hit the enemy
     let hitAttempt = Math.random() * 100;
     console.log(hitAttempt);
     //logic to determine if yoy hit the enemy
     if (hitChance > hitAttempt){
       //deal damage to the enemy based on your attack and the enemies defense if you hit
-      opponentHp = opponentHp - (parseInt(attack1) - opponentDef);
-      console.log(opponentHp);
+      //if you have enough attack to deal 1 or more damage
+      if ((parseInt(attack2) + parseInt(weaponAtk2) - opponentDef) >= 1){
+        opponentHp = opponentHp - (parseInt(attack2) + parseInt(weaponAtk2) - opponentDef);
+        console.log("Enemy HP is " + opponentHp);
+      }
+      //if you do not
+      else {
+        opponentHp = opponentHp - 1;
+        console.log("Enemy HP is " + opponentHp);
+      };
 
       //Insert function here to check if the enemy has been defeated
       if (opponentHp > 0){
         console.log("enemy is still alive");
-        //Insert enemy attack function here
-        setTimeout(function(){
-          console.log("enemy attack timer test");
-          //Unlock controls after the enemy has completed their attack turn
-          controlsLocked = false;
-          console.log("controls unlocked");
-        }, 3000);
+        //Enemy attack function here
+        enemyAttack2();
       }
       else if (opponentHp <= 0){
         console.log("enemy is dead");
-        //insert end battle function here
+        endBattleRewards();
       };
     }
     else {
       console.log("miss");
-      controlsLocked = false;
-      console.log("controls unlocked");
+
+      //Insert function here to check if the enemy has been defeated
+      if (opponentHp > 0){
+        console.log("enemy is still alive");
+        //Enemy attack function here
+        enemyAttack2();
+      };
     };
    }
    else {
-     console.log("Controls are locked because the battle is over.");
+     console.log("controls are still locked");
+   };
+  }
+
+  else if (fileNumber === "3"){
+   //File 3
+   if (controlsLocked === false){
+    console.log("attacking...");
+    //First lock the controls until everything is done
+    controlsLocked = true;
+    //determine chance to hit the enemy based on your dexterity
+    let hitChance = (.15 * parseInt(dexterity3)) + 80;
+    console.log("Chance to hit the enemy is " + hitChance);
+    //generate a random number to see if you hit the enemy
+    let hitAttempt = Math.random() * 100;
+    console.log(hitAttempt);
+    //logic to determine if yoy hit the enemy
+    if (hitChance > hitAttempt){
+      //deal damage to the enemy based on your attack and the enemies defense if you hit
+      //if you have enough attack to deal 1 or more damage
+      if ((parseInt(attack3) + parseInt(weaponAtk3) - opponentDef) >= 1){
+        opponentHp = opponentHp - (parseInt(attack3) + parseInt(weaponAtk3) - opponentDef);
+        console.log("Enemy HP is " + opponentHp);
+      }
+      //if you do not
+      else {
+        opponentHp = opponentHp - 1;
+        console.log("Enemy HP is " + opponentHp);
+      };
+
+      //Insert function here to check if the enemy has been defeated
+      if (opponentHp > 0){
+        console.log("enemy is still alive");
+        //Enemy attack function here
+        enemyAttack3();
+      }
+      else if (opponentHp <= 0){
+        console.log("enemy is dead");
+        endBattleRewards();
+      };
+    }
+    else {
+      console.log("miss");
+
+      //Insert function here to check if the enemy has been defeated
+      if (opponentHp > 0){
+        console.log("enemy is still alive");
+        //Enemy attack function here
+        enemyAttack3();
+      };
+    };
+   }
+   else {
+     console.log("controls are still locked");
    };
   };
+   //end
+  };
+//End of normal attack function
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Block Function
+function block(){
+//Function for enemy to attack you with reduced damage, divided by 4 to be exact.
+
+if (fileNumber === "1"){
+  console.log("blocking from file 1");
+//File 1 block
+if (controlsLocked === false){
+  console.log("blocking...")
+  controlsLocked = true;
+  enemyAttackBlocking1();
+};
+}
+else if (fileNumber === "2"){
+//File 2 Blcok
+if (controlsLocked === false){
+  console.log("blocking...")
+  controlsLocked = true;
+  enemyAttackBlocking2();
+};
+}
+else if (fileNumber === "3"){
+//File 3 block
+if (controlsLocked === false){
+  console.log("blocking...")
+  controlsLocked = true;
+  enemyAttackBlocking3();
+};
+}
+else {
+  console.log("Controls are locked");
+};
+};
+//End of block function
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Flee function
+function flee(){
+ if (controlsLocked === false){
+   controlsLocked = true;
+  if (fileNumber === "1"){
+    console.log("flee from file 1");
+  //Flee for file 1
+  let fleeAttemptChance = (.42 * parseInt(dexterity1)) + 33;
+  console.log(fleeAttemptChance);
+  let fleeAttempt = Math.random() * 100;
+  console.log(fleeAttempt);
+  if (fleeAttempt <= fleeAttemptChance){
+    console.log("flee attempt succesful");
+    controlsLocked = false;
+  }
+  else {
+    console.log("flee not attempt succesful");
+    controlsLocked = false;
+  };
+}
+else if (fileNumber === "2"){
+  //Flee for file 2
+  let fleeAttemptChance = (.42 * parseInt(dexterity1)) + 33;
+  console.log(fleeAttemptChance);
+  let fleeAttempt = Math.random() * 100;
+  console.log(fleeAttempt);
+  if (fleeAttempt <= fleeAttemptChance){
+    console.log("flee attempt succesful");
+    controlsLocked = false;
+  }
+  else {
+    console.log("flee not attempt succesful");
+    controlsLocked = false;
+  };
+}
+else if (fileNumber === "3"){
+  //Flee for file 3
+  let fleeAttemptChance = (.42 * parseInt(dexterity1)) + 33;
+  console.log(fleeAttemptChance);
+  let fleeAttempt = Math.random() * 100;
+  console.log(fleeAttempt);
+  if (fleeAttempt <= fleeAttemptChance){
+    console.log("flee attempt succesful");
+    controlsLocked = false;
+  }
+  else {
+    console.log("flee not attempt succesful");
+    controlsLocked = false;
+  };
+};
+}
+else{
+  console.log("controls still locked");
+};
+};
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//beggining of enemy attacking you while you block function 
+//File 1
+function enemyAttackBlocking1(){
+setTimeout(function(){
+  //If opponent has enough attack to deal 1 or more damage
+  if ((opponentAtk - parseInt(defense1) - parseInt(armorDef1)/4) >= 1){
+  HP1 = parseInt(HP1) - (opponentAtk - parseInt(defense1) - parseInt(armorDef1)/4);
+  console.log("The enemy did " + (opponentAtk - parseInt(defense1) - parseInt(armorDef1)/4) + " DMG.");
+  console.log("Your health is " + HP1);
+  }
+  //If they dont
+  else {
+  HP1 = HP1 - 1;
+  console.log("The enemy did " + 1 + " DMG.");
+  console.log("Your health is " + HP1);
+  };
+  //Unlock controls after the enemy has completed their attack turn
+  controlsLocked = false;
+  console.log("controls unlocked");
+}, 2500);
+};
+
+//File 2
+function enemyAttackBlocking2(){
+  setTimeout(function(){
+    //If opponent has enough attack to deal 1 or more damage
+    if ((opponentAtk - parseInt(defense2) - parseInt(armorDef2)/4) >= 1){
+    HP2 = parseInt(HP2) - (opponentAtk - parseInt(defense2) - parseInt(armorDef2)/4);
+    console.log("The enemy did " + (opponentAtk - parseInt(defense2) - parseInt(armorDef2)/4) + " DMG.");
+    console.log("Your health is " + HP2);
+    }
+    //If they dont
+    else {
+    HP2 = HP2 - 1;
+    console.log("The enemy did " + 1 + " DMG.");
+    console.log("Your health is " + HP2);
+    };
+    //Unlock controls after the enemy has completed their attack turn
+    controlsLocked = false;
+    console.log("controls unlocked");
+  }, 2500);
+  };
+
+  //File 3
+  function enemyAttackBlocking3(){
+    setTimeout(function(){
+      //If opponent has enough attack to deal 1 or more damage
+      if ((opponentAtk - parseInt(defense3) - parseInt(armorDef3)/4) >= 1){
+      HP3 = parseInt(HP3) - (opponentAtk - parseInt(defense3) - parseInt(armorDef3)/4)
+      console.log("The enemy did " + (opponentAtk - parseInt(defense3) - parseInt(armorDef3)/4) + " DMG.");
+      console.log("Your health is " + HP3);
+      }
+      //If they dont
+      else {
+      HP3 = HP3 - 1;
+      console.log("The enemy did " + 1 + " DMG.");
+      console.log("Your health is " + HP3);
+      };
+      //Unlock controls after the enemy has completed their attack turn
+      controlsLocked = false;
+      console.log("controls unlocked");
+    }, 2500);
+    };
+//end of enemy attacking you while you block function 
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//beggining of function for the enemies attack against you
+
+//File 1
+function enemyAttack1(){
+  setTimeout(function(){
+    //If opponent has enough attack to deal 1 or more damage
+    if ((opponentAtk - parseInt(defense1) - parseInt(armorDef1)) >= 1){
+    HP1 = parseInt(HP1) - (opponentAtk - parseInt(defense1) - parseInt(armorDef1));
+    console.log("The enemy did " + (opponentAtk - parseInt(defense1) - parseInt(armorDef1)) + " DMG.");
+    console.log("Your health is " + HP1);
+    }
+    //If they dont
+    else {
+    HP1 = HP1 - 1;
+    console.log("The enemy did " + 1 + " DMG.");
+    console.log("Your health is " + HP1);
+    };
+    //Unlock controls after the enemy has completed their attack turn
+    controlsLocked = false;
+    console.log("controls unlocked");
+  }, 2500);
+};
+
+//File 2
+function enemyAttack2(){
+  setTimeout(function(){
+    //If opponent has enough attack to deal 1 or more damage
+    if ((opponentAtk - parseInt(defense2) - parseInt(armorDef2)) >= 1){
+    HP2 = parseInt(HP2) - (opponentAtk - parseInt(defense2) - parseInt(armorDef2));
+    console.log("The enemy did " + (opponentAtk - parseInt(defense2) - parseInt(armorDef2)) + " DMG.");
+    console.log("Your health is " + HP2);
+    }
+    //If they dont
+    else {
+    HP2 = HP2 - 1;
+    console.log("The enemy did " + 1 + " DMG.");
+    console.log("Your health is " + HP2);
+    };
+    //Unlock controls after the enemy has completed their attack turn
+    controlsLocked = false;
+    console.log("controls unlocked");
+  }, 2500);
+};
+
+//File 3
+function enemyAttack3(){
+  setTimeout(function(){
+    //If opponent has enough attack to deal 1 or more damage
+    if ((opponentAtk - parseInt(defense3) - parseInt(armorDef3)) >= 1){
+    HP3 = parseInt(HP3) - (opponentAtk - parseInt(defense3) - parseInt(armorDef3));
+    console.log("The enemy did " + (opponentAtk - parseInt(defense3) - parseInt(armorDef3)) + " DMG.");
+    console.log("Your health is " + HP3);
+    }
+    //If they dont
+    else {
+    HP3 = HP3 - 1;
+    console.log("The enemy did " + 1 + " DMG.");
+    console.log("Your health is " + HP3);
+    };
+    //Unlock controls after the enemy has completed their attack turn
+    controlsLocked = false;
+    console.log("controls unlocked");
+  }, 2500);
+};
+
+//end of function for the enemies attack against you
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//function for after you win a battle to get rewards/xp and then display the button to return home
+function endBattleRewards(){
+  battleXP = (Math.floor(Math.random() * 19) - 9 + (opponentLvl * 10));
+  //display leave battle button
+  document.getElementById("returnHome").style.display = "block";
+};
+
+function returnHome(){
+
+  //insert function to save all player stats and rewards here so they persevere to the next page
+  localStorage.setItem("expOne", parseInt(exp1) + battleXP);
+  localStorage.setItem("enemiesDefeated1", parseInt(enemiesDefeated1) + 1);
+  localStorage.setItem("HP1", HP1);
+  localStorage.setItem("MP1", MP1);
+  localStorage.setItem("SP1", SP1);
+  localStorage.setItem("money1", money1);
+  //Return to prebattle area
+  window.location = "game";
+};
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Beginning of magic function
+function displaySpells(){
+  document.getElementById("spell1").style.display = "block";
+  document.getElementById("spell2").style.display = "block";
+  document.getElementById("spell3").style.display = "block";
+  document.getElementById("spell4").style.display = "block";
+};
+
+function hideSpells(){
+  document.getElementById("spell1").style.display = "none";
+  document.getElementById("spell2").style.display = "none";
+  document.getElementById("spell3").style.display = "none";
+  document.getElementById("spell4").style.display = "none";
+};
+
+//Once spell effects are thought of and added, put their functions here.
+//End of magic function

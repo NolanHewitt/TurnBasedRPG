@@ -9,3 +9,11 @@ body {
   #textBlack {
     color: white;
   }
+
+.spells {
+  display: none;
+}
+
+#returnHome {
+  display: none;
+}

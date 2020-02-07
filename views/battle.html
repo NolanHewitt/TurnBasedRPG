@@ -8,11 +8,31 @@
 
 <body>
 
-<button onclick="attack();">Attack</button>
-<button>Magic</button>
-<button>Block</button>
+<button id="attackButton" onclick="attack();">Attack</button>
+
+<div onmouseover="displaySpells();" onmouseout="hideSpells();" id="spellsContainer">
+<button id="magicButton">Magic</button>
+
+<!-- Heals the player -->
+<button id="spell1" class="spells">Heal</button>
+
+<!--  High damage magic attack -->
+<button id="spell2" class="spells">Magic Blast</button>
+
+<!-- Moderate damage magic attack that ignores armor -->
+<button id="spell3" class="spells">Magic Cut</button>
+
+<!-- Improves dexterity for the rest of the battle -->
+<button id="spell4" class="spells">Dexterity Up</button>
+</div>
+
+<button id="blockButton" onclick="block();">Block</button>
+
 <button>Item</button>
-<button>Flee</button>
+
+<button onclick="flee();">Flee</button>
+
+<button onclick="returnHome();" id="returnHome">Go Home</button>
 
 <div id="eneemyInfo">
     <p id="enemyName"></p>
