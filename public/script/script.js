@@ -3,9 +3,9 @@ let fileNumber = localStorage.getItem("fileNumber");
 //lock for controls, mainly used in battle;
 let controlsLocked = false;
 //Determine if intro has already been completed
-let intro1 = parseInt(localStorage.getItem("intro1"));
-let intro2 = parseInt(localStorage.getItem("intro2"));
-let intro3 = parseInt(localStorage.getItem("intro3"));
+let intro1 = localStorage.getItem("intro1");
+let intro2 = localStorage.getItem("intro2");
+let intro3 = localStorage.getItem("intro3");
 //Level for each file
 let lvl1 = parseInt(localStorage.getItem("lvlOne"));
 let lvl2 = parseInt(localStorage.getItem("lvlTwo"));
@@ -916,7 +916,7 @@ function flee(){
   }
   else {
     console.log("flee not attempt succesful");
-    controlsLocked = false;
+    enemyAttack1();
   };
 }
 else if (fileNumber === "2"){
@@ -935,7 +935,7 @@ else if (fileNumber === "2"){
   }
   else {
     console.log("flee not attempt succesful");
-    controlsLocked = false;
+    enemyAttack2();
   };
 }
 else if (fileNumber === "3"){
@@ -954,7 +954,7 @@ else if (fileNumber === "3"){
   }
   else {
     console.log("flee not attempt succesful");
-    controlsLocked = false;
+    enemyAttack3();
   };
 };
 }
