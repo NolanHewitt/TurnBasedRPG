@@ -12,8 +12,16 @@
 <button onclick="restoreHP();" id="hpRestore">Restore HP</button>
 <button onclick="restoreMP();" id="mpRestore">Restore MP</button>
 <button onclick="restoreSP();" id="SpRestore">Restore SP</button>
+
 <button>Open Inventory</button>
-<button>Open Shop</button>
+
+<button id="shopButton" onclick="viewShop();">Open Shop</button>
+<div id="shopContainer">
+<button onclick="buyHpPotion();" id="hpPotion">Health Potion | 100 Gold</button>
+<button onclick="buyMpPotion();" id="mpPotion">Magic Potion | 150 Gold</button>
+<button onclick="buySpPotion();" id="spPotion">Special | 125 Gold</button>
+</div>
+
 <button>Skills</button>
 <button onclick="window.location='./'">Main Menu</button>
 

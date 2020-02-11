@@ -56,26 +56,14 @@ let armorValue3 = parseInt(localStorage.getItem("armorValue3"));
 let inventory1 = parseInt(localStorage.getItem("inventory1"));
 let inventory2 = parseInt(localStorage.getItem("inventory2"));
 let inventory3 = parseInt(localStorage.getItem("inventory3"));
-//Inventory value for each file
-let inventoryValue1 = parseInt(localStorage.getItem("inventoryValue1"));
-let inventoryValue2 = parseInt(localStorage.getItem("inventoryValue2"));
-let inventoryValue3 = parseInt(localStorage.getItem("inventoryValue3"));
 //Arrays for updating inventory
 let stuff1 = [];
 let stuff2 = [];
 let stuff3 = [];
-//Arrays for updating inventory value
-let stuffValue1 = [];
-let stuffValue2 = [];
-let stuffValue3 = [];
 //Variables for holding inventory parsed from local storage
-let stuffParse1;
-let stuffParse2;
-let stuffParse3;
-//Variables for holding inventory values parsed from local storage
-let stuffValueParse1;
-let stuffValueParse2;
-let stuffValueParse3;
+let stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
+let stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
+let stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
 
 //Process for adding an item to inventory1 as well as its corosponding value. Don't use this until after intro sets inventory to empty array.
 // Check to see if user has enough money in local storage if this is a transaction
@@ -84,7 +72,7 @@ let stuffValueParse3;
 // stuff1.push(item);
 // stuffValue1.push(itemValue);
 // localStorage.setItem("inventory1", JSON.stringify(stuff1));
-// localStorage.setItem("inventoryValue1", JSON.stringify(stuffValue1));
+// 
 // stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
 // stuffValueParse1 = JSON.parse(localStorage.getItem("inventoryValue1"));
 // Modify money if this is a transaction
@@ -97,7 +85,7 @@ let stuffValueParse3;
 // stuff1.splice(stuff1.indexOf(item), 1);
 // stuffValue1.splice(stuffValue1.indexOf(item), 1);
 // localStorage.setItem("inventory1", JSON.stringify(stuff1));
-// localStorage.setItem("inventoryValue1", JSON.stringify(stuffValue1));
+// 
 // stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
 // stuffValueParse1 = JSON.parse(localStorage.getItem("inventoryValue1"));
 // Modify money if this is a transaction
@@ -147,6 +135,7 @@ let dexterity3 = parseInt(localStorage.getItem("dexterity3"));
 let currentEnemy = parseInt(localStorage.getItem("currentEnemy"));
 //rng value used fpr determining enemy that you will fight in a random battle
 let rng = parseInt(localStorage.getItem("currentEnemy"));
+let blockingModifier = 1;
 
 console.log("Currently playing file number " + fileNumber + ".");
 
@@ -248,7 +237,6 @@ function startBalanced(){
   localStorage.setItem("dexterity1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
-  localStorage.setItem("inventoryValue1", JSON.stringify(stuffValue1));
   localStorage.setItem("weapon1", "Fists");
   localStorage.setItem("weaponAtk1", "0");
   localStorage.setItem("weaponValue1", "0");
@@ -274,7 +262,6 @@ function startBalanced(){
     localStorage.setItem("dexterity2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
-    localStorage.setItem("inventoryValue2", JSON.stringify(stuffValue2));
     localStorage.setItem("weapon2", "Fists");
     localStorage.setItem("weaponAtk2", "0");
     localStorage.setItem("weaponValue2", "0");
@@ -300,7 +287,6 @@ function startBalanced(){
     localStorage.setItem("dexterity3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
-    localStorage.setItem("inventoryValue3", JSON.stringify(stuffValue3));
     localStorage.setItem("weapon3", "Fists");
     localStorage.setItem("weaponAtk3", "0");
     localStorage.setItem("weaponValue3", "0");
@@ -333,7 +319,6 @@ function startAttack(){
   localStorage.setItem("dexterity1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
-  localStorage.setItem("inventoryValue1", JSON.stringify(stuffValue1));
   localStorage.setItem("weapon1", "Fists");
   localStorage.setItem("weaponAtk1", "0");
   localStorage.setItem("weaponValue1", "0");
@@ -359,7 +344,6 @@ function startAttack(){
     localStorage.setItem("dexterity2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
-    localStorage.setItem("inventoryValue2", JSON.stringify(stuffValue2));
     localStorage.setItem("weapon2", "Fists");
     localStorage.setItem("weaponAtk2", "0");
     localStorage.setItem("weaponValue2", "0");
@@ -385,7 +369,6 @@ function startAttack(){
     localStorage.setItem("dexterity3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
-    localStorage.setItem("inventoryValue3", JSON.stringify(stuffValue3));
     localStorage.setItem("weapon3", "Fists");
     localStorage.setItem("weaponAtk3", "0");
     localStorage.setItem("weaponValue3", "0");
@@ -418,7 +401,7 @@ function startDefense(){
   localStorage.setItem("dexterity1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
-  localStorage.setItem("inventoryValue1", JSON.stringify(stuffValue1));
+  
   localStorage.setItem("weapon1", "Fists");
   localStorage.setItem("weaponAtk1", "0");
   localStorage.setItem("weaponValue1", "0");
@@ -444,7 +427,7 @@ function startDefense(){
     localStorage.setItem("dexterity2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
-    localStorage.setItem("inventoryValue2", JSON.stringify(stuffValue2));
+
     localStorage.setItem("weapon2", "Fists");
     localStorage.setItem("weaponAtk2", "0");
     localStorage.setItem("weaponValue2", "0");
@@ -470,7 +453,7 @@ function startDefense(){
     localStorage.setItem("dexterity3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
-    localStorage.setItem("inventoryValue3", JSON.stringify(stuffValue3));
+    
     localStorage.setItem("weapon3", "Fists");
     localStorage.setItem("weaponAtk3", "0");
     localStorage.setItem("weaponValue3", "0");
@@ -503,7 +486,7 @@ function startMagic(){
   localStorage.setItem("dexterity1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
-  localStorage.setItem("inventoryValue1", JSON.stringify(stuffValue1));
+  
   localStorage.setItem("weapon1", "Fists");
   localStorage.setItem("weaponAtk1", "0");
   localStorage.setItem("weaponValue1", "0");
@@ -529,7 +512,7 @@ function startMagic(){
     localStorage.setItem("dexterity2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
-    localStorage.setItem("inventoryValue2", JSON.stringify(stuffValue2));
+
     localStorage.setItem("weapon2", "Fists");
     localStorage.setItem("weaponAtk2", "0");
     localStorage.setItem("weaponValue2", "0");
@@ -555,7 +538,7 @@ function startMagic(){
     localStorage.setItem("dexterity3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
-    localStorage.setItem("inventoryValue3", JSON.stringify(stuffValue3));
+    
     localStorage.setItem("weapon3", "Fists");
     localStorage.setItem("weaponAtk3", "0");
     localStorage.setItem("weaponValue3", "0");
@@ -652,10 +635,12 @@ function restoreSP(){
 
   //Battle script
 
-  function Enemy(name, lvl, hp, atk, def, mp, lore) {
+  //Enemy constructor
+  function Enemy(name, lvl, hp, maxHP, atk, def, mp, lore) {
     this.enemyName = name
     this.enemyLvl = lvl;
     this.enemyHp = hp;
+    this.enemyMaxHp = maxHP;
     this.enemyAtk = atk;
     this.enemyDef = def;
     this.enemyMp = mp;
@@ -663,11 +648,11 @@ function restoreSP(){
   };
 
   //All enemies go here, must have enough enemies to be 5 lvls higher than what the player can reach
-  const enemy1 = new Enemy("John", 1, 10, 1, 0, 5, "John lore goes here");
-  const enemy2 = new Enemy("Bob", 2, 12, 2, 0, 5, "Bob lore goes here");
-  const enemy3 = new Enemy("George", 3, 12, 1, 0, 10, "George lore goes here");
-  const enemy4 = new Enemy("Nolan", 4, 15, 1, 1, 5, "Nolan lore goes here");
-  const enemy5 = new Enemy("Dan", 5, 15, 2, 1, 0, "Dan lore goes here");
+  const enemy1 = new Enemy("John", 1, 10, 10, 1, 0, 5, "John lore goes here");
+  const enemy2 = new Enemy("Bob", 2, 12, 12, 2, 0, 5, "Bob lore goes here");
+  const enemy3 = new Enemy("George", 3, 12, 12, 1, 0, 10, "George lore goes here");
+  const enemy4 = new Enemy("Nolan", 4, 15, 15, 1, 1, 5, "Nolan lore goes here");
+  const enemy5 = new Enemy("Dan", 5, 15, 15, 2, 1, 0, "Dan lore goes here");
 
   let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
 
@@ -677,6 +662,7 @@ function restoreSP(){
   let opponentName = allEnemies[rng-1].enemyName;
   let opponentLvl = allEnemies[rng-1].enemyLvl;
   let opponentHp = allEnemies[rng-1].enemyHp;
+  let opponentMaxHp = allEnemies[rng-1].enemyMaxHp;
   let opponentAtk = allEnemies[rng-1].enemyAtk;
   let opponentDef = allEnemies[rng-1].enemyDef;
   let opponentMp = allEnemies[rng-1].enemyMp;
@@ -684,6 +670,7 @@ function restoreSP(){
   console.log("Enemy name: " + opponentName);
   console.log("Enemy lvl: " + opponentLvl);
   console.log("Enemy HP: " + opponentHp);
+  console.log("Enemy Max HP: " + opponentMaxHp);
   console.log("Enemy atk: " + opponentAtk);
   console.log("Enemy def: " + opponentDef);
   console.log("Enemy MP: " + opponentMp);
@@ -863,28 +850,30 @@ function block(){
 //Function for enemy to attack you with reduced damage, divided by 4 to be exact.
 
 if (fileNumber === "1"){
-  console.log("blocking from file 1");
 //File 1 block
 if (controlsLocked === false){
-  console.log("blocking...")
+  console.log("blocking...");
+  blockingModifier = 4;
   controlsLocked = true;
-  enemyAttackBlocking1();
+  enemyAttack1();
 };
 }
 else if (fileNumber === "2"){
 //File 2 block
 if (controlsLocked === false){
-  console.log("blocking...")
+  console.log("blocking...");
+  blockingModifier = 4;
   controlsLocked = true;
-  enemyAttackBlocking2();
+  enemyAttack2();
 };
 }
 else if (fileNumber === "3"){
 //File 3 block
 if (controlsLocked === false){
-  console.log("blocking...")
+  console.log("blocking...");
+  blockingModifier = 4;
   controlsLocked = true;
-  enemyAttackBlocking3();
+  enemyAttack3();
 };
 }
 else {
@@ -965,70 +954,6 @@ else{
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//beggining of enemy attacking you while you block function 
-//File 1
-function enemyAttackBlocking1(){
-setTimeout(function(){
-  //If opponent has enough attack to deal 1 or more damage
-  if ((opponentAtk - defense1 - armorDef1/4) >= 1){
-  HP1 = HP1 - (opponentAtk - defense1 - armorDef1/4);
-  console.log("The enemy did " + (opponentAtk - defense1 - (armorDef)/4) + " DMG.");
-  console.log("Your health is " + HP1);
-  }
-  //If they dont
-  else {
-  HP1 = HP1 - 1;
-  console.log("The enemy did " + 1 + " DMG.");
-  console.log("Your health is " + HP1);
-  };
-  //Unlock controls after the enemy has completed their attack turn
-  controlsLocked = false;
-  console.log("controls unlocked");
-}, 2500);
-};
-
-//File 2
-function enemyAttackBlocking2(){
-  setTimeout(function(){
-    //If opponent has enough attack to deal 1 or more damage
-    if ((opponentAtk - defense2 - armorDef2/4) >= 1){
-    HP2 = HP2 - (opponentAtk - defense2 - armorDef2/4);
-    console.log("The enemy did " + (opponentAtk - defense2 - armorDef2)/4 + " DMG.");
-    console.log("Your health is " + HP2);
-    }
-    //If they dont
-    else {
-    HP2 = HP2 - 1;
-    console.log("The enemy did " + 1 + " DMG.");
-    console.log("Your health is " + HP2);
-    };
-    //Unlock controls after the enemy has completed their attack turn
-    controlsLocked = false;
-    console.log("controls unlocked");
-  }, 2500);
-  };
-
-  //File 3
-  function enemyAttackBlocking3(){
-    setTimeout(function(){
-      //If opponent has enough attack to deal 1 or more damage
-      if ((opponentAtk - defense3 - armorDef3/4) >= 1){
-      HP3 = HP3 - (opponentAtk - defense3 - armorDef3/4)
-      console.log("The enemy did " + (opponentAtk - defense3 - armorDef3/4) + " DMG.");
-      console.log("Your health is " + HP3);
-      }
-      //If they dont
-      else {
-      HP3 = HP3 - 1;
-      console.log("The enemy did " + 1 + " DMG.");
-      console.log("Your health is " + HP3);
-      };
-      //Unlock controls after the enemy has completed their attack turn
-      controlsLocked = false;
-      console.log("controls unlocked");
-    }, 2500);
-    };
-//end of enemy attacking you while you block function 
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1038,10 +963,11 @@ function enemyAttackBlocking2(){
 function enemyAttack1(){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
-    if ((opponentAtk - defense1 - armorDef1) >= 1){
-    HP1 = HP1 - (opponentAtk - defense1 - armorDef1);
-    console.log("The enemy did " + (opponentAtk - defense1 - armorDef1) + " DMG.");
+    if (((opponentAtk - defense1 - armorDef1)/blockingModifier) >= 1){
+    HP1 = HP1 - ((opponentAtk - defense1 - armorDef1)/blockingModifier);
+    console.log("The enemy did " + ((opponentAtk - defense1 - armorDef1)/blockingModifier) + " DMG.");
     console.log("Your health is " + HP1);
+    blockingModifier = 1;
     }
     //If they dont
     else {
@@ -1059,10 +985,11 @@ function enemyAttack1(){
 function enemyAttack2(){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
-    if ((opponentAtk - defense2 - armorDef2) >= 1){
-    HP2 = HP2 - (opponentAtk - defense2 - armorDef2);
-    console.log("The enemy did " + (opponentAtk - defense2 - armorDef2) + " DMG.");
+    if (((opponentAtk - defense2 - armorDef2)/blockingModifier) >= 1){
+    HP2 = HP2 - ((opponentAtk - defense2 - armorDef2)/blockingModifier);
+    console.log("The enemy did " + ((opponentAtk - defense2 - armorDef2)/blockingModifier) + " DMG.");
     console.log("Your health is " + HP2);
+    blockingModifier = 1;
     }
     //If they dont
     else {
@@ -1080,10 +1007,11 @@ function enemyAttack2(){
 function enemyAttack3(){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
-    if ((opponentAtk - defense3 - armorDef3) >= 1){
-    HP3 = HP3 - (opponentAtk - defense3 - armorDef3);
-    console.log("The enemy did " + (opponentAtk - defense3 - armorDef3) + " DMG.");
+    if (((opponentAtk - defense3 - armorDef3)/blockingModifier) >= 1){
+    HP3 = HP3 - ((opponentAtk - defense3 - armorDef3)/blockingModifier);
+    console.log("The enemy did " + ((opponentAtk - defense3 - armorDef3)/blockingModifier) + " DMG.");
     console.log("Your health is " + HP3);
+    blockingModifier = 1;
     }
     //If they dont
     else {
@@ -1104,6 +1032,7 @@ function enemyAttack3(){
 //function for after you win a battle to get rewards/xp and then display the button to return home
 function endBattleRewards(){
   battleXP = (Math.floor(Math.random() * 19) - 9 + (opponentLvl * 10));
+  battleMoney = (Math.floor(Math.random() * 19) + 11 + (opponentLvl * 10));
   //display leave battle button
   document.getElementById("returnHome").style.display = "block";
 };
@@ -1117,7 +1046,7 @@ function returnHome(){
   localStorage.setItem("HP1", HP1);
   localStorage.setItem("MP1", MP1);
   localStorage.setItem("SP1", SP1);
-  localStorage.setItem("money1", money1);
+  localStorage.setItem("money1", money1 + battleMoney);
   //Return to prebattle area
   window.location = "game";
   }
@@ -1127,7 +1056,7 @@ function returnHome(){
     localStorage.setItem("HP2", HP2);
     localStorage.setItem("MP2", MP2);
     localStorage.setItem("SP2", SP2);
-    localStorage.setItem("money2", money2);
+    localStorage.setItem("money2", money2 + battleMoney);
     //Return to prebattle area
     window.location = "game";
   }
@@ -1137,7 +1066,7 @@ function returnHome(){
     localStorage.setItem("HP3", HP3);
     localStorage.setItem("MP3", MP3);
     localStorage.setItem("SP3", SP3);
-    localStorage.setItem("money3", money3);
+    localStorage.setItem("money3", money3 + battleMoney);
     //Return to prebattle area
     window.location = "game";
   };
@@ -1145,19 +1074,25 @@ function returnHome(){
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Beginning of magic function
+let spellDisplay = false;
 function displaySpells(){
-  document.getElementById("spell1").style.display = "block";
-  document.getElementById("spell2").style.display = "block";
-  document.getElementById("spell3").style.display = "block";
-  document.getElementById("spell4").style.display = "block";
+  if (spellDisplay === false){
+    document.getElementById("spell1").style.display = "block";
+    document.getElementById("spell2").style.display = "block";
+    document.getElementById("spell3").style.display = "block";
+    document.getElementById("spell4").style.display = "block";
+    spellDisplay = true;
+  }
+  else if (spellDisplay === true){
+    document.getElementById("spell1").style.display = "none";
+    document.getElementById("spell2").style.display = "none";
+    document.getElementById("spell3").style.display = "none";
+    document.getElementById("spell4").style.display = "none";
+    spellDisplay = false;
+  };
 };
 
-function hideSpells(){
-  document.getElementById("spell1").style.display = "none";
-  document.getElementById("spell2").style.display = "none";
-  document.getElementById("spell3").style.display = "none";
-  document.getElementById("spell4").style.display = "none";
-};
+
 
 //Heal Function
 function heal(){
@@ -1221,11 +1156,27 @@ function magicBlast(){
   if (controlsLocked === false){
     console.log("blasting for " + (((magic1+1) * 3) - opponentDef) + " damage.");
     controlsLocked = true;
-    opponentHp = opponentHp - (((magic1+1) * 3) - opponentDef);
-    console.log("Enemy has " + opponentHp + " HP left.");
-    MP1 = MP1 - 10;
-    console.log(MP1 + " MP left");
-    enemyAttack1();
+    if ((((magic1+1) * 3) - opponentDef) >= 1){
+      opponentHp = opponentHp - (((magic1+1) * 3) - opponentDef);
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP1 = MP1 - 10;
+      console.log(MP1 + " MP left");
+    }
+    else {
+      opponentHp = opponentHp - 1;
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP1 = MP1 - 10;
+      console.log(MP1 + " MP left");
+    };
+    if (opponentHp > 0){
+      console.log("enemy is still alive");
+      //Enemy attack function here
+     enemyAttack1();
+    }
+    else if (opponentHp <= 0){
+      console.log("enemy is dead");
+      endBattleRewards();
+    };
   };
   }
   else{console.log("Not enough MP.")};
@@ -1236,11 +1187,27 @@ function magicBlast(){
   if (controlsLocked === false){
     console.log("blasting for " + (((magic1+1) * 3) - opponentDef) + " damage.");
     controlsLocked = true;
-    opponentHp = opponentHp - (((magic1+1) * 3) - opponentDef);
-    console.log("Enemy has " + opponentHp + " HP left.");
-    MP2 = MP2 - 10;
-    console.log(MP2 + " MP left");
-    enemyAttack2();
+    if ((((magic2+1) * 3) - opponentDef) >= 1){
+      opponentHp = opponentHp - (((magic2+1) * 3) - opponentDef);
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP2 = MP2 - 10;
+      console.log(MP2 + " MP left");
+    }
+    else {
+      opponentHp = opponentHp - 1;
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP2 = MP2 - 10;
+      console.log(MP2 + " MP left");
+    };
+    if (opponentHp > 0){
+      console.log("enemy is still alive");
+      //Enemy attack function here
+     enemyAttack2();
+    }
+    else if (opponentHp <= 0){
+      console.log("enemy is dead");
+      endBattleRewards();
+    };
   };
   }
   else{console.log("Not enough MP.")};
@@ -1249,13 +1216,29 @@ function magicBlast(){
   //File 3 magic blast
   if (MP3 >= 10){
   if (controlsLocked === false){
-    console.log("blasting for " + (((magic1+1) * 3) - opponentDef) + " damage.");
+    console.log("blasting for " + (((magic3+1) * 3) - opponentDef) + " damage.");
     controlsLocked = true;
-    opponentHp = opponentHp - (((magic1+1) * 3) - opponentDef);
-    console.log("Enemy has " + opponentHp + " HP left.");
-    MP3 = MP3 - 10;
-    console.log(MP3 + " MP left");
-    enemyAttack3();
+    if ((((magic3+1) * 3) - opponentDef) >= 1){
+      opponentHp = opponentHp - (((magic3+1) * 3) - opponentDef);
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP3 = MP3 - 10;
+      console.log(MP3 + " MP left");
+    }
+    else {
+      opponentHp = opponentHp - 1;
+      console.log("Enemy has " + opponentHp + " HP left.");
+      MP3 = MP3 - 10;
+      console.log(MP3 + " MP left");
+    };
+    if (opponentHp > 0){
+      console.log("enemy is still alive");
+      //Enemy attack function here
+     enemyAttack3();
+    }
+    else if (opponentHp <= 0){
+      console.log("enemy is dead");
+      endBattleRewards();
+    };
   };
   }
   else{console.log("Not enough MP.")};
@@ -1271,8 +1254,8 @@ function magicBlast(){
   //Magic Cut Function
   function magicCut(){
     //Function for magic cut
-    if (fileNumber === "1"){
     //File 1 magic cut
+    if (fileNumber === "1"){
     if (MP1 >= 12){
     if (controlsLocked === false){
       console.log("blasting for " + ((magic1+1) * 2) + " damage.");
@@ -1281,13 +1264,21 @@ function magicBlast(){
       console.log("Enemy has " + opponentHp + " HP left.");
       MP1 = MP1 - 10;
       console.log(MP1 + " MP left");
-      enemyAttack1();
+      if (opponentHp > 0){
+      console.log("enemy is still alive");
+      //Enemy attack function here
+     enemyAttack1();
+    }
+    else if (opponentHp <= 0){
+      console.log("enemy is dead");
+      endBattleRewards();
+    };
     };
     }
     else{console.log("Not enough MP.")};
     }
-    else if (fileNumber === "2"){
     //File 2 magic cut
+    else if (fileNumber === "2"){
     if (MP2 >= 12){
     if (controlsLocked === false){
       console.log("blasting for " + ((magic1+1) * 2) + " damage.");
@@ -1296,13 +1287,21 @@ function magicBlast(){
       console.log("Enemy has " + opponentHp + " HP left.");
       MP2 = MP2 - 10;
       console.log(MP2 + " MP left");
-      enemyAttack2();
+      if (opponentHp > 0){
+        console.log("enemy is still alive");
+        //Enemy attack function here
+       enemyAttack2();
+      }
+      else if (opponentHp <= 0){
+        console.log("enemy is dead");
+        endBattleRewards();
+      };
     };
     }
     else{console.log("Not enough MP.")};
     }
-    else if (fileNumber === "3"){
     //File 3 magic cut
+    else if (fileNumber === "3"){
     if (MP3 >= 12){
     if (controlsLocked === false){
       console.log("blasting for " + ((magic1+1) * 2) + " damage.");
@@ -1311,7 +1310,15 @@ function magicBlast(){
       console.log("Enemy has " + opponentHp + " HP left.");
       MP3 = MP3 - 10;
       console.log(MP3 + " MP left");
-      enemyAttack3();
+      if (opponentHp > 0){
+        console.log("enemy is still alive");
+        //Enemy attack function here
+       enemyAttack3();
+      }
+      else if (opponentHp <= 0){
+        console.log("enemy is dead");
+        endBattleRewards();
+      };
     };
     }
     else{console.log("Not enough MP.")};
@@ -1320,7 +1327,7 @@ function magicBlast(){
       console.log("Controls are locked");
     };
     };
-    //End of cut blast function
+    //End of magic cut function
 
 //-----------------------------------------------------------------------------------------
 
@@ -1373,7 +1380,289 @@ function dexterityUp(){
     console.log("Controls are locked");
   };
   };
-  //End of cut blast function
+  //End of cut dexterity up function
 
-//Once spell effects are thought of and added, put their functions here.
 //End of magic function
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Shop and items
+  //Item constructor
+  function Item(name, price, power, description) {
+    this.itemName = name;
+    this.itemPrice = price;
+    this.itemPower = power;
+    this.itemDescription = description;
+  };
+
+  //All items
+  const item1 = new Item("Health Potion", 100, 10, "Restores 10 points of HP");
+  const item2 = new Item("Magic Potion", 150, 10, "Restores 10 points of MP");
+  const item3 = new Item("Special Potion", 125, 10, "Restores 10 points of SP");
+
+  let allItems = [item1, item2, item3];
+
+  //Shop function
+  let shopDisplay = false;
+  //Function to display the shop
+  function viewShop(){
+    if (shopDisplay === false){
+      document.getElementById("shopContainer").style.display = "block";
+      document.getElementById("shopButton").innerHTML = "Close Shop";
+      shopDisplay = true;
+    }
+    else if (shopDisplay === true){
+      document.getElementById("shopContainer").style.display = "none";
+      document.getElementById("shopButton").innerHTML = "Open Shop";
+      shopDisplay = false;
+    };
+  };
+
+  //Function to buy health potions
+  function buyHpPotion(){
+    console.log("bought HP potion");
+    if (fileNumber === "1"){
+     if (money1 >= 100){
+      money1 = money1 - 100;
+      localStorage.setItem("money1", money1);
+      money1 = parseInt(localStorage.getItem("money1"));
+      stuff1 = stuffParse1;
+      if (stuff1 === null){
+        stuff1 = [];
+        stuff1.push(item1);
+        localStorage.setItem("inventory1", JSON.stringify(stuff1));
+        inventory1 = localStorage.getItem("inventory1");
+        stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
+        console.log(stuffParse1);
+      }
+      else{
+      stuff1.push(item1);
+      localStorage.setItem("inventory1", JSON.stringify(stuff1));
+      inventory1 = localStorage.getItem("inventory1");
+      stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
+      console.log(stuffParse1);
+      };
+     }
+     else {
+       console.log("Not enoough money.")
+     };
+    }
+    else if (fileNumber === "2"){
+      if (money2 >= 100){
+        money2 = money2 - 100;
+        localStorage.setItem("money2", money2);
+        money2 = parseInt(localStorage.getItem("money2"));
+        stuff2 = stuffParse2;
+        if (stuff2 === null){
+          stuff2 = [];
+          stuff2.push(item1);
+          localStorage.setItem("inventory2", JSON.stringify(stuff2));
+          inventory2 = localStorage.getItem("inventory2");
+          stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
+          console.log(stuffParse2);
+        }
+        else{
+        stuff2.push(item1);
+        localStorage.setItem("inventory2", JSON.stringify(stuff2));
+        inventory2 = localStorage.getItem("inventory2");
+        stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
+        console.log(stuffParse2);
+        };
+       }
+       else {
+         console.log("Not enoough money.")
+       };
+    }
+    else if (fileNumber === "3"){
+      if (money3 >= 100){
+        money3 = money3 - 100;
+        localStorage.setItem("money3", money3);
+        money3 = parseInt(localStorage.getItem("money3"));
+        stuff3 = stuffParse3;
+        if (stuff3 === null){
+          stuff3 = [];
+          stuff3.push(item1);
+          localStorage.setItem("inventory3", JSON.stringify(stuff3));
+          inventory3 = localStorage.getItem("inventory3");
+          stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
+          console.log(stuffParse3);
+        }
+        else{
+        stuff3.push(item1);
+        localStorage.setItem("inventory3", JSON.stringify(stuff3));
+        inventory3 = localStorage.getItem("inventory3");
+        stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
+        console.log(stuffParse3);
+        };
+       }
+       else {
+         console.log("Not enoough money.")
+       };
+    };
+  };
+
+  //Function to buy magic potions
+  function buyMpPotion(){
+    console.log("bought MP potion");
+    if (fileNumber === "1"){
+     if (money1 >= 150){
+      money1 = money1 - 150;
+      localStorage.setItem("money1", money1);
+      money1 = parseInt(localStorage.getItem("money1"));
+      stuff1 = stuffParse1;
+      if (stuff1 === null){
+        stuff1 = [];
+        stuff1.push(item2);
+        localStorage.setItem("inventory1", JSON.stringify(stuff1));
+        inventory1 = localStorage.getItem("inventory1");
+        stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
+        console.log(stuffParse1);
+      }
+      else{
+      stuff1.push(item2);
+      localStorage.setItem("inventory1", JSON.stringify(stuff1));
+      inventory1 = localStorage.getItem("inventory1");
+      stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
+      console.log(stuffParse1);
+      };
+     }
+     else {
+       console.log("Not enoough money.")
+     };
+    }
+    else if (fileNumber === "2"){
+      if (money2 >= 150){
+        money2 = money2 - 150;
+        localStorage.setItem("money2", money2);
+        money2 = parseInt(localStorage.getItem("money2"));
+        stuff2 = stuffParse2;
+        if (stuff2 === null){
+          stuff2 = [];
+          stuff2.push(item2);
+          localStorage.setItem("inventory2", JSON.stringify(stuff2));
+          inventory2 = localStorage.getItem("inventory2");
+          stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
+          console.log(stuffParse2);
+        }
+        else{
+        stuff2.push(item2);
+        localStorage.setItem("inventory2", JSON.stringify(stuff2));
+        inventory2 = localStorage.getItem("inventory2");
+        stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
+        console.log(stuffParse2);
+        };
+       }
+       else {
+         console.log("Not enoough money.")
+       };
+    }
+    else if (fileNumber === "3"){
+      if (money3 >= 150){
+        money3 = money3 - 150;
+        localStorage.setItem("money3", money3);
+        money3 = parseInt(localStorage.getItem("money3"));
+        stuff3 = stuffParse3;
+        if (stuff3 === null){
+          stuff3 = [];
+          stuff3.push(item2);
+          localStorage.setItem("inventory3", JSON.stringify(stuff3));
+          inventory3 = localStorage.getItem("inventory3");
+          stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
+          console.log(stuffParse3);
+        }
+        else{
+        stuff3.push(item2);
+        localStorage.setItem("inventory3", JSON.stringify(stuff3));
+        inventory3 = localStorage.getItem("inventory3");
+        stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
+        console.log(stuffParse3);
+        };
+       }
+       else {
+         console.log("Not enoough money.")
+       };
+    };
+  };
+
+    //Function to buy special potions
+    function buySpPotion(){
+      console.log("bought SP potion");
+      if (fileNumber === "1"){
+       if (money1 >= 125){
+        money1 = money1 - 125;
+        localStorage.setItem("money1", money1);
+        money1 = parseInt(localStorage.getItem("money1"));
+        stuff1 = stuffParse1;
+        if (stuff1 === null){
+          stuff1 = [];
+          stuff1.push(item3);
+          localStorage.setItem("inventory1", JSON.stringify(stuff1));
+          inventory1 = localStorage.getItem("inventory1");
+          stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
+          console.log(stuffParse1);
+        }
+        else{
+        stuff1.push(item3);
+        localStorage.setItem("inventory1", JSON.stringify(stuff1));
+        inventory1 = localStorage.getItem("inventory1");
+        stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
+        console.log(stuffParse1);
+        };
+       }
+       else {
+         console.log("Not enoough money.")
+       };
+      }
+      else if (fileNumber === "2"){
+        if (money2 >= 125){
+          money2 = money2 - 125;
+          localStorage.setItem("money2", money2);
+          money2 = parseInt(localStorage.getItem("money2"));
+          stuff2 = stuffParse2;
+          if (stuff2 === null){
+            stuff2 = [];
+            stuff2.push(item3);
+            localStorage.setItem("inventory2", JSON.stringify(stuff2));
+            inventory2 = localStorage.getItem("inventory2");
+            stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
+            console.log(stuffParse2);
+          }
+          else{
+          stuff2.push(item3);
+          localStorage.setItem("inventory2", JSON.stringify(stuff2));
+          inventory2 = localStorage.getItem("inventory2");
+          stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
+          console.log(stuffParse2);
+          };
+         }
+         else {
+           console.log("Not enoough money.")
+         };
+      }
+      else if (fileNumber === "3"){
+        if (money3 >= 125){
+          money3 = money3 - 125;
+          localStorage.setItem("money3", money3);
+          money3 = parseInt(localStorage.getItem("money3"));
+          stuff3 = stuffParse3;
+          if (stuff3 === null){
+            stuff3 = [];
+            stuff3.push(item3);
+            localStorage.setItem("inventory3", JSON.stringify(stuff3));
+            inventory3 = localStorage.getItem("inventory3");
+            stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
+            console.log(stuffParse3);
+          }
+          else{
+          stuff3.push(item3);
+          localStorage.setItem("inventory3", JSON.stringify(stuff3));
+          inventory3 = localStorage.getItem("inventory3");
+          stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
+          console.log(stuffParse3);
+          };
+         }
+         else {
+           console.log("Not enoough money.")
+         };
+      };
+    };

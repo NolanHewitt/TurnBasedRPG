@@ -17,3 +17,7 @@ body {
 #returnHome {
   display: none;
 }
+
+#shopContainer {
+  display: none;
+}
