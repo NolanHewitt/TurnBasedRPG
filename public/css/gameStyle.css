@@ -10,7 +10,7 @@ body {
     color: white;
   }
 
-.spells {
+#spellsContainer {
   display: none;
 }
 
@@ -19,5 +19,10 @@ body {
 }
 
 #shopContainer {
+  display: none;
+}
+
+#inventory {
+  color: white;
   display: none;
 }

@@ -10,9 +10,8 @@
 
 <button id="attackButton" onclick="attack();">Attack</button>
 
-<div onclick="displaySpells();" id="spellsContainer">
-<button id="magicButton">Magic</button>
-
+<button onclick="displaySpells();" id="magicButton">Magic</button>
+<div id="spellsContainer">
 <!-- Heals the player -->
 <button onclick="heal();" id="spell1" class="spells">Heal</button>
 
@@ -28,7 +27,8 @@
 
 <button id="blockButton" onclick="block();">Block</button>
 
-<button>Item</button>
+<button id="inventoryDisplayer" onclick="displayInventory();">Item</button>
+<div id="inventory"></div>
 
 <button onclick="flee();">Flee</button>
 

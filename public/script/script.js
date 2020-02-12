@@ -136,6 +136,7 @@ let currentEnemy = parseInt(localStorage.getItem("currentEnemy"));
 //rng value used fpr determining enemy that you will fight in a random battle
 let rng = parseInt(localStorage.getItem("currentEnemy"));
 let blockingModifier = 1;
+let inBattle = localStorage.getItem("inBattle");
 
 console.log("Currently playing file number " + fileNumber + ".");
 
@@ -244,6 +245,7 @@ function startBalanced(){
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
   localStorage.setItem("intro1", true);
+  localStorage.setItem("inBattle", false);
   }
   else if (fileNumber === "2"){
     localStorage.setItem("lvlTwo", "1");
@@ -269,6 +271,7 @@ function startBalanced(){
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
     localStorage.setItem("intro2", true);
+    localStorage.setItem("inBattle", false);
     }
   else if (fileNumber === "3"){
     localStorage.setItem("lvlThree", "1");
@@ -294,6 +297,7 @@ function startBalanced(){
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
     localStorage.setItem("intro3", true);
+    localStorage.setItem("inBattle", false);
     };
     document.getElementById("confirmIntro").style.display="block";
 };
@@ -326,6 +330,7 @@ function startAttack(){
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
   localStorage.setItem("intro1", true);
+  localStorage.setItem("inBattle", false);
   }
   else if (fileNumber === "2"){
     localStorage.setItem("lvlTwo", "1");
@@ -351,6 +356,7 @@ function startAttack(){
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
     localStorage.setItem("intro2", true);
+    localStorage.setItem("inBattle", false);
     }
   else if (fileNumber === "3"){
     localStorage.setItem("lvlThree", "1");
@@ -376,6 +382,7 @@ function startAttack(){
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
     localStorage.setItem("intro3", true);
+    localStorage.setItem("inBattle", false);
     };
     document.getElementById("confirmIntro").style.display="block";
 };
@@ -409,6 +416,7 @@ function startDefense(){
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
   localStorage.setItem("intro1", true);
+  localStorage.setItem("inBattle", false);
   }
   else if (fileNumber === "2"){
     localStorage.setItem("lvlTwo", "1");
@@ -435,6 +443,7 @@ function startDefense(){
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
     localStorage.setItem("intro2", true);
+    localStorage.setItem("inBattle", false);
     }
   else if (fileNumber === "3"){
     localStorage.setItem("lvlThree", "1");
@@ -461,6 +470,7 @@ function startDefense(){
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
     localStorage.setItem("intro3", true);
+    localStorage.setItem("inBattle", false);
     };
     document.getElementById("confirmIntro").style.display="block";
 };
@@ -494,6 +504,7 @@ function startMagic(){
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
   localStorage.setItem("intro1", true);
+  localStorage.setItem("inBattle", false);
   }
   else if (fileNumber === "2"){
     localStorage.setItem("lvlTwo", "1");
@@ -520,6 +531,7 @@ function startMagic(){
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
     localStorage.setItem("intro2", true);
+    localStorage.setItem("inBattle", false);
     }
   else if (fileNumber === "3"){
     localStorage.setItem("lvlThree", "1");
@@ -546,6 +558,7 @@ function startMagic(){
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
     localStorage.setItem("intro3", true);
+    localStorage.setItem("inBattle", false);
     };
     document.getElementById("confirmIntro").style.display="block";
 };
@@ -629,6 +642,7 @@ function restoreSP(){
       console.log(rng);  
     };
     localStorage.setItem("currentEnemy", rng);
+    localStorage.setItem("inBattle", true);
     window.location = "battle";
   };
   
@@ -961,6 +975,7 @@ else{
 
 //File 1
 function enemyAttack1(){
+ if(inBattle === "true"){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
     if (((opponentAtk - defense1 - armorDef1)/blockingModifier) >= 1){
@@ -979,10 +994,16 @@ function enemyAttack1(){
     controlsLocked = false;
     console.log("controls unlocked");
   }, 2500);
+ }
+ else {
+   console.log("Item used");
+   controlsLocked= false;
+ };
 };
 
 //File 2
 function enemyAttack2(){
+ if(inBattle === "true"){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
     if (((opponentAtk - defense2 - armorDef2)/blockingModifier) >= 1){
@@ -1001,10 +1022,16 @@ function enemyAttack2(){
     controlsLocked = false;
     console.log("controls unlocked");
   }, 2500);
+}
+else {
+  console.log("Item used");
+  controlsLocked= false;
+ };
 };
 
 //File 3
 function enemyAttack3(){
+ if(inBattle === "true"){
   setTimeout(function(){
     //If opponent has enough attack to deal 1 or more damage
     if (((opponentAtk - defense3 - armorDef3)/blockingModifier) >= 1){
@@ -1023,6 +1050,11 @@ function enemyAttack3(){
     controlsLocked = false;
     console.log("controls unlocked");
   }, 2500);
+}
+else {
+  console.log("Item used");
+  controlsLocked= false;
+ };
 };
 
 //end of function for the enemies attack against you
@@ -1047,6 +1079,7 @@ function returnHome(){
   localStorage.setItem("MP1", MP1);
   localStorage.setItem("SP1", SP1);
   localStorage.setItem("money1", money1 + battleMoney);
+  localStorage.setItem("inBattle", false);
   //Return to prebattle area
   window.location = "game";
   }
@@ -1077,17 +1110,11 @@ function returnHome(){
 let spellDisplay = false;
 function displaySpells(){
   if (spellDisplay === false){
-    document.getElementById("spell1").style.display = "block";
-    document.getElementById("spell2").style.display = "block";
-    document.getElementById("spell3").style.display = "block";
-    document.getElementById("spell4").style.display = "block";
+    document.getElementById("spellsContainer").style.display = "block";
     spellDisplay = true;
   }
   else if (spellDisplay === true){
-    document.getElementById("spell1").style.display = "none";
-    document.getElementById("spell2").style.display = "none";
-    document.getElementById("spell3").style.display = "none";
-    document.getElementById("spell4").style.display = "none";
+    document.getElementById("spellsContainer").style.display = "none";
     spellDisplay = false;
   };
 };
@@ -1434,6 +1461,14 @@ function dexterityUp(){
         inventory1 = localStorage.getItem("inventory1");
         stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
         console.log(stuffParse1);
+        let node = document.createElement("button");
+        node.setAttribute("id", "item" + i);
+        i++;
+        console.log(i);
+        node.addEventListener('click', function(){useItem(this.id);}, false);
+        let textnode = document.createTextNode("Item: Health Potion | Item Power: 10 | Item Description: Restores 10 points of HP");
+        node.appendChild(textnode);
+        document.getElementById("inventory").appendChild(node);
       }
       else{
       stuff1.push(item1);
@@ -1441,6 +1476,14 @@ function dexterityUp(){
       inventory1 = localStorage.getItem("inventory1");
       stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
       console.log(stuffParse1);
+      let node = document.createElement("button");
+      node.setAttribute("id", "item" + i);
+      i++;
+      console.log(i);
+      node.addEventListener('click', function(){useItem(this.id);}, false);
+      let textnode = document.createTextNode("Item: Health Potion | Item Power: 10 | Item Description: Restores 10 points of HP");
+      node.appendChild(textnode);
+      document.getElementById("inventory").appendChild(node);
       };
      }
      else {
@@ -1460,6 +1503,13 @@ function dexterityUp(){
           inventory2 = localStorage.getItem("inventory2");
           stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
           console.log(stuffParse2);
+          let node = document.createElement("button");
+          node.setAttribute("id", "item" + i);
+          i++;
+          node.addEventListener('click', function(){useItem(this.id);}, false);
+          let textnode = document.createTextNode("Item: Health Potion | Item Power: 10 | Item Description: Restores 10 points of HP");
+          node.appendChild(textnode);
+          document.getElementById("inventory").appendChild(node);
         }
         else{
         stuff2.push(item1);
@@ -1467,6 +1517,13 @@ function dexterityUp(){
         inventory2 = localStorage.getItem("inventory2");
         stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
         console.log(stuffParse2);
+        let node = document.createElement("button");
+        node.setAttribute("id", "item" + i);
+        i++;
+        node.addEventListener('click', function(){useItem(this.id);}, false);
+        let textnode = document.createTextNode("Item: Health Potion | Item Power: 10 | Item Description: Restores 10 points of HP");
+        node.appendChild(textnode);
+        document.getElementById("inventory").appendChild(node);
         };
        }
        else {
@@ -1486,6 +1543,13 @@ function dexterityUp(){
           inventory3 = localStorage.getItem("inventory3");
           stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
           console.log(stuffParse3);
+          let node = document.createElement("button");
+          node.setAttribute("id", "item" + i);
+          i++;
+          node.addEventListener('click', function(){useItem(this.id);}, false);
+          let textnode = document.createTextNode("Item: Health Potion | Item Power: 10 | Item Description: Restores 10 points of HP");
+          node.appendChild(textnode);
+          document.getElementById("inventory").appendChild(node);
         }
         else{
         stuff3.push(item1);
@@ -1493,6 +1557,13 @@ function dexterityUp(){
         inventory3 = localStorage.getItem("inventory3");
         stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
         console.log(stuffParse3);
+        let node = document.createElement("button");
+        node.setAttribute("id", "item" + i);
+        i++;
+        node.addEventListener('click', function(){useItem(this.id);}, false);
+        let textnode = document.createTextNode("Item: Health Potion | Item Power: 10 | Item Description: Restores 10 points of HP");
+        node.appendChild(textnode);
+        document.getElementById("inventory").appendChild(node);
         };
        }
        else {
@@ -1517,6 +1588,13 @@ function dexterityUp(){
         inventory1 = localStorage.getItem("inventory1");
         stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
         console.log(stuffParse1);
+        let node = document.createElement("button");
+        node.setAttribute("id", "item" + i);
+        i++;
+        node.addEventListener('click', function(){useItem(this.id);}, false);
+        let textnode = document.createTextNode("Item: Magic Potion | Item Power: 10 | Item Description: Restores 10 points of MP");
+        node.appendChild(textnode);
+        document.getElementById("inventory").appendChild(node);
       }
       else{
       stuff1.push(item2);
@@ -1524,6 +1602,13 @@ function dexterityUp(){
       inventory1 = localStorage.getItem("inventory1");
       stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
       console.log(stuffParse1);
+      let node = document.createElement("button");
+      node.setAttribute("id", "item" + i);
+      i++;
+      node.addEventListener('click', function(){useItem(this.id);}, false);
+      let textnode = document.createTextNode("Item: Magic Potion | Item Power: 10 | Item Description: Restores 10 points of MP");
+      node.appendChild(textnode);
+      document.getElementById("inventory").appendChild(node);
       };
      }
      else {
@@ -1543,6 +1628,13 @@ function dexterityUp(){
           inventory2 = localStorage.getItem("inventory2");
           stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
           console.log(stuffParse2);
+          let node = document.createElement("button");
+          node.setAttribute("id", "item" + i);
+          i++;
+          node.addEventListener('click', function(){useItem(this.id);}, false);
+          let textnode = document.createTextNode("Item: Magic Potion | Item Power: 10 | Item Description: Restores 10 points of MP");
+          node.appendChild(textnode);
+          document.getElementById("inventory").appendChild(node);
         }
         else{
         stuff2.push(item2);
@@ -1550,6 +1642,13 @@ function dexterityUp(){
         inventory2 = localStorage.getItem("inventory2");
         stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
         console.log(stuffParse2);
+        let node = document.createElement("button");
+        node.setAttribute("id", "item" + i);
+        i++;
+        node.addEventListener('click', function(){useItem(this.id);}, false);
+        let textnode = document.createTextNode("Item: Magic Potion | Item Power: 10 | Item Description: Restores 10 points of MP");
+        node.appendChild(textnode);
+        document.getElementById("inventory").appendChild(node);
         };
        }
        else {
@@ -1569,6 +1668,13 @@ function dexterityUp(){
           inventory3 = localStorage.getItem("inventory3");
           stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
           console.log(stuffParse3);
+          let node = document.createElement("button");
+          node.setAttribute("id", "item" + i);
+          i++;
+          node.addEventListener('click', function(){useItem(this.id);}, false);
+          let textnode = document.createTextNode("Item: Magic Potion | Item Power: 10 | Item Description: Restores 10 points of MP");
+          node.appendChild(textnode);
+          document.getElementById("inventory").appendChild(node);
         }
         else{
         stuff3.push(item2);
@@ -1576,6 +1682,13 @@ function dexterityUp(){
         inventory3 = localStorage.getItem("inventory3");
         stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
         console.log(stuffParse3);
+        let node = document.createElement("button");
+        node.setAttribute("id", "item" + i);
+        i++;
+        node.addEventListener('click', function(){useItem(this.id);}, false);
+        let textnode = document.createTextNode("Item: Magic Potion | Item Power: 10 | Item Description: Restores 10 points of MP");
+        node.appendChild(textnode);
+        document.getElementById("inventory").appendChild(node);
         };
        }
        else {
@@ -1600,6 +1713,13 @@ function dexterityUp(){
           inventory1 = localStorage.getItem("inventory1");
           stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
           console.log(stuffParse1);
+          let node = document.createElement("button");
+          node.setAttribute("id", "item" + i);
+          i++;
+          node.addEventListener('click', function(){useItem(this.id);}, false);
+          let textnode = document.createTextNode("Item: Special Potion | Item Power: 10 | Item Description: Restores 10 points of SP");
+          node.appendChild(textnode);
+          document.getElementById("inventory").appendChild(node);
         }
         else{
         stuff1.push(item3);
@@ -1607,6 +1727,13 @@ function dexterityUp(){
         inventory1 = localStorage.getItem("inventory1");
         stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
         console.log(stuffParse1);
+        let node = document.createElement("button");
+        node.setAttribute("id", "item" + i);
+        i++;
+        node.addEventListener('click', function(){useItem(this.id);}, false);
+        let textnode = document.createTextNode("Item: Special Potion | Item Power: 10 | Item Description: Restores 10 points of SP");
+        node.appendChild(textnode);
+        document.getElementById("inventory").appendChild(node);
         };
        }
        else {
@@ -1626,6 +1753,13 @@ function dexterityUp(){
             inventory2 = localStorage.getItem("inventory2");
             stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
             console.log(stuffParse2);
+            let node = document.createElement("button");
+            node.setAttribute("id", "item" + i);
+            i++;
+            node.addEventListener('click', function(){useItem(this.id);}, false);
+            let textnode = document.createTextNode("Item: Special Potion | Item Power: 10 | Item Description: Restores 10 points of SP");
+            node.appendChild(textnode);
+            document.getElementById("inventory").appendChild(node);
           }
           else{
           stuff2.push(item3);
@@ -1633,6 +1767,13 @@ function dexterityUp(){
           inventory2 = localStorage.getItem("inventory2");
           stuffParse2 = JSON.parse(localStorage.getItem("inventory2"));
           console.log(stuffParse2);
+          let node = document.createElement("button");
+          node.setAttribute("id", "item" + i);
+          i++;
+          node.addEventListener('click', function(){useItem(this.id);}, false);
+          let textnode = document.createTextNode("Item: Special Potion | Item Power: 10 | Item Description: Restores 10 points of SP");
+          node.appendChild(textnode);
+          document.getElementById("inventory").appendChild(node);
           };
          }
          else {
@@ -1652,6 +1793,13 @@ function dexterityUp(){
             inventory3 = localStorage.getItem("inventory3");
             stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
             console.log(stuffParse3);
+            let node = document.createElement("button");
+            node.setAttribute("id", "item" + i);
+            i++;
+            node.addEventListener('click', function(){useItem(this.id);}, false);
+            let textnode = document.createTextNode("Item: Special Potion | Item Power: 10 | Item Description: Restores 10 points of SP");
+            node.appendChild(textnode);
+            document.getElementById("inventory").appendChild(node);
           }
           else{
           stuff3.push(item3);
@@ -1659,6 +1807,13 @@ function dexterityUp(){
           inventory3 = localStorage.getItem("inventory3");
           stuffParse3 = JSON.parse(localStorage.getItem("inventory3"));
           console.log(stuffParse3);
+          let node = document.createElement("button");
+          node.setAttribute("id", "item" + i);
+          i++;
+          node.addEventListener('click', function(){useItem(this.id);}, false);
+          let textnode = document.createTextNode("Item: Special Potion | Item Power: 10 | Item Description: Restores 10 points of SP");
+          node.appendChild(textnode);
+          document.getElementById("inventory").appendChild(node);
           };
          }
          else {
@@ -1666,3 +1821,204 @@ function dexterityUp(){
          };
       };
     };
+
+console.log(stuffParse1.length);
+
+//Display all items into inventory before battle
+let i = 0;
+for (i = 0; i < stuffParse1.length; i++) {
+  let node = document.createElement("button");
+  node.setAttribute("id", "item" + i);
+  node.addEventListener('click', function(){useItem(this.id);}, false);
+  let textnode = document.createTextNode("Item: " + stuffParse1[i].itemName + " | Item Power: " + stuffParse1[i].itemPower + " | Item Description: " + stuffParse1[i].itemDescription);
+  node.appendChild(textnode);
+  document.getElementById("inventory").appendChild(node);
+};
+
+
+let inventoryDisplay = false;
+function displayInventory(){
+  inBattle = false;
+  localStorage.setItem("inBattle", false);
+  if (inventoryDisplay === false){
+    document.getElementById("inventory").style.display = "block";
+    inventoryDisplay = true;
+    document.getElementById("inventoryDisplayer").innerHTML = "Close Inventory";
+  }
+  else if (inventoryDisplay === true){
+    document.getElementById("inventory").style.display = "none";
+    inventoryDisplay = false;
+    document.getElementById("inventoryDisplayer").innerHTML = "Open Inventory";
+  };
+};
+
+//Function for using an item
+let adjuster = 0;
+let statToIncrease;
+let statIncreaseValue;
+function useItem(itemId){
+  if (controlsLocked === false){
+  //How to find what item was clicked
+  // console.log(itemId);
+  //Find the number of the item clicked
+  let index;
+  if(itemId.length === 5){
+    index = (itemId.slice(-1))-adjuster;
+    console.log("adjuster is " + adjuster);
+    console.log(index);
+  }
+  else if(itemId.length === 6){
+    index = itemId.slice(-2);
+    index = (itemId.slice(-1))-adjuster;
+    console.log("adjuster is " + adjuster);
+    console.log(index);
+  }
+  else if(itemId.length === 7){
+    index = itemId.slice(-3);
+    index = (itemId.slice(-1))-adjuster;
+  }
+  else if(itemId.length === 8){
+    index = itemId.slice(-4);
+    index = (itemId.slice(-1))-adjuster;
+  }
+  else if(itemId.length === 9){
+    index = itemId.slice(-5);
+    index = (itemId.slice(-1))-adjuster;
+  };
+  adjuster = adjuster + 1;
+
+  //Removing the item from local storage
+        stuff1 = stuffParse1;
+        stuff1.splice(index,1);
+        localStorage.setItem("inventory1", JSON.stringify(stuff1));
+        inventory1 = localStorage.getItem("inventory1");
+        stuffParse1 = JSON.parse(localStorage.getItem("inventory1"));
+        console.log(stuffParse1);
+
+        // How to determine what item was clicked
+          statToIncrease = document.getElementById(itemId).innerHTML.slice(-2);
+        // How to determine how much value to give to the player
+          statIncreaseValue = parseInt(document.getElementById(itemId).innerHTML.slice(-15,-13));
+
+          
+          if (statToIncrease === "HP"){
+            console.log("increase HP");
+            if (fileNumber === "1"){
+              if (HP1 >= (maxHP1-statIncreaseValue)){
+                HP1 = maxHP1;
+                localStorage.setItem("HP1", HP1);
+              }
+              else {
+                HP1 = HP1 + statIncreaseValue;
+                localStorage.setItem("HP1", HP1);
+              };
+              console.log("HP increased by " + statIncreaseValue);
+            }
+            else if (fileNumber === "2"){
+                if (HP2 >= (maxHP2-statIncreaseValue)){
+                  HP2 = maxHP2;
+                  localStorage.setItem("HP2", HP2);
+                }
+                else {
+                  HP2 = HP2 + statIncreaseValue;
+                  localStorage.setItem("HP2", HP2);
+                };
+                console.log("HP increased by " + statIncreaseValue);
+            }
+            else if (fileNumber === "3"){
+                if (HP3 >= (maxHP3-statIncreaseValue)){
+                  HP3 = maxHP3;
+                  localStorage.setItem("HP3", HP3);
+                }
+                else {
+                  HP3 = HP3 + statIncreaseValue;
+                  localStorage.setItem("HP3", HP3);
+                };
+                console.log("HP increased by " + statIncreaseValue);
+            };
+          }
+          else if (statToIncrease === "MP"){
+            console.log("increase MP");
+            if (fileNumber === "1"){
+              if (MP1 >= (maxMP1-statIncreaseValue)){
+                MP1 = maxMP1;
+                localStorage.setItem("MP1", MP1);
+              }
+              else {
+                MP1 = MP1 + statIncreaseValue;
+                localStorage.setItem("MP1", MP1);
+              };
+              console.log("MP increased by " + statIncreaseValue);
+            }
+            else if (fileNumber === "2"){
+                if (MP2 >= (maxMP2-statIncreaseValue)){
+                  MP2 = maxMP2;
+                  localStorage.setItem("MP2", MP2);
+                }
+                else {
+                  MP2 = MP2 + statIncreaseValue;
+                  localStorage.setItem("MP2", MP2);
+                };
+                console.log("MP increased by " + statIncreaseValue);
+            }
+            else if (fileNumber === "3"){
+                if (MP3 >= (maxMP3-statIncreaseValue)){
+                  MP3 = maxMP3;
+                  localStorage.setItem("MP3", MP3);
+                }
+                else {
+                  MP3 = MP3 + statIncreaseValue;
+                  localStorage.setItem("MP3", MP3);
+                };
+                console.log("MP increased by " + statIncreaseValue);
+            };
+          }
+          else if (statToIncrease === "SP"){
+            console.log("increase SP");
+            if (fileNumber === "1"){
+              if (SP1 >= (maxSP1-statIncreaseValue)){
+                SP1 = maxSP1;
+                localStorage.setItem("SP1", SP1);
+              }
+              else {
+                SP1 = SP1 + statIncreaseValue;
+                localStorage.setItem("SP1", SP1);
+              };
+              console.log("SP increased by " + statIncreaseValue);
+            }
+            else if (fileNumber === "2"){
+                if (SP2 >= (maxSP2-statIncreaseValue)){
+                  SP2 = maxSP2;
+                  localStorage.setItem("SP2", SP2);
+                }
+                else {
+                  SP2 = SP2 + statIncreaseValue;
+                  localStorage.setItem("SP2", SP2);
+                };
+                console.log("SP increased by " + statIncreaseValue);
+            }
+            else if (fileNumber === "3"){
+                if (SP3 >= (maxSP3-statIncreaseValue)){
+                  SP3 = maxSP3;
+                  localStorage.setItem("SP3", SP3);
+                }
+                else {
+                  SP3 = SP3 + statIncreaseValue;
+                  localStorage.setItem("SP3", SP3);
+                };
+                console.log("SP increased by " + statIncreaseValue);
+            };
+          };
+
+
+  //How to remove the element when cliced, must still be removed from localstorage to keep it out of the stuffParse array to prevent it from returning on page reload
+  document.getElementById(itemId).remove();
+  controlsLocked = true;
+  enemyAttack1();
+        }
+        else {
+          console.log("Controls still locked")
+        };
+};
+
+console.log(stuffParse1);
