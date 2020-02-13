@@ -2009,9 +2009,6 @@ function useItem(itemId){
                 console.log("SP increased by " + statIncreaseValue);
             };
           };
-
-
-  //How to remove the element when cliced, must still be removed from localstorage to keep it out of the stuffParse array to prevent it from returning on page reload
   document.getElementById(itemId).remove();
   controlsLocked = true;
   enemyAttack1();
@@ -2020,5 +2017,280 @@ function useItem(itemId){
           console.log("Controls still locked")
         };
 };
+//End of items functions end here
 
-console.log(stuffParse1);
+//-------------------------------------------------------------------------------------------------------------------------------------------
+
+//Skills functions begin here
+let skillsDisplay = false;
+function viewSkills(){
+  if (skillsDisplay === false){
+    document.getElementById("skillsContainer").style.display = "block";
+    document.getElementById("skillsButton").innerHTML = "Close Skills";
+    skillsDisplay = true;
+  }
+  else if (skillsDisplay === true){
+    document.getElementById("skillsContainer").style.display = "none";
+    document.getElementById("skillsButton").innerHTML = "Open Skills";
+    skillsDisplay = false;
+  };
+};
+
+//points for increasing stats
+let points = 3;
+let preMaxHP;
+//EXP needed to level up
+let expNeeded = 100;
+function levelUp(){
+ if (fileNumber === "1"){
+  if (exp1 >= expNeeded){
+  document.getElementById("levelUpScreen").style.display = "block";
+  document.getElementById("playerMaxHP").innerHTML = localStorage.getItem("maxHP1");
+  document.getElementById("playerMaxMP").innerHTML = localStorage.getItem("maxMP1");
+  document.getElementById("playerMaxSP").innerHTML = localStorage.getItem("maxSP1");
+  document.getElementById("playerATK").innerHTML = localStorage.getItem("attack1");
+  document.getElementById("playerDEF").innerHTML = localStorage.getItem("defense1");
+  document.getElementById("playerMagic").innerHTML = localStorage.getItem("magic1");
+  document.getElementById("playerDexterity").innerHTML = localStorage.getItem("dexterity1");
+  preMaxHP = localStorage.getItem("maxHP1");
+  preMaxMP = localStorage.getItem("maxMP1");
+  preMaxSP = localStorage.getItem("maxSP1");
+  preMaxATK = localStorage.getItem("attack1");
+  preMaxDEF = localStorage.getItem("defense1");
+  preMaxMagic = localStorage.getItem("magic1");
+  preMaxDexterity = localStorage.getItem("dexterity1");
+  }
+  else{
+    console.log('not enough exp.');
+  };
+ }
+ else if (fileNumber === "2"){
+  if (exp2 >= expNeeded){  
+  document.getElementById("levelUpScreen").style.display = "block";
+  document.getElementById("playerMaxHP").innerHTML = localStorage.getItem("maxHP2");
+  document.getElementById("playerMaxMP").innerHTML = localStorage.getItem("maxMP2");
+  document.getElementById("playerMaxSP").innerHTML = localStorage.getItem("maxSP2");
+  document.getElementById("playerATK").innerHTML = localStorage.getItem("attack2");
+  document.getElementById("playerDEF").innerHTML = localStorage.getItem("defense2");
+  document.getElementById("playerMagic").innerHTML = localStorage.getItem("magic2");
+  document.getElementById("playerDexterity").innerHTML = localStorage.getItem("dexterity2");
+  preMaxHP = localStorage.getItem("maxHP2");
+  preMaxMP = localStorage.getItem("maxMP2");
+  preMaxSP = localStorage.getItem("maxSP2");
+  preMaxATK = localStorage.getItem("attack2");
+  preMaxDEF = localStorage.getItem("defense2");
+  preMaxMagic = localStorage.getItem("magic2");
+  preMaxDexterity = localStorage.getItem("dexterity2");
+  }
+  else{
+    console.log('not enough exp.');
+  };
+ }
+ else if (fileNumber === "3"){
+  if (exp3 >= expNeeded){
+  document.getElementById("levelUpScreen").style.display = "block";
+  document.getElementById("playerMaxHP").innerHTML = localStorage.getItem("maxHP3");
+  document.getElementById("playerMaxMP").innerHTML = localStorage.getItem("maxMP3");
+  document.getElementById("playerMaxSP").innerHTML = localStorage.getItem("maxSP3");
+  document.getElementById("playerATK").innerHTML = localStorage.getItem("attack3");
+  document.getElementById("playerDEF").innerHTML = localStorage.getItem("defense3");
+  document.getElementById("playerMagic").innerHTML = localStorage.getItem("magic3");
+  document.getElementById("playerDexterity").innerHTML = localStorage.getItem("dexterity3");
+  preMaxHP = localStorage.getItem("maxHP3");
+  preMaxMP = localStorage.getItem("maxMP3");
+  preMaxSP = localStorage.getItem("maxSP3");
+  preMaxATK = localStorage.getItem("attack3");
+  preMaxDEF = localStorage.getItem("defense3");
+  preMaxMagic = localStorage.getItem("magic3");
+  preMaxDexterity = localStorage.getItem("dexterity3");
+  }
+  else{
+    console.log('not enough exp.');
+  };
+ };
+};
+
+function completeLevelUp(){
+ if(points === 0){ 
+    document.getElementById("levelUpScreen").style.display = "none";
+  if(fileNumber === "1"){
+    exp1 = exp1 - expNeeded;
+    localStorage.setItem("expOne", exp1);
+    localStorage.setItem("lvlOne", lvl1+1);
+    localStorage.setItem("maxHP1", document.getElementById("playerMaxHP").innerHTML);
+    localStorage.setItem("maxMP1", document.getElementById("playerMaxMP").innerHTML);
+    localStorage.setItem("maxSP1", document.getElementById("playerMaxSP").innerHTML);
+    localStorage.setItem("attack1", document.getElementById("playerATK").innerHTML);
+    localStorage.setItem("defense1", document.getElementById("playerDEF").innerHTML);
+    localStorage.setItem("magic1", document.getElementById("playerMagic").innerHTML);
+    localStorage.setItem("dexterity1", document.getElementById("playerDexterity").innerHTML);
+    }
+  else if(fileNumber === "2"){
+    exp2 = exp2 - expNeeded;
+    localStorage.setItem("expTwo", exp2);
+    localStorage.setItem("lvlTwo", lvl2+1);
+    localStorage.setItem("maxHP2", document.getElementById("playerMaxHP").innerHTML);
+    localStorage.setItem("maxMP2", document.getElementById("playerMaxMP").innerHTML);
+    localStorage.setItem("maxSP2", document.getElementById("playerMaxSP").innerHTML);
+    localStorage.setItem("attack2", document.getElementById("playerATK").innerHTML);
+    localStorage.setItem("defense2", document.getElementById("playerDEF").innerHTML);
+    localStorage.setItem("magic2", document.getElementById("playerMagic").innerHTML);
+    localStorage.setItem("dexterity2", document.getElementById("playerDexterity").innerHTML);
+  }
+  else if(fileNumber === "3"){
+    exp3 = exp3 - expNeeded;
+    localStorage.setItem("expThree", exp3);
+    localStorage.setItem("lvlThree", lvl3+1);
+    localStorage.setItem("maxHP3", document.getElementById("playerMaxHP").innerHTML);
+    localStorage.setItem("maxMP3", document.getElementById("playerMaxMP").innerHTML);
+    localStorage.setItem("maxSP3", document.getElementById("playerMaxSP").innerHTML);
+    localStorage.setItem("attack3", document.getElementById("playerATK").innerHTML);
+    localStorage.setItem("defense3", document.getElementById("playerDEF").innerHTML);
+    localStorage.setItem("magic3", document.getElementById("playerMagic").innerHTML);
+    localStorage.setItem("dexterity3", document.getElementById("playerDexterity").innerHTML);
+  };
+}
+ else{
+  console.log("Not all points have been assigned");
+};
+};
+
+//Functions for choosing max hp after leveling up.
+function incrementHP(){
+ if (points > 0){
+  document.getElementById("playerMaxHP").innerHTML = (parseInt(document.getElementById("playerMaxHP").innerHTML)) + 1;
+  points = points - 1;
+ }
+ else{
+   console.log("No points left");
+ };
+};
+function decrementHP(){
+  if ((parseInt(document.getElementById("playerMaxHP").innerHTML)) <= preMaxHP){
+   console.log("Cannot decrease below starting value.")
+  }
+  else{
+    document.getElementById("playerMaxHP").innerHTML = (parseInt(document.getElementById("playerMaxHP").innerHTML)) - 1;
+   points = points + 1;
+  };
+ };
+
+ //Functions for choosing max mp after leveling up.
+function incrementMP(){
+  if (points > 0){
+   document.getElementById("playerMaxMP").innerHTML = (parseInt(document.getElementById("playerMaxMP").innerHTML)) + 1;
+   points = points - 1;
+  }
+  else{
+    console.log("No points left");
+  };
+ };
+ function decrementMP(){
+   if ((parseInt(document.getElementById("playerMaxMP").innerHTML)) <= preMaxMP){
+    console.log("Cannot decrease below starting value.")
+   }
+   else{
+     document.getElementById("playerMaxMP").innerHTML = (parseInt(document.getElementById("playerMaxMP").innerHTML)) - 1;
+    points = points + 1;
+   };
+  };
+
+   //Functions for choosing max sp after leveling up.
+function incrementSP(){
+  if (points > 0){
+   document.getElementById("playerMaxSP").innerHTML = (parseInt(document.getElementById("playerMaxSP").innerHTML)) + 1;
+   points = points - 1;
+  }
+  else{
+    console.log("No points left");
+  };
+ };
+ function decrementSP(){
+   if ((parseInt(document.getElementById("playerMaxSP").innerHTML)) <= preMaxSP){
+    console.log("Cannot decrease below starting value.")
+   }
+   else{
+     document.getElementById("playerMaxSP").innerHTML = (parseInt(document.getElementById("playerMaxSP").innerHTML)) - 1;
+    points = points + 1;
+   };
+  };
+
+     //Functions for choosing max atk after leveling up.
+function incrementATK(){
+  if (points > 0){
+   document.getElementById("playerATK").innerHTML = (parseInt(document.getElementById("playerATK").innerHTML)) + 1;
+   points = points - 1;
+  }
+  else{
+    console.log("No points left");
+  };
+ };
+ function decrementATK(){
+   if ((parseInt(document.getElementById("playerATK").innerHTML)) <= preMaxATK){
+    console.log("Cannot decrease below starting value.")
+   }
+   else{
+     document.getElementById("playerATK").innerHTML = (parseInt(document.getElementById("playerATK").innerHTML)) - 1;
+    points = points + 1;
+   };
+  };
+
+       //Functions for choosing max def after leveling up.
+function incrementDEF(){
+  if (points > 0){
+   document.getElementById("playerDEF").innerHTML = (parseInt(document.getElementById("playerDEF").innerHTML)) + 1;
+   points = points - 1;
+  }
+  else{
+    console.log("No points left");
+  };
+ };
+ function decrementDEF(){
+   if ((parseInt(document.getElementById("playerDEF").innerHTML)) <= preMaxDEF){
+    console.log("Cannot decrease below starting value.")
+   }
+   else{
+     document.getElementById("playerDEF").innerHTML = (parseInt(document.getElementById("playerDEF").innerHTML)) - 1;
+    points = points + 1;
+   };
+  };
+
+       //Functions for choosing max magic after leveling up.
+function incrementMagic(){
+  if (points > 0){
+   document.getElementById("playerMagic").innerHTML = (parseInt(document.getElementById("playerMagic").innerHTML)) + 1;
+   points = points - 1;
+  }
+  else{
+    console.log("No points left");
+  };
+ };
+ function decrementMagic(){
+   if ((parseInt(document.getElementById("playerMagic").innerHTML)) <= preMaxMagic){
+    console.log("Cannot decrease below starting value.")
+   }
+   else{
+     document.getElementById("playerMagic").innerHTML = (parseInt(document.getElementById("playerMagic").innerHTML)) - 1;
+    points = points + 1;
+   };
+  };
+
+       //Functions for choosing max dexterity after leveling up.
+function incrementDexterity(){
+  if (points > 0){
+   document.getElementById("playerDexterity").innerHTML = (parseInt(document.getElementById("playerDexterity").innerHTML)) + 1;
+   points = points - 1;
+  }
+  else{
+    console.log("No points left");
+  };
+ };
+ function decrementDexterity(){
+   if ((parseInt(document.getElementById("playerDexterity").innerHTML)) <= preMaxDexterity){
+    console.log("Cannot decrease below starting value.")
+   }
+   else{
+     document.getElementById("playerDexterity").innerHTML = (parseInt(document.getElementById("playerDexterity").innerHTML)) - 1;
+    points = points + 1;
+   };
+  };

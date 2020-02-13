@@ -23,7 +23,67 @@
 <button onclick="buySpPotion();" id="spPotion">Special | 125 Gold</button>
 </div>
 
-<button>Skills</button>
+<button id="skillsButton" onclick="viewSkills();">Open Skills</button>
+<div id="skillsContainer">
+    <button onclick="levelUp();">Level Up</button>
+    <div id="levelUpScreen">
+        <div id="increaseHP">
+            Max HP
+            <button onclick="incrementHP();">+</button>
+            <button onclick="decrementHP();">-</button>
+            <div id="playerMaxHP">0</div>
+        </div>
+
+        <div id="increaseMP">
+            Max MP
+            <button onclick="incrementMP();">+</button>
+            <button onclick="decrementMP();">-</button>
+            <div id="playerMaxMP">0</div>
+        </div>
+
+        <div id="increaseSP">
+            Max SP
+            <button onclick="incrementSP();">+</button>
+            <button onclick="decrementSP();">-</button>
+            <div id="playerMaxSP">0</div>
+        </div>
+
+        <div id="increaseATK">
+            Attack
+            <button onclick="incrementATK();">+</button>
+            <button onclick="decrementATK();">-</button>
+            <div id="playerATK">0</div>
+        </div>
+
+        <div id="increaseDEF">
+            Defense
+            <button onclick="incrementDEF();">+</button>
+            <button onclick="decrementDEF();">-</button>
+            <div id="playerDEF">0</div>
+        </div>
+
+        <div id="increaseMagic">
+            Magic
+            <button onclick="incrementMagic();">+</button>
+            <button onclick="decrementMagic();">-</button>
+            <div id="playerMagic">0</div>
+        </div>
+
+        <div id="increaseDexterity">
+            Dexterity
+            <button onclick="incrementDexterity();">+</button>
+            <button onclick="decrementDexterity();">-</button>
+            <div id="playerDexterity">0</div>
+        </div>
+
+        <button onclick="completeLevelUp();">X</button>
+
+    </div>
+
+
+    <button>Put more skill buttons with functionality in here eventually.</button>
+</div>
+
 <button onclick="window.location='./'">Main Menu</button>
 
       <script src="/script/script.js"></script>

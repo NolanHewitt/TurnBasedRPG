@@ -26,3 +26,12 @@ body {
   color: white;
   display: none;
 }
+
+#skillsContainer {
+  display: none;
+}
+
+#levelUpScreen {
+  background-color: white;
+  display: none;
+}
