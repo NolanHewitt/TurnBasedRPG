@@ -14,6 +14,10 @@ let lvl3 = parseInt(localStorage.getItem("lvlThree"));
 let exp1 = parseInt(localStorage.getItem("expOne"));
 let exp2 = parseInt(localStorage.getItem("expTwo"));
 let exp3 = parseInt(localStorage.getItem("expThree"));
+//EXP needed to level up
+let expNeeded1 = parseInt(localStorage.getItem("expNeeded1"));
+let expNeeded2 = parseInt(localStorage.getItem("expNeeded2"));
+let expNeeded3 = parseInt(localStorage.getItem("expNeeded3"));
 //use battleXP to store xp value earned from battle before adding it to exp
 let battleXP;
 //Money for each file
@@ -137,6 +141,10 @@ let currentEnemy = parseInt(localStorage.getItem("currentEnemy"));
 let rng = parseInt(localStorage.getItem("currentEnemy"));
 let blockingModifier = 1;
 let inBattle = localStorage.getItem("inBattle");
+//Menu display variables
+let shopDisplay = false;
+let inventoryDisplay = false;
+let skillsDisplay = false;
 
 console.log("Currently playing file number " + fileNumber + ".");
 
@@ -244,6 +252,8 @@ function startBalanced(){
   localStorage.setItem("armor1", "Cloth");
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
+  localStorage.setItem("expNeeded1", "100");
+  localStorage.setItem("currentEnemy", "0");
   localStorage.setItem("intro1", true);
   localStorage.setItem("inBattle", false);
   }
@@ -270,6 +280,8 @@ function startBalanced(){
     localStorage.setItem("armor2", "Cloth");
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
+    localStorage.setItem("expNeeded2", "100");
+    localStorage.setItem("currentEnemy", "0");
     localStorage.setItem("intro2", true);
     localStorage.setItem("inBattle", false);
     }
@@ -296,6 +308,8 @@ function startBalanced(){
     localStorage.setItem("armor3", "Cloth");
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
+    localStorage.setItem("expNeeded3", "100");
+    localStorage.setItem("currentEnemy", "0");
     localStorage.setItem("intro3", true);
     localStorage.setItem("inBattle", false);
     };
@@ -329,6 +343,8 @@ function startAttack(){
   localStorage.setItem("armor1", "Cloth");
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
+  localStorage.setItem("expNeeded1", "100");
+  localStorage.setItem("currentEnemy", "0");
   localStorage.setItem("intro1", true);
   localStorage.setItem("inBattle", false);
   }
@@ -355,6 +371,8 @@ function startAttack(){
     localStorage.setItem("armor2", "Cloth");
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
+    localStorage.setItem("expNeeded2", "100");
+    localStorage.setItem("currentEnemy", "0");
     localStorage.setItem("intro2", true);
     localStorage.setItem("inBattle", false);
     }
@@ -381,6 +399,8 @@ function startAttack(){
     localStorage.setItem("armor3", "Cloth");
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
+    localStorage.setItem("expNeeded3", "100");
+    localStorage.setItem("currentEnemy", "0");
     localStorage.setItem("intro3", true);
     localStorage.setItem("inBattle", false);
     };
@@ -408,13 +428,14 @@ function startDefense(){
   localStorage.setItem("dexterity1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
-  
   localStorage.setItem("weapon1", "Fists");
   localStorage.setItem("weaponAtk1", "0");
   localStorage.setItem("weaponValue1", "0");
   localStorage.setItem("armor1", "Cloth");
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
+  localStorage.setItem("expNeeded1", "100");
+  localStorage.setItem("currentEnemy", "0");
   localStorage.setItem("intro1", true);
   localStorage.setItem("inBattle", false);
   }
@@ -435,13 +456,14 @@ function startDefense(){
     localStorage.setItem("dexterity2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
-
     localStorage.setItem("weapon2", "Fists");
     localStorage.setItem("weaponAtk2", "0");
     localStorage.setItem("weaponValue2", "0");
     localStorage.setItem("armor2", "Cloth");
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
+    localStorage.setItem("expNeeded2", "100");
+    localStorage.setItem("currentEnemy", "0");
     localStorage.setItem("intro2", true);
     localStorage.setItem("inBattle", false);
     }
@@ -462,13 +484,14 @@ function startDefense(){
     localStorage.setItem("dexterity3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
-    
     localStorage.setItem("weapon3", "Fists");
     localStorage.setItem("weaponAtk3", "0");
     localStorage.setItem("weaponValue3", "0");
     localStorage.setItem("armor3", "Cloth");
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
+    localStorage.setItem("expNeeded3", "100");
+    localStorage.setItem("currentEnemy", "0");
     localStorage.setItem("intro3", true);
     localStorage.setItem("inBattle", false);
     };
@@ -496,13 +519,14 @@ function startMagic(){
   localStorage.setItem("dexterity1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
-  
   localStorage.setItem("weapon1", "Fists");
   localStorage.setItem("weaponAtk1", "0");
   localStorage.setItem("weaponValue1", "0");
   localStorage.setItem("armor1", "Cloth");
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
+  localStorage.setItem("expNeeded1", "100");
+  localStorage.setItem("currentEnemy", "0");
   localStorage.setItem("intro1", true);
   localStorage.setItem("inBattle", false);
   }
@@ -523,13 +547,14 @@ function startMagic(){
     localStorage.setItem("dexterity2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
-
     localStorage.setItem("weapon2", "Fists");
     localStorage.setItem("weaponAtk2", "0");
     localStorage.setItem("weaponValue2", "0");
     localStorage.setItem("armor2", "Cloth");
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
+    localStorage.setItem("expNeeded2", "100");
+    localStorage.setItem("currentEnemy", "0");
     localStorage.setItem("intro2", true);
     localStorage.setItem("inBattle", false);
     }
@@ -550,13 +575,14 @@ function startMagic(){
     localStorage.setItem("dexterity3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
-    
     localStorage.setItem("weapon3", "Fists");
     localStorage.setItem("weaponAtk3", "0");
     localStorage.setItem("weaponValue3", "0");
     localStorage.setItem("armor3", "Cloth");
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
+    localStorage.setItem("expNeeded3", "100");
+    localStorage.setItem("currentEnemy", "0");
     localStorage.setItem("intro3", true);
     localStorage.setItem("inBattle", false);
     };
@@ -1430,7 +1456,6 @@ function dexterityUp(){
   let allItems = [item1, item2, item3];
 
   //Shop function
-  let shopDisplay = false;
   //Function to display the shop
   function viewShop(){
     if (shopDisplay === false){
@@ -1835,11 +1860,7 @@ for (i = 0; i < stuffParse1.length; i++) {
   document.getElementById("inventory").appendChild(node);
 };
 
-
-let inventoryDisplay = false;
 function displayInventory(){
-  inBattle = false;
-  localStorage.setItem("inBattle", false);
   if (inventoryDisplay === false){
     document.getElementById("inventory").style.display = "block";
     inventoryDisplay = true;
@@ -2022,7 +2043,6 @@ function useItem(itemId){
 //-------------------------------------------------------------------------------------------------------------------------------------------
 
 //Skills functions begin here
-let skillsDisplay = false;
 function viewSkills(){
   if (skillsDisplay === false){
     document.getElementById("skillsContainer").style.display = "block";
@@ -2039,11 +2059,9 @@ function viewSkills(){
 //points for increasing stats
 let points = 3;
 let preMaxHP;
-//EXP needed to level up
-let expNeeded = 100;
 function levelUp(){
  if (fileNumber === "1"){
-  if (exp1 >= expNeeded){
+  if (exp1 >= expNeeded1){
   document.getElementById("levelUpScreen").style.display = "block";
   document.getElementById("playerMaxHP").innerHTML = localStorage.getItem("maxHP1");
   document.getElementById("playerMaxMP").innerHTML = localStorage.getItem("maxMP1");
@@ -2065,7 +2083,7 @@ function levelUp(){
   };
  }
  else if (fileNumber === "2"){
-  if (exp2 >= expNeeded){  
+  if (exp2 >= expNeeded2){  
   document.getElementById("levelUpScreen").style.display = "block";
   document.getElementById("playerMaxHP").innerHTML = localStorage.getItem("maxHP2");
   document.getElementById("playerMaxMP").innerHTML = localStorage.getItem("maxMP2");
@@ -2087,7 +2105,7 @@ function levelUp(){
   };
  }
  else if (fileNumber === "3"){
-  if (exp3 >= expNeeded){
+  if (exp3 >= expNeeded3){
   document.getElementById("levelUpScreen").style.display = "block";
   document.getElementById("playerMaxHP").innerHTML = localStorage.getItem("maxHP3");
   document.getElementById("playerMaxMP").innerHTML = localStorage.getItem("maxMP3");
@@ -2117,38 +2135,57 @@ function completeLevelUp(){
     exp1 = exp1 - expNeeded;
     localStorage.setItem("expOne", exp1);
     localStorage.setItem("lvlOne", lvl1+1);
+    lvl1 = localStorage.getItem("lvlOne");
     localStorage.setItem("maxHP1", document.getElementById("playerMaxHP").innerHTML);
+    maxHP1 = localStorage.getItem("maxHP1");
     localStorage.setItem("maxMP1", document.getElementById("playerMaxMP").innerHTML);
+    maxMP1 = localStorage.getItem("maxMP1");
     localStorage.setItem("maxSP1", document.getElementById("playerMaxSP").innerHTML);
+    maxSP1 = localStorage.getItem("maxSP1");
     localStorage.setItem("attack1", document.getElementById("playerATK").innerHTML);
     localStorage.setItem("defense1", document.getElementById("playerDEF").innerHTML);
     localStorage.setItem("magic1", document.getElementById("playerMagic").innerHTML);
     localStorage.setItem("dexterity1", document.getElementById("playerDexterity").innerHTML);
+    expNeeded1=(((2075/2)*lvl1)-1875/2);
+    localStorage.setItem("expNeeded1", expNeeded1);
     }
   else if(fileNumber === "2"){
     exp2 = exp2 - expNeeded;
     localStorage.setItem("expTwo", exp2);
     localStorage.setItem("lvlTwo", lvl2+1);
+    lvl2 = localStorage.getItem("lvlTwo");
     localStorage.setItem("maxHP2", document.getElementById("playerMaxHP").innerHTML);
+    maxHP2 = localStorage.getItem("maxHP2");
     localStorage.setItem("maxMP2", document.getElementById("playerMaxMP").innerHTML);
+    maxMP2 = localStorage.getItem("maxMP2");
     localStorage.setItem("maxSP2", document.getElementById("playerMaxSP").innerHTML);
+    maxSP2 = localStorage.getItem("maxSP2");
     localStorage.setItem("attack2", document.getElementById("playerATK").innerHTML);
     localStorage.setItem("defense2", document.getElementById("playerDEF").innerHTML);
     localStorage.setItem("magic2", document.getElementById("playerMagic").innerHTML);
     localStorage.setItem("dexterity2", document.getElementById("playerDexterity").innerHTML);
+    expNeeded2=(((2075/2)*lvl1)-1875/2);
+    localStorage.setItem("expNeeded2", expNeeded2);
   }
   else if(fileNumber === "3"){
     exp3 = exp3 - expNeeded;
     localStorage.setItem("expThree", exp3);
     localStorage.setItem("lvlThree", lvl3+1);
+    lvl3 = localStorage.getItem("lvlThree");
     localStorage.setItem("maxHP3", document.getElementById("playerMaxHP").innerHTML);
+    maxHP3 = localStorage.getItem("maxHP3");
     localStorage.setItem("maxMP3", document.getElementById("playerMaxMP").innerHTML);
+    maxMP3 = localStorage.getItem("maxMP3");
     localStorage.setItem("maxSP3", document.getElementById("playerMaxSP").innerHTML);
+    maxSP3 = localStorage.getItem("maxSP3");
     localStorage.setItem("attack3", document.getElementById("playerATK").innerHTML);
     localStorage.setItem("defense3", document.getElementById("playerDEF").innerHTML);
     localStorage.setItem("magic3", document.getElementById("playerMagic").innerHTML);
     localStorage.setItem("dexterity3", document.getElementById("playerDexterity").innerHTML);
+    expNeeded3=(((2075/2)*lvl1)-1875/2);
+    localStorage.setItem("expNeeded3", expNeeded3);
   };
+  //Increase next about of xp needed to level up.
 }
  else{
   console.log("Not all points have been assigned");
