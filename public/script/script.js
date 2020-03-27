@@ -145,6 +145,7 @@ let inBattle = localStorage.getItem("inBattle");
 let shopDisplay = false;
 let inventoryDisplay = false;
 let skillsDisplay = false;
+let menuOpen = false;
 let points = 3;
 let preMaxHP;
 let preMaxMP;
@@ -168,6 +169,7 @@ console.log("Currently playing file number " + fileNumber + ".");
     if (typeof(Storage) !== "undefined") {
      // Retrieve
         localStorage.setItem("fileNumber", "1");
+        localStorage.setItem("inBattle", false);
         fileNumber = localStorage.getItem("fileNumber");
         console.log("File " + fileNumber + " selected.");
 
@@ -191,6 +193,7 @@ console.log("Currently playing file number " + fileNumber + ".");
       if (typeof(Storage) !== "undefined") {
        // Retrieve
        localStorage.setItem("fileNumber", "2");
+       localStorage.setItem("inBattle", false);
        fileNumber = localStorage.getItem("fileNumber");
        console.log("File " + fileNumber + " selected.");
 
@@ -214,6 +217,7 @@ console.log("Currently playing file number " + fileNumber + ".");
         if (typeof(Storage) !== "undefined") {
          // Retrieve
          localStorage.setItem("fileNumber", "3");
+         localStorage.setItem("inBattle", false);
          fileNumber = localStorage.getItem("fileNumber");
          console.log("File " + fileNumber + " selected.");
 
@@ -261,7 +265,7 @@ function startBalanced(){
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
   localStorage.setItem("expNeeded1", "100");
-  localStorage.setItem("currentEnemy", "0");
+  localStorage.setItem("currentEnemy", "1");
   localStorage.setItem("intro1", true);
   localStorage.setItem("inBattle", false);
   }
@@ -289,7 +293,7 @@ function startBalanced(){
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
     localStorage.setItem("expNeeded2", "100");
-    localStorage.setItem("currentEnemy", "0");
+    localStorage.setItem("currentEnemy", "1");
     localStorage.setItem("intro2", true);
     localStorage.setItem("inBattle", false);
     }
@@ -317,7 +321,7 @@ function startBalanced(){
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
     localStorage.setItem("expNeeded3", "100");
-    localStorage.setItem("currentEnemy", "0");
+    localStorage.setItem("currentEnemy", "1");
     localStorage.setItem("intro3", true);
     localStorage.setItem("inBattle", false);
     };
@@ -352,7 +356,7 @@ function startAttack(){
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
   localStorage.setItem("expNeeded1", "100");
-  localStorage.setItem("currentEnemy", "0");
+  localStorage.setItem("currentEnemy", "1");
   localStorage.setItem("intro1", true);
   localStorage.setItem("inBattle", false);
   }
@@ -380,7 +384,7 @@ function startAttack(){
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
     localStorage.setItem("expNeeded2", "100");
-    localStorage.setItem("currentEnemy", "0");
+    localStorage.setItem("currentEnemy", "1");
     localStorage.setItem("intro2", true);
     localStorage.setItem("inBattle", false);
     }
@@ -408,7 +412,7 @@ function startAttack(){
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
     localStorage.setItem("expNeeded3", "100");
-    localStorage.setItem("currentEnemy", "0");
+    localStorage.setItem("currentEnemy", "1");
     localStorage.setItem("intro3", true);
     localStorage.setItem("inBattle", false);
     };
@@ -443,7 +447,7 @@ function startDefense(){
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
   localStorage.setItem("expNeeded1", "100");
-  localStorage.setItem("currentEnemy", "0");
+  localStorage.setItem("currentEnemy", "1");
   localStorage.setItem("intro1", true);
   localStorage.setItem("inBattle", false);
   }
@@ -471,7 +475,7 @@ function startDefense(){
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
     localStorage.setItem("expNeeded2", "100");
-    localStorage.setItem("currentEnemy", "0");
+    localStorage.setItem("currentEnemy", "1");
     localStorage.setItem("intro2", true);
     localStorage.setItem("inBattle", false);
     }
@@ -499,7 +503,7 @@ function startDefense(){
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
     localStorage.setItem("expNeeded3", "100");
-    localStorage.setItem("currentEnemy", "0");
+    localStorage.setItem("currentEnemy", "1");
     localStorage.setItem("intro3", true);
     localStorage.setItem("inBattle", false);
     };
@@ -534,7 +538,7 @@ function startMagic(){
   localStorage.setItem("armorDef1", "0");
   localStorage.setItem("armorValue1", "0");
   localStorage.setItem("expNeeded1", "100");
-  localStorage.setItem("currentEnemy", "0");
+  localStorage.setItem("currentEnemy", "1");
   localStorage.setItem("intro1", true);
   localStorage.setItem("inBattle", false);
   }
@@ -562,7 +566,7 @@ function startMagic(){
     localStorage.setItem("armorDef2", "0");
     localStorage.setItem("armorValue2", "0");
     localStorage.setItem("expNeeded2", "100");
-    localStorage.setItem("currentEnemy", "0");
+    localStorage.setItem("currentEnemy", "1");
     localStorage.setItem("intro2", true);
     localStorage.setItem("inBattle", false);
     }
@@ -590,7 +594,7 @@ function startMagic(){
     localStorage.setItem("armorDef3", "0");
     localStorage.setItem("armorValue3", "0");
     localStorage.setItem("expNeeded3", "100");
-    localStorage.setItem("currentEnemy", "0");
+    localStorage.setItem("currentEnemy", "1");
     localStorage.setItem("intro3", true);
     localStorage.setItem("inBattle", false);
     };
@@ -612,16 +616,19 @@ if (fileNumber === "1"){
   HP1 = maxHP1;
   localStorage.setItem("HP1", HP1);
   console.log("HP1 maxed, HP1 is now " + HP1);
+  updateHud();
 }
 else if (fileNumber === "2"){
   HP2 = maxHP2;
   localStorage.setItem("HP2", HP2);
   console.log("HP2 maxed, HP2 is now " + HP2);
+  updateHud();
 }
 else if (fileNumber === "3"){
   HP3 = maxHP3;
   localStorage.setItem("HP3", HP3);
   console.log("HP3 maxed, HP3 is now " + HP3);
+  updateHud();
 };
 };
 
@@ -630,16 +637,19 @@ function restoreMP(){
     MP1 = maxMP1;
     localStorage.setItem("MP1", MP1);
     console.log("MP1 maxed, MP1 is now " + MP1);
+    updateHud();
   }
   else if (fileNumber === "2"){
     MP2 = maxMP2;
     localStorage.setItem("MP2", MP2);
     console.log("MP2 maxed, MP2 is now " + MP2);
+    updateHud();
   }
   else if (fileNumber === "3"){
     MP3 = maxMP3;
     localStorage.setItem("MP3", MP3);
     console.log("MP3 maxed, MP3 is now " + MP3);
+    updateHud();
   };
 };
 
@@ -648,16 +658,19 @@ function restoreSP(){
     SP1 = maxSP1;
     localStorage.setItem("SP1", SP1);
     console.log("SP1 maxed, SP1 is now " + SP1);
+    updateHud();
   }
   else if (fileNumber === "2"){
     SP2 = maxSP2;
     localStorage.setItem("SP2", SP2);
     console.log("SP2 maxed, SP2 is now " + SP2);
+    updateHud();
   }
   else if (fileNumber === "3"){
     SP3 = maxSP3;
     localStorage.setItem("SP3", SP3);
     console.log("SP3 maxed, SP3 is now " + SP3);
+    updateHud();
   };
 };
 
@@ -684,7 +697,7 @@ function restoreSP(){
   //Battle script
 
   //Enemy constructor
-  function Enemy(name, lvl, hp, maxHP, atk, def, mp, lore) {
+  function Enemy(name, lvl, hp, maxHP, atk, def, mp, maxMP, sp, maxSP, lore) {
     this.enemyName = name
     this.enemyLvl = lvl;
     this.enemyHp = hp;
@@ -692,17 +705,25 @@ function restoreSP(){
     this.enemyAtk = atk;
     this.enemyDef = def;
     this.enemyMp = mp;
+    this.enemyMaxMp = maxMP;
+    this.enemySp = sp;
+    this.enemyMaxSp = maxSP;
     this.enemyLore = lore;
   };
 
   //All enemies go here, must have enough enemies to be 5 lvls higher than what the player can reach
-  const enemy1 = new Enemy("John", 1, 10, 10, 1, 0, 5, "John lore goes here");
-  const enemy2 = new Enemy("Bob", 2, 12, 12, 2, 0, 5, "Bob lore goes here");
-  const enemy3 = new Enemy("George", 3, 12, 12, 1, 0, 10, "George lore goes here");
-  const enemy4 = new Enemy("Nolan", 4, 15, 15, 1, 1, 5, "Nolan lore goes here");
-  const enemy5 = new Enemy("Dan", 5, 15, 15, 2, 1, 0, "Dan lore goes here");
+  const enemy1 = new Enemy("John", 1, 10, 10, 1, 0, 5, 5, 10, 10, "John lore goes here");
+  const enemy2 = new Enemy("Bob", 2, 12, 12, 2, 0, 5, 5, 10, 10, "Bob lore goes here");
+  const enemy3 = new Enemy("George", 3, 12, 12, 1, 0, 10, 10, 10, 10, "George lore goes here");
+  const enemy4 = new Enemy("Nolan", 4, 15, 15, 1, 1, 5, 5, 10, 10, "Nolan lore goes here");
+  const enemy5 = new Enemy("Dan", 5, 15, 15, 2, 1, 5, 5, 10, 10, "Dan lore goes here");
+  const enemy6 = new Enemy("Luna ", 6, 15, 15, 2, 1, 5, 5, 10, 10, "Dan lore goes here");
+  const enemy7 = new Enemy("Guy", 7, 15, 15, 2, 1, 5, 5, 10, 10, "Dan lore goes here");
+  const enemy8 = new Enemy("Jack", 8, 15, 15, 2, 1, 5, 5, 10, 10, "Dan lore goes here");
+  const enemy9 = new Enemy("Pink Panther", 9, 20, 20, 3, 2, 0, 0, 15, 15, "Pink Panther lore goes here");
+  
 
-  let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
+  let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9];
 
   //How to select random enemy
   console.log(allEnemies[rng-1]);
@@ -714,6 +735,9 @@ function restoreSP(){
   let opponentAtk = allEnemies[rng-1].enemyAtk;
   let opponentDef = allEnemies[rng-1].enemyDef;
   let opponentMp = allEnemies[rng-1].enemyMp;
+  let opponentMaxMp = allEnemies[rng-1].enemyMaxMp;
+  let opponentSp = allEnemies[rng-1].enemySp;
+  let opponentMaxSp = allEnemies[rng-1].enemyMaxSp;
   let opponentLore = allEnemies[rng-1].enemyLore;
   console.log("Enemy name: " + opponentName);
   console.log("Enemy lvl: " + opponentLvl);
@@ -722,6 +746,7 @@ function restoreSP(){
   console.log("Enemy atk: " + opponentAtk);
   console.log("Enemy def: " + opponentDef);
   console.log("Enemy MP: " + opponentMp);
+  console.log("Enemy SP: " + opponentSp);
   console.log(opponentLore);
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -888,6 +913,8 @@ else if (fileNumber === "2"){
    };
   };
    //end
+   updateEnemyHud();
+   setTurn();
   };
 //End of normal attack function
 
@@ -927,6 +954,8 @@ if (controlsLocked === false){
 else {
   console.log("Controls are locked");
 };
+updateEnemyHud();
+setTurn();
 };
 //End of block function
 
@@ -948,6 +977,7 @@ function flee(){
     localStorage.setItem("HP1", HP1);
     localStorage.setItem("MP1", MP1);
     localStorage.setItem("SP1", SP1);
+    localStorage.setItem("inBattle", false);
     window.location = "game";
     controlsLocked = false;
   }
@@ -967,6 +997,7 @@ else if (fileNumber === "2"){
     localStorage.setItem("HP2", HP2);
     localStorage.setItem("MP2", MP2);
     localStorage.setItem("SP2", SP2);
+    localStorage.setItem("inBattle", false);
     window.location = "game";
     controlsLocked = false;
   }
@@ -986,6 +1017,7 @@ else if (fileNumber === "3"){
     localStorage.setItem("HP3", HP3);
     localStorage.setItem("MP3", MP3);
     localStorage.setItem("SP3", SP3);
+    localStorage.setItem("inBattle", false);
     window.location = "game";
     controlsLocked = false;
   }
@@ -998,6 +1030,8 @@ else if (fileNumber === "3"){
 else{
   console.log("controls still locked");
 };
+updateEnemyHud();
+setTurn();
 };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1027,12 +1061,17 @@ function enemyAttack1(){
     //Unlock controls after the enemy has completed their attack turn
     controlsLocked = false;
     console.log("controls unlocked");
+    updateHud();
+    setTurn();
   }, 2500);
  }
  else {
    console.log("Item used");
    controlsLocked= false;
  };
+ updateHud();
+ updateEnemyHud();
+ setTurn();
 };
 
 //File 2
@@ -1055,12 +1094,17 @@ function enemyAttack2(){
     //Unlock controls after the enemy has completed their attack turn
     controlsLocked = false;
     console.log("controls unlocked");
+    updateHud();
+    setTurn();
   }, 2500);
 }
 else {
   console.log("Item used");
   controlsLocked= false;
  };
+ updateHud();
+ updateEnemyHud();
+ setTurn();
 };
 
 //File 3
@@ -1083,12 +1127,17 @@ function enemyAttack3(){
     //Unlock controls after the enemy has completed their attack turn
     controlsLocked = false;
     console.log("controls unlocked");
+    updateHud();
+    setTurn();
   }, 2500);
 }
 else {
   console.log("Item used");
   controlsLocked= false;
  };
+ updateHud();
+ updateEnemyHud();
+ setTurn();
 };
 
 //end of function for the enemies attack against you
@@ -1124,6 +1173,7 @@ function returnHome(){
     localStorage.setItem("MP2", MP2);
     localStorage.setItem("SP2", SP2);
     localStorage.setItem("money2", money2 + battleMoney);
+    localStorage.setItem("inBattle", false);
     //Return to prebattle area
     window.location = "game";
   }
@@ -1134,6 +1184,7 @@ function returnHome(){
     localStorage.setItem("MP3", MP3);
     localStorage.setItem("SP3", SP3);
     localStorage.setItem("money3", money3 + battleMoney);
+    localStorage.setItem("inBattle", false);
     //Return to prebattle area
     window.location = "game";
   };
@@ -1164,7 +1215,12 @@ function heal(){
   if (controlsLocked === false){
     console.log("healing for " + (magic1+1) + " HP.");
     controlsLocked = true;
-    HP1 = HP1 + (magic1+1);
+    if ((HP1 + (magic1+1)) >= (maxHP1)){
+      HP1 = maxHP1;
+    }
+    else{
+      HP1 = HP1 + (magic1+1);
+    };
     MP1 = MP1 - 5;
     console.log(MP1 + " MP left");
     enemyAttack1();
@@ -1178,7 +1234,12 @@ function heal(){
   if (controlsLocked === false){
     console.log("healing for " + (magic2+1) + " HP.");
     controlsLocked = true;
-    HP2 = HP2 + (magic2+1);
+    if ((HP1 + (magic1+1)) >= (maxHP1)){
+      HP1 = maxHP1;
+    }
+    else{
+      HP1 = HP1 + (magic1+1);
+    };
     MP2 = MP2 - 5;
     console.log(MP2 + " MP left");
     enemyAttack2();
@@ -1192,7 +1253,12 @@ function heal(){
   if (controlsLocked === false){
     console.log("healing for " + (magic3+1) + " HP.");
     controlsLocked = true;
-    HP3 = HP3 + (magic3+1);
+    if ((HP1 + (magic1+1)) >= (maxHP1)){
+      HP1 = maxHP1;
+    }
+    else{
+      HP1 = HP1 + (magic1+1);
+    };
     MP3 = MP3 - 5;
     console.log(MP3 + " MP left");
     enemyAttack3();
@@ -1203,6 +1269,9 @@ function heal(){
   else {
     console.log("Controls are locked");
   };
+  updateHud();
+  updateEnemyHud();
+  setTurn();
   };
   //End of heal function
 
@@ -1307,6 +1376,9 @@ function magicBlast(){
   else {
     console.log("Controls are locked");
   };
+  updateHud();
+  updateEnemyHud();
+  setTurn();
   };
   //End of magic blast function
 
@@ -1387,6 +1459,9 @@ function magicBlast(){
     else {
       console.log("Controls are locked");
     };
+    updateHud();
+    updateEnemyHud();
+    setTurn();
     };
     //End of magic cut function
 
@@ -1440,6 +1515,9 @@ function dexterityUp(){
   else {
     console.log("Controls are locked");
   };
+  updateHud();
+  updateEnemyHud();
+  setTurn();
   };
   //End of cut dexterity up function
 
@@ -1466,18 +1544,21 @@ function dexterityUp(){
   //Shop function
   //Function to display the shop
   function viewShop(){
-    if (shopDisplay === false){
+    if (shopDisplay === false && menuOpen === false){
       document.getElementById("shopContainer").style.display = "block";
       document.getElementById("shopButton").innerHTML = "Close Shop";
       shopDisplay = true;
+      menuOpen = true;
     }
     else if (shopDisplay === true){
       document.getElementById("shopContainer").style.display = "none";
       document.getElementById("shopButton").innerHTML = "Open Shop";
       shopDisplay = false;
+      menuOpen = false;
     };
   };
 
+  let i;
   //Function to buy health potions
   function buyHpPotion(){
     console.log("bought HP potion");
@@ -1855,29 +1936,53 @@ function dexterityUp(){
       };
     };
 
-console.log(stuffParse1.length);
-
 //Display all items into inventory before battle
-let i = 0;
-for (i = 0; i < stuffParse1.length; i++) {
+let j = 0;
+if (inBattle === "true" || inBattle === "false"){
+if (fileNumber === "1"){
+ for (j = 0; j < stuffParse1.length; j++) {
   let node = document.createElement("button");
-  node.setAttribute("id", "item" + i);
+  node.setAttribute("id", "item" + j);
   node.addEventListener('click', function(){useItem(this.id);}, false);
-  let textnode = document.createTextNode("Item: " + stuffParse1[i].itemName + " | Item Power: " + stuffParse1[i].itemPower + " | Item Description: " + stuffParse1[i].itemDescription);
+  let textnode = document.createTextNode("Item: " + stuffParse1[j].itemName + " | Item Power: " + stuffParse1[j].itemPower + " | Item Description: " + stuffParse1[j].itemDescription);
   node.appendChild(textnode);
   document.getElementById("inventory").appendChild(node);
+ };
+};
+if (fileNumber === "2"){
+  for (j = 0; j < stuffParse2.length; j++) {
+   let node = document.createElement("button");
+   node.setAttribute("id", "item" + j);
+   node.addEventListener('click', function(){useItem(this.id);}, false);
+   let textnode = document.createTextNode("Item: " + stuffParse2[j].itemName + " | Item Power: " + stuffParse2[j].itemPower + " | Item Description: " + stuffParse2[j].itemDescription);
+   node.appendChild(textnode);
+   document.getElementById("inventory").appendChild(node);
+  };
+ };
+ if (fileNumber === "3"){
+  for (j = 0; j < stuffParse3.length; j++) {
+   let node = document.createElement("button");
+   node.setAttribute("id", "item" + j);
+   node.addEventListener('click', function(){useItem(this.id);}, false);
+   let textnode = document.createTextNode("Item: " + stuffParse3[j].itemName + " | Item Power: " + stuffParse3[j].itemPower + " | Item Description: " + stuffParse3[j].itemDescription);
+   node.appendChild(textnode);
+   document.getElementById("inventory").appendChild(node);
+  };
+ };
 };
 
 function displayInventory(){
-  if (inventoryDisplay === false){
+  if (inventoryDisplay === false && menuOpen === false){
     document.getElementById("inventory").style.display = "block";
     inventoryDisplay = true;
     document.getElementById("inventoryDisplayer").innerHTML = "Close Inventory";
+    menuOpen = true;
   }
   else if (inventoryDisplay === true){
     document.getElementById("inventory").style.display = "none";
     inventoryDisplay = false;
     document.getElementById("inventoryDisplayer").innerHTML = "Open Inventory";
+    menuOpen = false;
   };
 };
 
@@ -2040,7 +2145,16 @@ function useItem(itemId){
           };
   document.getElementById(itemId).remove();
   controlsLocked = true;
-  enemyAttack1();
+  if (fileNumber === "1"){
+    enemyAttack1();
+  }
+  else if (fileNumber === "2"){
+    enemyAttack2();
+  }
+  else if (fileNumber === "3"){
+    enemyAttack3();
+  };
+  setTurn();
         }
         else {
           console.log("Controls still locked")
@@ -2052,15 +2166,17 @@ function useItem(itemId){
 
 //Skills functions begin here
 function viewSkills(){
-  if (skillsDisplay === false){
+  if (skillsDisplay === false && menuOpen === false){
     document.getElementById("skillsContainer").style.display = "block";
     document.getElementById("skillsButton").innerHTML = "Close Skills";
     skillsDisplay = true;
+    menuOpen = true;
   }
   else if (skillsDisplay === true){
     document.getElementById("skillsContainer").style.display = "none";
     document.getElementById("skillsButton").innerHTML = "Open Skills";
     skillsDisplay = false;
+    menuOpen = false;
   };
 };
 
@@ -2156,6 +2272,9 @@ function completeLevelUp(){
     localStorage.setItem("expNeeded1", expNeeded1);
     points = 3;
     document.getElementById("pointsLeft").innerHTML = "Points: 3";
+    HP1 = maxHP1;
+    MP1 = maxMP1;
+    SP1 = maxSP1;
     }
   else if(fileNumber === "2"){
     exp2 = exp2 - expNeeded2;
@@ -2176,6 +2295,9 @@ function completeLevelUp(){
     localStorage.setItem("expNeeded2", expNeeded2);
     points = 3;
     document.getElementById("pointsLeft").innerHTML = "Points: 3";
+    HP2 = maxHP2;
+    MP2 = maxMP2;
+    SP2 = maxSP2;
   }
   else if(fileNumber === "3"){
     exp3 = exp3 - expNeeded3;
@@ -2196,12 +2318,15 @@ function completeLevelUp(){
     localStorage.setItem("expNeeded3", expNeeded3);
     points = 3;
     document.getElementById("pointsLeft").innerHTML = "Points: 3";
+    HP3 = maxHP3;
+    MP3 = maxMP3;
+    SP3 = maxSP3;
   };
-  //Increase next about of xp needed to level up.
 }
  else{
   console.log("Not all points have been assigned");
 };
+updateHud();
 };
 
 //Functions for choosing max hp after leveling up.
@@ -2355,5 +2480,104 @@ function incrementDexterity(){
      document.getElementById("playerDexterity").innerHTML = (parseInt(document.getElementById("playerDexterity").innerHTML)) - 1;
     points = points + 1;
     document.getElementById("pointsLeft").innerHTML = "Points: " + points;
+   };
+  };
+
+//End of level up code
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+//Set HP/MP/SP bar on load
+  if (fileNumber === "1"){
+    document.getElementById("hpBar").style.width = ((HP1/maxHP1)*100) + "%";
+    document.getElementById("hpBar").innerHTML = "HP: " + HP1 + "/" + maxHP1;
+    document.getElementById("mpBar").style.width = ((MP1/maxMP1)*100) + "%";
+    document.getElementById("mpBar").innerHTML = "MP: " + MP1 + "/" + maxMP1;
+    document.getElementById("spBar").style.width = ((SP1/maxSP1)*100) + "%";
+    document.getElementById("spBar").innerHTML = "SP: " + SP1 + "/" + maxSP1;
+  }
+  else if (fileNumber === "2"){
+    document.getElementById("hpBar").style.width = ((HP2/maxHP2)*100) + "%";
+    document.getElementById("hpBar").innerHTML = "HP: " + HP2 + "/" + maxHP2;
+    document.getElementById("mpBar").style.width = ((MP2/maxMP2)*100) + "%";
+    document.getElementById("mpBar").innerHTML = "MP: " + MP2 + "/" + maxMP2;
+    document.getElementById("spBar").style.width = ((SP2/maxSP2)*100) + "%";
+    document.getElementById("spBar").innerHTML = "SP: " + SP2 + "/" + maxSP2;
+  }
+  else if (fileNumber === "3"){
+    document.getElementById("hpBar").style.width = ((HP3/maxHP3)*100) + "%";
+    document.getElementById("hpBar").innerHTML = "HP: " + HP3 + "/" + maxHP3;
+    document.getElementById("mpBar").style.width = ((MP3/maxMP3)*100) + "%";
+    document.getElementById("mpBar").innerHTML = "MP: " + MP3 + "/" + maxMP3;
+    document.getElementById("spBar").style.width = ((SP3/maxSP3)*100) + "%";
+    document.getElementById("spBar").innerHTML = "SP: " + SP3 + "/" + maxSP3;
+  };
+
+  //function for updating hud bars
+  function updateHud(){
+    if (fileNumber === "1"){
+      document.getElementById("hpBar").style.width = ((HP1/maxHP1)*100) + "%";
+      document.getElementById("hpBar").innerHTML = "HP: " + HP1 + "/" + maxHP1;
+      document.getElementById("mpBar").style.width = ((MP1/maxMP1)*100) + "%";
+      document.getElementById("mpBar").innerHTML = "MP: " + MP1 + "/" + maxMP1;
+      document.getElementById("spBar").style.width = ((SP1/maxSP1)*100) + "%";
+      document.getElementById("spBar").innerHTML = "SP: " + SP1 + "/" + maxSP1;
+    }
+    else if (fileNumber === "2"){
+      document.getElementById("hpBar").style.width = ((HP2/maxHP2)*100) + "%";
+      document.getElementById("hpBar").innerHTML = "HP: " + HP2 + "/" + maxHP2;
+      document.getElementById("mpBar").style.width = ((MP2/maxMP2)*100) + "%";
+      document.getElementById("mpBar").innerHTML = "MP: " + MP2 + "/" + maxMP2;
+      document.getElementById("spBar").style.width = ((SP2/maxSP2)*100) + "%";
+      document.getElementById("spBar").innerHTML = "SP: " + SP2 + "/" + maxSP2;
+    }
+    else if (fileNumber === "3"){
+      document.getElementById("hpBar").style.width = ((HP3/maxHP3)*100) + "%";
+      document.getElementById("hpBar").innerHTML = "HP: " + HP3 + "/" + maxHP3;
+      document.getElementById("mpBar").style.width = ((MP3/maxMP3)*100) + "%";
+      document.getElementById("mpBar").innerHTML = "MP: " + MP3 + "/" + maxMP3;
+      document.getElementById("spBar").style.width = ((SP3/maxSP3)*100) + "%";
+      document.getElementById("spBar").innerHTML = "SP: " + SP3 + "/" + maxSP3;
+    };
+  };
+
+//Set enemy HP bar
+
+  if (inBattle === "true"){
+    document.getElementById("enemyHpBar").style.width = ((opponentHp/opponentMaxHp)*100) + "%";
+    document.getElementById("enemyHpBar").innerHTML = "HP: " + opponentHp + "/" + opponentMaxHp;
+    document.getElementById("enemyMpBar").style.width = ((opponentMp/opponentMaxMp)*100) + "%";
+    document.getElementById("enemyMpBar").innerHTML = "MP: " + opponentMp + "/" + opponentMaxMp;
+    document.getElementById("enemySpBar").style.width = ((opponentSp/opponentMaxSp)*100) + "%";
+    document.getElementById("enemySpBar").innerHTML = "SP: " + opponentSp + "/" + opponentMaxSp;
+  };
+
+  function updateEnemyHud(){
+    //prevent negative enemy HP values
+    if (opponentHp < 0){
+      opponentHp = 0;
+    };
+    document.getElementById("enemyHpBar").style.width = ((opponentHp/opponentMaxHp)*100) + "%";
+    document.getElementById("enemyHpBar").innerHTML = "HP: " + opponentHp + "/" + opponentMaxHp;
+    document.getElementById("enemyMpBar").style.width = ((opponentMp/opponentMaxMp)*100) + "%";
+    document.getElementById("enemyMpBar").innerHTML = "MP: " + opponentMp + "/" + opponentMaxMp;
+    document.getElementById("enemySpBar").style.width = ((opponentSp/opponentMaxSp)*100) + "%";
+    document.getElementById("enemySpBar").innerHTML = "SP: " + opponentSp + "/" + opponentMaxSp;
+  }
+
+  function setTurn(){
+   if (opponentHp > 0){
+    if (controlsLocked === true){
+      document.getElementById("playerPointer").style.display = "none";
+      document.getElementById("enemyPointer").style.display = "block";
+    }
+    else if (controlsLocked === false){
+      document.getElementById("playerPointer").style.display = "block";
+      document.getElementById("enemyPointer").style.display = "none";
+    };
+   }
+   else if (opponentHp <= 0){
+    document.getElementById("playerPointer").style.display = "none";
+    document.getElementById("enemyPointer").style.display = "none";
    };
   };

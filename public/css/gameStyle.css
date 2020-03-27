@@ -35,3 +35,109 @@ body {
   background-color: white;
   display: none;
 }
+
+#hud {
+  background-color: white;
+  width: 20%;
+  float: left;
+  border: 5px solid white;
+  font-size: 150%;
+  white-space: nowrap;
+}
+
+#hpBar {
+  background-color: red;
+  width: 100%;
+  border-top: 4px solid black;
+  border-bottom: 2px solid black;
+  border-left: 4px solid black;
+  margin-left: -2px;
+}
+
+
+#mpBar {
+  background-color: royalblue;
+  width: 100%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 4px solid black;
+  margin-left: -2px;
+}
+
+#spBar {
+  background-color: green;
+  width: 100%;
+  border-top: 2px solid black;
+  border-bottom: 4px solid black;
+  border-left: 4px solid black;
+  margin-left: -2px;
+}
+
+#enemyHud {
+  background-color: white;
+  width: 20%;
+  float: right;
+  border: 5px solid white;
+  font-size: 150%;
+  white-space: nowrap;
+}
+
+#enemyHpBar {
+  background-color: red;
+  width: 100%;
+  border-top: 4px solid black;
+  border-bottom: 2px solid black;
+  border-left: 4px solid black;
+  margin-left: -2px;
+}
+
+
+#enemyMpBar {
+  background-color: royalblue;
+  width: 100%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 4px solid black;
+  margin-left: -2px;
+}
+
+#enemySpBar {
+  background-color: green;
+  width: 100%;
+  border-top: 2px solid black;
+  border-bottom: 4px solid black;
+  border-left: 4px solid black;
+  margin-left: -2px;
+}
+
+#gameButtons{
+  float: right;
+}
+
+#battleButtons{
+  width: 15%;
+  margin: 0 auto;
+}
+
+#playerPointer{
+  margin-top: 100px;
+  margin-left: -12.5%;
+  float: left;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 50px 100px 50px;
+  border-color: transparent transparent #ffea00 transparent;
+}
+
+#enemyPointer{
+  margin-top: 100px;
+  float: right;
+  margin-right: -12.5%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 50px 100px 50px;
+  border-color: transparent transparent #ffea00 transparent;
+  display: none;
+}

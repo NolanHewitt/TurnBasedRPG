@@ -8,6 +8,23 @@
 
 <body>
 
+    <div id="hud">
+        <div id="hpBar">HP</div>
+        
+        <div id="mpBar">MP</div>
+        
+        <div id="spBar">SP</div>
+    </div>
+
+    <div id="enemyHud">
+        <div id="enemyHpBar">HP</div>
+        
+        <div id="enemyMpBar">MP</div>
+        
+        <div id="enemySpBar">SP</div>
+    </div>
+
+<div id="battleButtons">
 <button id="attackButton" onclick="attack();">Attack</button>
 
 <button onclick="displaySpells();" id="magicButton">Magic</button>
@@ -33,13 +50,10 @@
 <button onclick="flee();">Flee</button>
 
 <button onclick="returnHome();" id="returnHome">Go Home</button>
-
-<div id="enemyInfo">
-    <p id="enemyName"></p>
-    <p id="enemyHP"></p>
-    <p id="enemyMP"></p>
-    <p id="enemyStats"></p>
 </div>
+
+<div id="playerPointer"></div>
+<div id="enemyPointer"></div>
 
       <script src="/script/script.js"></script>
 
