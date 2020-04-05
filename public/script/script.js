@@ -2234,6 +2234,7 @@ function viewSkills(){
   else if (skillsDisplay === true){
     document.getElementById("skillsContainer").style.display = "none";
     document.getElementById("skillsButton").innerHTML = "Open Skills";
+    document.getElementById("skills").style.display = "none";
     skillsDisplay = false;
     menuOpen = false;
   };
