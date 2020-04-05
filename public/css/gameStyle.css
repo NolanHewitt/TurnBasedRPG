@@ -141,3 +141,24 @@ body {
   border-color: transparent transparent #ffea00 transparent;
   display: none;
 }
+
+#skills{
+  display: none;
+  color: white;
+}
+
+#physicalSkills{
+  background-color: green;
+}
+
+#magicSkills{
+  background-color: royalblue;
+}
+
+#spellsContainer{
+  background-color: royalblue;
+}
+
+#inventory{
+  background-color: maroon;
+}

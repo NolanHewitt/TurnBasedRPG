@@ -135,16 +135,29 @@ let magic3 = parseInt(localStorage.getItem("magic3"));
 let dexterity1 = parseInt(localStorage.getItem("dexterity1"));
 let dexterity2 = parseInt(localStorage.getItem("dexterity2"));
 let dexterity3 = parseInt(localStorage.getItem("dexterity3"));
+//Crit Chance stat for each file
+let critChance1 = parseInt(localStorage.getItem("critChance1"));
+let critChance2 = parseInt(localStorage.getItem("critChance2"));
+let critChance3 = parseInt(localStorage.getItem("critChance3"));
+//Crit Multiplier stat for each file
+let critMulti1 = parseInt(localStorage.getItem("critMulti1"));
+let critMulti2 = parseInt(localStorage.getItem("critMulti2"));
+let critMulti3 = parseInt(localStorage.getItem("critMulti3"));
 //Holder for current enemy when the player gets into battle
 let currentEnemy = parseInt(localStorage.getItem("currentEnemy"));
 //rng value used fpr determining enemy that you will fight in a random battle
 let rng = parseInt(localStorage.getItem("currentEnemy"));
 let blockingModifier = 1;
 let inBattle = localStorage.getItem("inBattle");
+//No escaping battle >:)
+if (inBattle === "true" && window.location.pathname !== "/battle"){
+  window.location = "battle";
+};
 //Menu display variables
 let shopDisplay = false;
 let inventoryDisplay = false;
 let skillsDisplay = false;
+let skillTreeDisplay = false;
 let menuOpen = false;
 let points = 3;
 let preMaxHP;
@@ -154,6 +167,7 @@ let preMaxATK;
 let preMaxDEF;
 let preMaxMagic;
 let preMaxDexterity;
+let critRoll;
 
 console.log("Currently playing file number " + fileNumber + ".");
 
@@ -256,6 +270,8 @@ function startBalanced(){
   localStorage.setItem("defense1", "2");
   localStorage.setItem("magic1", "2");
   localStorage.setItem("dexterity1", "2");
+  localStorage.setItem("critChance1", "5");
+  localStorage.setItem("critMulti1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
   localStorage.setItem("weapon1", "Fists");
@@ -284,6 +300,8 @@ function startBalanced(){
     localStorage.setItem("defense2", "2");
     localStorage.setItem("magic2", "2");
     localStorage.setItem("dexterity2", "2");
+    localStorage.setItem("critChance2", "5");
+    localStorage.setItem("critMulti2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
     localStorage.setItem("weapon2", "Fists");
@@ -312,6 +330,8 @@ function startBalanced(){
     localStorage.setItem("defense3", "2");
     localStorage.setItem("magic3", "2");
     localStorage.setItem("dexterity3", "2");
+    localStorage.setItem("critChance3", "5");
+    localStorage.setItem("critMulti3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
     localStorage.setItem("weapon3", "Fists");
@@ -347,6 +367,8 @@ function startAttack(){
   localStorage.setItem("defense1", "2");
   localStorage.setItem("magic1", "1");
   localStorage.setItem("dexterity1", "2");
+  localStorage.setItem("critChance1", "10");
+  localStorage.setItem("critMulti1", "3");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
   localStorage.setItem("weapon1", "Fists");
@@ -375,6 +397,8 @@ function startAttack(){
     localStorage.setItem("defense2", "2");
     localStorage.setItem("magic2", "1");
     localStorage.setItem("dexterity2", "2");
+    localStorage.setItem("critChance2", "10");
+    localStorage.setItem("critMulti2", "3");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
     localStorage.setItem("weapon2", "Fists");
@@ -403,6 +427,8 @@ function startAttack(){
     localStorage.setItem("defense3", "2");
     localStorage.setItem("magic3", "1");
     localStorage.setItem("dexterity3", "2");
+    localStorage.setItem("critChance3", "10");
+    localStorage.setItem("critMulti3", "3");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
     localStorage.setItem("weapon3", "Fists");
@@ -438,6 +464,8 @@ function startDefense(){
   localStorage.setItem("defense1", "4");
   localStorage.setItem("magic1", "1");
   localStorage.setItem("dexterity1", "2");
+  localStorage.setItem("critChance1", "5");
+  localStorage.setItem("critMulti1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
   localStorage.setItem("weapon1", "Fists");
@@ -466,6 +494,8 @@ function startDefense(){
     localStorage.setItem("defense2", "4");
     localStorage.setItem("magic2", "1");
     localStorage.setItem("dexterity2", "2");
+    localStorage.setItem("critChance2", "5");
+    localStorage.setItem("critMulti2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
     localStorage.setItem("weapon2", "Fists");
@@ -494,6 +524,8 @@ function startDefense(){
     localStorage.setItem("defense3", "4");
     localStorage.setItem("magic3", "1");
     localStorage.setItem("dexterity3", "2");
+    localStorage.setItem("critChance3", "5");
+    localStorage.setItem("critMulti3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
     localStorage.setItem("weapon3", "Fists");
@@ -529,6 +561,8 @@ function startMagic(){
   localStorage.setItem("defense1", "1");
   localStorage.setItem("magic1", "4");
   localStorage.setItem("dexterity1", "2");
+  localStorage.setItem("critChance1", "2.5");
+  localStorage.setItem("critMulti1", "2");
   localStorage.setItem("money1", "0");
   localStorage.setItem("inventory1", JSON.stringify(stuff1));
   localStorage.setItem("weapon1", "Fists");
@@ -557,6 +591,8 @@ function startMagic(){
     localStorage.setItem("defense2", "1");
     localStorage.setItem("magic2", "4");
     localStorage.setItem("dexterity2", "2");
+    localStorage.setItem("critChance2", "2.5");
+    localStorage.setItem("critMulti2", "2");
     localStorage.setItem("money2", "0");
     localStorage.setItem("inventory2", JSON.stringify(stuff2));
     localStorage.setItem("weapon2", "Fists");
@@ -585,6 +621,8 @@ function startMagic(){
     localStorage.setItem("defense3", "1");
     localStorage.setItem("magic3", "4");
     localStorage.setItem("dexterity3", "2");
+    localStorage.setItem("critChance3", "2.5");
+    localStorage.setItem("critMulti3", "2");
     localStorage.setItem("money3", "0");
     localStorage.setItem("inventory3", JSON.stringify(stuff3));
     localStorage.setItem("weapon3", "Fists");
@@ -772,8 +810,15 @@ if (fileNumber === "1"){
       //deal damage to the enemy based on your attack and the enemies defense if you hit
       //if you have enough attack to deal 1 or more damage
       if ((attack1 + weaponAtk1 - opponentDef) >= 1){
-        opponentHp = opponentHp - (attack1 + weaponAtk1 - opponentDef);
-        console.log("Enemy HP is " + opponentHp);
+        critRoll = (Math.floor(Math.random()*100))+1;
+        if (critRoll > critChance1){
+          opponentHp = opponentHp - (attack1 + weaponAtk1 - opponentDef);
+          console.log("Enemy HP is " + opponentHp);
+        }
+        else{
+          opponentHp = opponentHp - ((attack1 + weaponAtk1 - opponentDef)*critMulti1);
+          console.log("Critical Hit! Enemy HP is " + opponentHp);
+        }
       }
       //if you do not
       else {
@@ -824,8 +869,15 @@ else if (fileNumber === "2"){
       //deal damage to the enemy based on your attack and the enemies defense if you hit
       //if you have enough attack to deal 1 or more damage
       if ((attack2 + weaponAtk2 - opponentDef) >= 1){
-        opponentHp = opponentHp - (attack2 + weaponAtk2 - opponentDef);
-        console.log("Enemy HP is " + opponentHp);
+        critRoll = (Math.floor(Math.random()*100))+1;
+        if (critRoll > critChance2){
+          opponentHp = opponentHp - (attack2 + weaponAtk2 - opponentDef);
+          console.log("Enemy HP is " + opponentHp);
+        }
+        else{
+          opponentHp = opponentHp - ((attack2 + weaponAtk2 - opponentDef)*critMulti2);
+          console.log("Critical Hit! Enemy HP is " + opponentHp);
+        }
       }
       //if you do not
       else {
@@ -877,8 +929,15 @@ else if (fileNumber === "2"){
       //deal damage to the enemy based on your attack and the enemies defense if you hit
       //if you have enough attack to deal 1 or more damage
       if ((attack3 + weaponAtk3 - opponentDef) >= 1){
-        opponentHp = opponentHp - (attack3 + weaponAtk3 - opponentDef);
-        console.log("Enemy HP is " + opponentHp);
+        critRoll = (Math.floor(Math.random()*100))+1;
+        if (critRoll > critChance3){
+          opponentHp = opponentHp - (attack3 + weaponAtk3 - opponentDef);
+          console.log("Enemy HP is " + opponentHp);
+        }
+        else{
+          opponentHp = opponentHp - ((attack3 + weaponAtk3 - opponentDef)*critMulti1);
+          console.log("Critical Hit! Enemy HP is " + opponentHp);
+        }
       }
       //if you do not
       else {
@@ -2580,4 +2639,15 @@ function incrementDexterity(){
     document.getElementById("playerPointer").style.display = "none";
     document.getElementById("enemyPointer").style.display = "none";
    };
+  };
+
+  function displaySkillTree(){
+    if (skillTreeDisplay === false){
+      document.getElementById("skills").style.display = "block";
+      skillTreeDisplay = true;
+    }
+    else if (skillTreeDisplay === true){
+      document.getElementById("skills").style.display = "none";
+      skillTreeDisplay = false;
+    };
   };
